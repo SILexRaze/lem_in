@@ -6,13 +6,13 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 13:32:53 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/06 16:31:43 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/06 19:22:31 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_map	*ft_map_create_elem(char *name, int *coord)
+t_map	*ft_map_create_elem(char *name, int *coord, int state)
 {
 	t_map	*new;
 
@@ -21,6 +21,7 @@ t_map	*ft_map_create_elem(char *name, int *coord)
 	new->name = name;
 	new->x = coord[0];
 	new->y = coord[1];
+	new->state = state;
 	new->next = NULL;
 	return (new);
 }
