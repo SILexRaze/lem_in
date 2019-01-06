@@ -6,7 +6,7 @@
 #    By: vifonne <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/06 19:05:19 by vifonne           #+#    #+#              #
-#    Updated: 2019/01/02 17:46:15 by vifonne          ###   ########.fr        #
+#    Updated: 2019/01/06 12:33:18 by vifonne          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,8 @@ $(NAME): $(OBJ)
 	@ar rcs $(NAME) $(OBJ)
 
 %.o :	%.c ./libft.h
-	$(CC) -I ./libft.h -c -o $@ $<
+	@/bin/echo -n "="
+	@$(CC) -I ./libft.h -c -o $@ $<
 
 clean:
 	@rm -f $(OBJ)

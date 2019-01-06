@@ -6,11 +6,13 @@
 #    By: vifonne <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/05 18:03:13 by vifonne           #+#    #+#              #
-#    Updated: 2019/01/05 18:44:55 by vifonne          ###   ########.fr        #
+#    Updated: 2019/01/06 16:26:23 by vifonne          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		=		main.c
+SRCS		=		main.c			\
+					parser.c		\
+					map_list.c
 SRCS_DIR	=		$(addprefix srcs/, $(SRCS))
 LIBFT		=		libft/
 OBJ			=		$(SRCS_DIR:.c=.o)
@@ -29,9 +31,11 @@ all:	$(NAME)
 
 $(NAME): objstart $(OBJ)
 	@echo "\n$(UNDER)Compiling libft :$(END)\t\t$(YELLOW)$(CC)$(WHITE)\n"
+	@/bin/echo -n "0% ["
 	@make -C libft/
+	@echo "] 100%"
 	@echo "\n$(UNDER)Compiling $(NAME) :$(END)\t\t$(YELLOW)$(CC)$(WHITE)\n"
-	@$(CC) $(OBJ) -o $(NAME) $(HDR) -L $(LIBFT) -lft
+	$(CC) $(OBJ) -o $(NAME) $(HDR) -L $(LIBFT) -lft
 
 objstart:
 	@echo "$(UNDER)Compiling objects :$(END)\t\t$(YELLOW)$(CC)$(WHITE)\n"
