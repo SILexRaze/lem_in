@@ -6,13 +6,15 @@
 #    By: vifonne <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/05 18:03:13 by vifonne           #+#    #+#              #
-#    Updated: 2019/01/06 16:26:23 by vifonne          ###   ########.fr        #
+#    Updated: 2019/01/07 10:51:16 by rvalenti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS		=		main.c			\
 					parser.c		\
-					map_list.c
+					map_list.c		\
+					ft_tools.c		\
+					printf_review.c
 SRCS_DIR	=		$(addprefix srcs/, $(SRCS))
 LIBFT		=		libft/
 OBJ			=		$(SRCS_DIR:.c=.o)

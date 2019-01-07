@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:08 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/06 14:45:16 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/07 10:50:10 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@ int		main(void)
 	if (!(data = (t_data *)ft_memalloc(sizeof(t_data))))
 		return (0);
 	ft_read_stdin(data);
+	printf_review(data);
 	return (0);
 }

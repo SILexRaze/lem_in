@@ -6,84 +6,112 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 13:32:53 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/06 19:22:31 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/07 10:39:28 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_map	*ft_map_create_elem(char *name, int *coord, int state)
+t_map	*ft_map_create_elem(char **tab, int state)
 {
 	t_map	*new;
 
 	if (!(new = (t_map*)ft_memalloc(sizeof(t_map))))
 		exit(0);
-	new->name = name;
-	new->x = coord[0];
-	new->y = coord[1];
+	new->name = tab[0];
+	new->x = ft_sizetoi(tab[1]);
+	new->y = ft_sizetoi(tab[2]);
 	new->state = state;
+	new->pipe = NULL;
 	new->next = NULL;
 	return (new);
 }
 
-/*
-void	ft_map_pushback(t_map **begin_list, char *name, int *coord)
+void	ft_map_pushback(t_map **begin_list, char **tab, int state)
 {
 	t_map	*tmp;
 
 	if (*begin_list)
 	{
 		tmp = *begin_list;
-		while (tmp->tmp_next)
-			tmp = tmp->tmp_next;
-		tmp->tmp_next = ft_map_create_elem(name, coord);
-	}
-	else
-		*begin_list = ft_map_create_elem(name, coord);
-}
-
-void	ft_map_pushfront(t_map **begin_list, char *name, int *coord)
-{
-	t_map	*tmp;
-
-	if (*begin_list)
-	{
-		tmp = ft_map_create_elem(name, coord);
-		tmp->next = *begin_list;
-		*begin_list = tmp;
-	}
-	else
-		*begin_list = ft_map_create_elem(name, coord);
-}
-
-int		ft_map_size(t_map **begin_list)
-{
-	int		i;
-	t_map	*tmp;
-
-	i = 0;
-	tmp = *begin_list;
-	if (tmp)
-	{
-		while (tmp)
-		{
-			i++;
+		while (tmp->next)
 			tmp = tmp->next;
-		}
+		tmp->next = ft_map_create_elem(tab, state);
 	}
-	return (i);
+	else
+		*begin_list = ft_map_create_elem(tab, state);
 }
 
-void	ft_map_clear(t_map **begin_list)
+t_pipe	*ft_pipe_create_elem(char **tab)
 {
-	t_map	*tmp;
+	t_pipe	*new;
 
-	tmp = NULL;
-	while (*begin_list)
+	if (!(new = (t_pipe*)ft_memalloc(sizeof(t_pipe))))
+		exit(0);
+	new->arg1 = tab[0];
+	new->arg2 = tab[1];
+	new->next = NULL;
+	return (new);
+}
+
+void	ft_pipe_pushback(t_pipe **begin_list, char **tab)
+{
+	t_pipe	*tmp;
+
+	if (*begin_list)
 	{
 		tmp = *begin_list;
-		*begin_list = (*begin_list)->next;
-		free(tmp);
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = ft_pipe_create_elem(tab);
 	}
-	(*begin_list) = NULL;
-}*/
+	else
+		*begin_list = ft_pipe_create_elem(tab);
+}
+
+/*
+   void	ft_map_pushfront(t_map **begin_list, char *name, int *coord)
+   {
+   t_map	*tmp;
+
+   if (*begin_list)
+   {
+   tmp = ft_map_create_elem(name, coord);
+   tmp->next = *begin_list;
+ *begin_list = tmp;
+ }
+ else
+ *begin_list = ft_map_create_elem(name, coord);
+ }
+
+ int		ft_map_size(t_map **begin_list)
+ {
+ int		i;
+ t_map	*tmp;
+
+ i = 0;
+ tmp = *begin_list;
+ if (tmp)
+ {
+ while (tmp)
+ {
+ i++;
+ tmp = tmp->next;
+ }
+ }
+ return (i);
+ }
+
+ void	ft_map_clear(t_map **begin_list)
+ {
+ t_map	*tmp;
+
+ tmp = NULL;
+ while (*begin_list)
+ {
+ tmp = *begin_list;
+ *begin_list = (*begin_list)->next;
+ free(tmp);
+ }
+ (*begin_list) = NULL;
+ }*/

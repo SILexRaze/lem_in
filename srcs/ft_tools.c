@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 19:30:08 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/06 19:35:58 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/07 10:38:52 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,14 @@ size_t		ft_sizetoi(char *str)
 	i = 0;
 	dst = 0;
 	while (str[i] > 47 && str[i] < 58)
+	{
 		dst = dst * 10 + str[i] - 48;
+		i++;
+	}
 	return (dst);
 }
 
-int		ft_tab_len(char **str)
+int		ft_tab_len(char **tab)
 {
 	int i;
 
