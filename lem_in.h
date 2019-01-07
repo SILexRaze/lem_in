@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/07 10:49:22 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/07 11:59:14 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void				printf_review(t_data *data); //remove when not needed
 **	PARSER
 */
 void				ft_read_stdin(t_data *data);
-
+void				ft_state(char **line, int *state);
+int					ft_comment(char **line);
 /*
 ** TOOLS
 */
