@@ -6,7 +6,7 @@
 #    By: vifonne <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/05 18:03:13 by vifonne           #+#    #+#              #
-#    Updated: 2019/01/07 10:51:16 by rvalenti         ###   ########.fr        #
+#    Updated: 2019/01/07 12:18:33 by rvalenti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRCS		=		main.c			\
 SRCS_DIR	=		$(addprefix srcs/, $(SRCS))
 LIBFT		=		libft/
 OBJ			=		$(SRCS_DIR:.c=.o)
-CC			=		gcc -Wall -Wextra -Werror
+CC			=		gcc -Wall -Wextra -Werror -fsanitize=address
 HDR			=		-I $(LIBFT) -I .
 NAME		=		lem_in
 .PHONY		=		all $(NAME) $(OBJ) clean fclean re

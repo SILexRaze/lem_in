@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 13:03:58 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/07 11:59:12 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/07 12:17:23 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_read_stdin(t_data *data)
 
 int		ft_comment(char **line)
 {
-	while (*line[0] == '#' && *line[1] != '#')
+	while (line[0][0] == '#' && line[0][1] != '#')
 	{
 		printf("|%s|\n", *line);
 		ft_strdel(line);
