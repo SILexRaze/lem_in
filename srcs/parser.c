@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 13:03:58 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/07 12:17:23 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/07 13:49:11 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,31 @@
 void	ft_read_stdin(t_data *data)
 {
 	char	*line;
-	char	**tab;
-	int		state;
+	t_map	*tmp;
 
-	state = 0;
 	if (get_next_line(0, &line) > 0)
 	{
 		printf("|%s|\n", line);
 		data->ant = ft_sizetoi(line);
 		ft_strdel(&line);
 	}
+	ft_parse_map(data);
+	tmp = data->map;
+	while (tmp)
+	{
+		if (tmp->state == 1)
+			tmp->nbant = data->ant;
+		tmp = tmp->next;
+	}
+}
+
+void	ft_parse_map(t_data *data)
+{
+	char	*line;
+	char	**tab;
+	int		state;
+
+	state = 0;
 	while (get_next_line(0, &line) > 0)
 	{
 		ft_state(&line, &state);
@@ -34,13 +49,18 @@ void	ft_read_stdin(t_data *data)
 		tab = ft_strsplit(line, ' ');
 		if (ft_tab_len(tab) != 3)
 		{
+			ft_freetab(&tab);
 			tab = ft_strsplit(line, '-');
 			if (ft_tab_len(tab) == 2)
+			{
 				ft_pipe_pushback(&data->pipe, tab);
+				ft_freetab(&tab);
+			}
 			break;
 		}
 		ft_map_pushback(&data->map, tab, state);
 		ft_strdel(&line);
+		ft_freetab(&tab);
 	}
 	while (get_next_line(0, &line) > 0)
 	{
@@ -49,10 +69,15 @@ void	ft_read_stdin(t_data *data)
 		printf("|%s|\n", line);
 		tab = ft_strsplit(line, '-');
 		if (ft_tab_len(tab) != 2)
+		{
+			ft_freetab(&tab);
 			break;
+		}
 		ft_pipe_pushback(&data->pipe, tab);
 		ft_strdel(&line);
+		ft_freetab(&tab);
 	}
+
 }
 
 int		ft_comment(char **line)

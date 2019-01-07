@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 19:30:08 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/07 10:38:52 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/07 13:49:29 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,19 @@ int		ft_tab_len(char **tab)
 	while (tab[i])
 		i++;
 	return (i);
+}
+
+void	ft_freetab(char ***tab)
+{
+	size_t i;
+
+	i = 0;
+	while ((*tab)[i])
+	{
+		free((*tab)[i]);
+		(*tab)[i] = NULL;
+		i++;
+	}
+	free(*tab);
+	*tab = NULL;
 }

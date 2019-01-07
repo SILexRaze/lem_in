@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/07 11:59:14 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/07 13:47:53 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct		s_map
 	size_t			x;
 	size_t			y;
 	int				state;
+	size_t			nbant;
+	size_t			nameant;
 	struct s_map	**pipe;
 	struct s_map	*next;
 }					t_map;
@@ -56,9 +58,11 @@ void				printf_review(t_data *data); //remove when not needed
 void				ft_read_stdin(t_data *data);
 void				ft_state(char **line, int *state);
 int					ft_comment(char **line);
+void				ft_parse_map(t_data *data);
 /*
 ** TOOLS
 */
 size_t				ft_sizetoi(char *str);
 int					ft_tab_len(char **str);
+void				ft_freetab(char ***tab);
 #endif

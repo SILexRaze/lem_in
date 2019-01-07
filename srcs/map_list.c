@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 13:32:53 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/07 10:39:28 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/07 13:53:17 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_map	*ft_map_create_elem(char **tab, int state)
 
 	if (!(new = (t_map*)ft_memalloc(sizeof(t_map))))
 		exit(0);
-	new->name = tab[0];
+	new->name = ft_strdup(tab[0]);
 	new->x = ft_sizetoi(tab[1]);
 	new->y = ft_sizetoi(tab[2]);
 	new->state = state;
@@ -48,8 +48,8 @@ t_pipe	*ft_pipe_create_elem(char **tab)
 
 	if (!(new = (t_pipe*)ft_memalloc(sizeof(t_pipe))))
 		exit(0);
-	new->arg1 = tab[0];
-	new->arg2 = tab[1];
+	new->arg1 = ft_strdup(tab[0]);
+	new->arg2 = ft_strdup(tab[1]);
 	new->next = NULL;
 	return (new);
 }
@@ -70,20 +70,6 @@ void	ft_pipe_pushback(t_pipe **begin_list, char **tab)
 }
 
 /*
-   void	ft_map_pushfront(t_map **begin_list, char *name, int *coord)
-   {
-   t_map	*tmp;
-
-   if (*begin_list)
-   {
-   tmp = ft_map_create_elem(name, coord);
-   tmp->next = *begin_list;
- *begin_list = tmp;
- }
- else
- *begin_list = ft_map_create_elem(name, coord);
- }
-
  int		ft_map_size(t_map **begin_list)
  {
  int		i;

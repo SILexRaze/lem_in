@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 10:41:11 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/07 10:59:44 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/07 13:35:59 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ void	printf_review(t_data *data)
 		printf("name= %s\t", tmp->name);
 		printf("x= %zu\t", tmp->x);
 		printf("y= %zu\t", tmp->y);
-		printf("state= %d\n\n", tmp->state);
+		printf("state= %d\t", tmp->state);
+		printf("nbant= %zu\t", tmp->nbant);
+		printf("nameant= %zu\t\n\n", tmp->nameant);
 
 		tmp = tmp->next;
 	}
