@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strisdigit.c                                    :+:      :+:    :+:   */
+/*   check_stdin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/20 15:02:42 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/08 15:06:00 by vifonne          ###   ########.fr       */
+/*   Created: 2019/01/08 14:43:46 by vifonne           #+#    #+#             */
+/*   Updated: 2019/01/08 15:05:54 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "lem_in.h"
 
-int	ft_strisdigit(char *str)
+int		ft_isroom(char *line, t_data *data)
 {
-	size_t	i;
+	char	**tab;
+	t_map	*tmp;
 
-	i = 0;
-	if ((str[i] == '+' || str[i] == '-')
-			&& (str[i + 1] >= '0' && str[i + 1] <= '9'))
-		i++;
-	while (str[i])
+	tmp = data->map;
+	if (!(tab = ft_strsplit(line, 32)))
+		exit(0);
+	if (ft_tab_len(tab) != 3)
+		return (0);
+	while (tmp)
 	{
-		if (str[i] < '0' || str[i] > '9')
-			return (0);
-		i++;
+		if (ft_strequ(tab[0], tmp->name) == 1)
+			return (-1);
+		tmp = tmp->next;
 	}
-	return (1);
+	if (!ft_strisdigit(tab[1]) || !ft_strisdigit(tab[2]))
+		return (-2);
+	if (tab[1][0] == '-' || tab[1][0] == '-')
+		return (-3);
 }

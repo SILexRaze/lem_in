@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 13:03:58 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/08 09:09:51 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/08 15:05:58 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_parse_map(t_data *data)
 	while (get_next_line(0, &line) > 0)
 	{
 		ft_state(&line, &state);
-		if(!ft_comment(&line))
+		if(!ft_skip_comment(&line))
 			break ;
 		tab = ft_strsplit(line, ' ');
 		if (ft_tab_len(tab) != 3)
@@ -62,7 +62,7 @@ void	ft_parse_map(t_data *data)
 	}
 	while (get_next_line(0, &line) > 0)
 	{
-		if (!ft_comment(&line))
+		if (!ft_skip_comment(&line))
 			break;
 		tab = ft_strsplit(line, '-');
 		if (ft_tab_len(tab) != 2)
@@ -77,7 +77,7 @@ void	ft_parse_map(t_data *data)
 
 }
 
-int		ft_comment(char **line)
+int		ft_skip_comment(char **line)
 {
 	while (line[0][0] == '#' && line[0][1] != '#')
 	{

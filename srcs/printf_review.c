@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 10:41:11 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/08 08:42:49 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/08 14:43:29 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	printf_review(t_data *data)
 		printf("state= %d\t", tmp->state);
 		printf("nbant= %zu\t", tmp->nbant);
 		printf("nameant= %zu\t\n", tmp->nameant);
-		while (tmp->pipe[n])
+		while (tmp->pipe && tmp->pipe[n])
 		{
 			printf("pipe= %s\n", tmp->pipe[n]->name);
 			n++;
