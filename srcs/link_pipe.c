@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 07:48:15 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/08 08:42:52 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/08 09:09:01 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,23 @@ void	ft_assign_pipe(t_map *map, t_data *data, size_t n)
 	{
 		if (ft_strequ(map->name, tmpipe->arg1))
 		{
-			tmp[i] = ft_search_map_address(tmpipe->arg2, map);
+			tmp[i] = ft_search_map_address(tmpipe->arg2, data);
 			i++;
 		}
 		if (ft_strequ(map->name, tmpipe->arg2))
 		{
-			tmp[i] = ft_search_map_address(tmpipe->arg1, map);
+			tmp[i] = ft_search_map_address(tmpipe->arg1, data);
 			i++;
 		}
 		tmpipe = tmpipe->next;
 	}
 }
 
-t_map	*ft_search_map_address(char *str, t_map *map)
+t_map	*ft_search_map_address(char *str, t_data *data)
 {
 	t_map *tmp;
 
-	tmp = map;
+	tmp = data->map;
 	while (tmp)
 	{
 		if (ft_strequ(tmp->name, str))

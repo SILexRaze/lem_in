@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/08 08:11:53 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/08 09:09:53 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int					ft_comment(char **line);
 void				ft_parse_map(t_data *data);
 void				ft_link_pipe(t_data *data);
 void				ft_assign_pipe(t_map *map, t_data *data, size_t n);
-t_map				*ft_search_map_address(char *str, t_map *map);
+t_map				*ft_search_map_address(char *str, t_data *data);
 size_t				ft_pipe_nbr(t_map *map, t_pipe *pipe);
 
 /*

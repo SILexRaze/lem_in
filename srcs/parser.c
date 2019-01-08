@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 13:03:58 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/07 13:49:11 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/08 09:09:51 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	ft_read_stdin(t_data *data)
 
 	if (get_next_line(0, &line) > 0)
 	{
-		printf("|%s|\n", line);
 		data->ant = ft_sizetoi(line);
 		ft_strdel(&line);
 	}
@@ -45,7 +44,6 @@ void	ft_parse_map(t_data *data)
 		ft_state(&line, &state);
 		if(!ft_comment(&line))
 			break ;
-		printf("|%s|\n", line);
 		tab = ft_strsplit(line, ' ');
 		if (ft_tab_len(tab) != 3)
 		{
@@ -66,7 +64,6 @@ void	ft_parse_map(t_data *data)
 	{
 		if (!ft_comment(&line))
 			break;
-		printf("|%s|\n", line);
 		tab = ft_strsplit(line, '-');
 		if (ft_tab_len(tab) != 2)
 		{
@@ -84,7 +81,6 @@ int		ft_comment(char **line)
 {
 	while (line[0][0] == '#' && line[0][1] != '#')
 	{
-		printf("|%s|\n", *line);
 		ft_strdel(line);
 		if (get_next_line(0, line) <= 0)
 			return (0);
@@ -97,7 +93,6 @@ void	ft_state(char **line, int *state)
 	*state = 0;
 	if (line[0][0] == '#' && line[0][1] == '#')
 	{
-		printf("|%s|\n", *line);
 		if (ft_strequ(*line, "##start"))
 			*state = 1;
 		else if (ft_strequ(*line, "##end"))
