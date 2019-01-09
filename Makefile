@@ -6,7 +6,7 @@
 #    By: vifonne <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/05 18:03:13 by vifonne           #+#    #+#              #
-#    Updated: 2019/01/08 18:55:34 by vifonne          ###   ########.fr        #
+#    Updated: 2019/01/09 12:10:37 by rvalenti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS		=		main.c			\
 SRCS_DIR	=		$(addprefix srcs/, $(SRCS))
 LIBFT		=		libft/
 OBJ			=		$(SRCS_DIR:.c=.o)
-CC			=		gcc -Wall -Wextra -Werror -fsanitize=address
+CC			=		gcc -Wall -Wextra -Werror
 HDR			=		-I $(LIBFT) -I .
 NAME		=		lem_in
 .PHONY		=		all $(NAME) $(OBJ) clean fclean re
@@ -33,16 +33,13 @@ END			=		$'\x1b[0m$'
 
 all:	$(NAME)
 
-$(NAME): objstart $(OBJ)
+$(NAME): $(OBJ)
 	@echo "\n$(UNDER)Compiling libft :$(END)\t\t$(YELLOW)$(CC)$(WHITE)\n"
 	@/bin/echo -n "0% ["
 	@make -C libft/
 	@echo "] 100%"
 	@echo "\n$(UNDER)Compiling $(NAME) :$(END)\t\t$(YELLOW)$(CC)$(WHITE)\n"
 	$(CC) $(OBJ) -o $(NAME) $(HDR) -L $(LIBFT) -lft
-
-objstart:
-	@echo "$(UNDER)Compiling objects :$(END)\t\t$(YELLOW)$(CC)$(WHITE)\n"
 
 %.o: %.c
 	$(CC) $(HDR) -c $< -o $@
