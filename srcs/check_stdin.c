@@ -6,19 +6,17 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:43:46 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/09 01:05:42 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/09 11:45:16 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int		ft_isroom(char *line, t_data *data)
+int		ft_isroom(t_data *data, char **tab)
 {
-	char	**tab;
 	t_map	*tmp;
 
 	tmp = data->map;
-	tab = ft_strsplit(line, 32);
 	if (ft_tab_len(tab) != 3)
 		return (0);
 	while (tmp)
@@ -45,9 +43,8 @@ int		ft_iscoord(char **tab)
 	return (1);
 }
 
-int		ft_ispipe(char *line, t_data *data)
+int		ft_ispipe(char *line, t_data *data, char **tab)
 {
-	char	**tab;
 	int		i;
 	int		j;
 	t_map	*tmp;
@@ -55,7 +52,6 @@ int		ft_ispipe(char *line, t_data *data)
 	i = 0;
 	j = 0;
 	tmp = data->map;
-	tab = ft_strsplit(line, '-');
 	if (ft_isminus(line) < 0)
 		return (ft_isminus(line));
 	if (ft_tab_len(tab) != 2)
@@ -72,6 +68,9 @@ int		ft_ispipe(char *line, t_data *data)
 		return (-8);
 	else if (j < 1)
 		return (-9);
+	if (ft_doublepipe(tab, data) < 0)
+		return (-11);
+	return (1);
 }
 
 int		ft_isminus(char *line)
@@ -93,4 +92,20 @@ int		ft_isminus(char *line)
 		return (-7);
 	else
 		return (1);
+}
+
+int		ft_doublepipe(char **tab, t_data *data)
+{
+	t_pipe	*tmp;
+
+	tmp = data->pipe;
+	while (tmp)
+	{
+		if (ft_strequ(tmp->arg1, tab[0]) == 1 && ft_strequ(tmp->arg2, tab[1]) == 1)
+			return (-11);
+		if (ft_strequ(tmp->arg2, tab[0]) == 1 && ft_strequ(tmp->arg1, tab[1]) == 1)
+			return (-11);
+		tmp = tmp->next;
+	}
+	return (1);
 }

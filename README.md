@@ -19,4 +19,5 @@ It's about management of ant in a ciruit.
 -8	You can't connect a room to itself.
 -9	Destination of connection missings.
 -10	Too few/much connection arguments.
+-11	Connection already declared.
 ```

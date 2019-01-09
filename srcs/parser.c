@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 13:03:58 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/08 19:03:40 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/09 11:45:15 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ void	ft_read_stdin(t_data *data)
 		data->ant = ft_sizetoi(line);
 		ft_strdel(&line);
 	}
-	ft_parse_map(data);
+	if (!ft_parse_room(data))
+		return ;
+	if (!ft_parse_pipe(data))
+		return ;
 	tmp = data->map;
 	while (tmp)
 	{
@@ -32,7 +35,7 @@ void	ft_read_stdin(t_data *data)
 	}
 }
 
-void	ft_parse_map(t_data *data)
+int		ft_parse_room(t_data *data)
 {
 	char	*line;
 	char	**tab;
@@ -43,43 +46,57 @@ void	ft_parse_map(t_data *data)
 	{
 		ft_state(&line, &state);
 		if(!ft_skip_comment(&line))
-			break ;
+			return (0);
 		tab = ft_strsplit(line, ' ');
 		if (ft_tab_len(tab) != 3)
 		{
 			ft_freetab(&tab);
 			tab = ft_strsplit(line, '-');
-			if (ft_tab_len(tab) == 2)
+			if (ft_tab_len(tab) == 2 && ft_ispipe(line, data, tab) == 1)
 			{
 				ft_pipe_pushback(&data->pipe, tab);
 				ft_freetab(&tab);
+				return (1);
 			}
-			break;
+			else
+			{
+				printf("FT_ISPIPE1=%d\n", ft_ispipe(line, data, tab));
+				return (0);
+			}	
 		}
-		if (ft_isroom(line, data) <= 0)
+		if (ft_isroom(data, tab) <= 0)
 		{
-			printf("FT_ISROOM=%d\n", ft_isroom(line, data));
-			break ;
+			printf("FT_ISROOM1=%d\n", ft_isroom(data, tab));
+			return (0);
 		}
 		ft_map_pushback(&data->map, tab, state);
 		ft_strdel(&line);
 		ft_freetab(&tab);
 	}
+	return (1);
+}
+
+int		ft_parse_pipe(t_data *data)
+{
+	char	*line;
+	char	**tab;
+
 	while (get_next_line(0, &line) > 0)
 	{
 		if (!ft_skip_comment(&line))
-			break;
+			return (0);
 		tab = ft_strsplit(line, '-');
-		if (ft_tab_len(tab) != 2)
+		if (ft_tab_len(tab) != 2 || ft_ispipe(line, data, tab) < 0)
 		{
+			printf("FT_ISPIPE2=%d\n", ft_ispipe(line, data, tab));
 			ft_freetab(&tab);
-			break;
+			return (0);
 		}
 		ft_pipe_pushback(&data->pipe, tab);
 		ft_strdel(&line);
 		ft_freetab(&tab);
 	}
-
+	return (1);
 }
 
 int		ft_skip_comment(char **line)
