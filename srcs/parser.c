@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 13:03:58 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/09 15:13:15 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/09 15:54:03 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ int		ft_parse_room(t_data *data)
 	char	*line;
 	char	**tab;
 	int		state;
+	int		ret;
 
 	state = 0;
+	ret = 0;
 	while (get_next_line(0, &line) > 0)
 	{
 		ft_state(&line, &state);
@@ -52,23 +54,17 @@ int		ft_parse_room(t_data *data)
 		{
 			ft_freetab(&tab);
 			tab = ft_strsplit(line, '-');
-			if (ft_tab_len(tab) == 2 && ft_ispipe(line, data, tab) == 1)
+			if (ft_tab_len(tab) == 2 && (ret = ft_ispipe(line, data, tab)) == 1)
 			{
 				ft_pipe_pushback(&data->pipe, tab);
 				ft_freetab(&tab);
 				return (1);
 			}
 			else
-			{
-				printf("FT_ISPIPE1=%d\n", ft_ispipe(line, data, tab));
-				return (0);
-			}
+				return (ret);
 		}
-		if (ft_isroom(data, tab) <= 0)
-		{
-			printf("FT_ISROOM1=%d\n", ft_isroom(data, tab));
-			return (0);
-		}
+		if ((ret = ft_isroom(data, tab)) <= 0)
+			return (ret);
 		ft_map_pushback(&data->map, tab, state);
 		ft_strdel(&line);
 		ft_freetab(&tab);
@@ -80,17 +76,18 @@ int		ft_parse_pipe(t_data *data)
 {
 	char	*line;
 	char	**tab;
+	int		ret;
 
+	ret = 0;
 	while (get_next_line(0, &line) > 0)
 	{
 		if (!ft_skip_comment(&line))
 			return (0);
 		tab = ft_strsplit(line, '-');
-		if (ft_tab_len(tab) != 2 || ft_ispipe(line, data, tab) < 0)
+		if (ft_tab_len(tab) != 2 || (ret = ft_ispipe(line, data, tab)) < 0)
 		{
-			printf("FT_ISPIPE2=%d\n", ft_ispipe(line, data, tab));
 			ft_freetab(&tab);
-			return (0);
+			return (ret);
 		}
 		ft_pipe_pushback(&data->pipe, tab);
 		ft_strdel(&line);

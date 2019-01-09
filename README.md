@@ -26,6 +26,5 @@ It's about management of ant in a ciruit.
 ```C
 -13	You can only configure 1 "start room" and 1 "end room".
 ```
-
 "Toute commande inconnue sera ignoree"
 
