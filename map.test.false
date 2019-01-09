@@ -1,6 +1,6 @@
 20
 ##start
-debut 23 3
+debut -23 3
 2 16 7
 #commentaire
 3 -16 3
@@ -10,7 +10,7 @@ debut 23 3
 7 4 8
 ##end
 fin 9 5
-autre commentaire
+#autre commentaire
 fin-4
 fin-6
 debut-3

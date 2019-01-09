@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/08 15:06:08 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/08 18:56:28 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,11 @@ void				ft_map_pushback(t_map **begin_list, char **tab, int state);
 t_pipe				*ft_pipe_create_elem(char **tab);
 void				ft_pipe_pushback(t_pipe **begin_list, char **tab);
 void				printf_review(t_data *data); //remove when not needed
-
+/*
+**	CHECKER
+*/
+int					ft_isroom(char *line, t_data *data);
+int					ft_iscoord(char **tab);
 /*
 **	PARSER
 */

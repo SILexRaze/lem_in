@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 13:03:58 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/08 15:05:58 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/08 19:03:40 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,11 @@ void	ft_parse_map(t_data *data)
 				ft_freetab(&tab);
 			}
 			break;
+		}
+		if (ft_isroom(line, data) <= 0)
+		{
+			printf("FT_ISROOM=%d\n", ft_isroom(line, data));
+			break ;
 		}
 		ft_map_pushback(&data->map, tab, state);
 		ft_strdel(&line);

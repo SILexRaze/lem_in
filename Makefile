@@ -6,7 +6,7 @@
 #    By: vifonne <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/05 18:03:13 by vifonne           #+#    #+#              #
-#    Updated: 2019/01/08 08:22:02 by rvalenti         ###   ########.fr        #
+#    Updated: 2019/01/08 18:55:34 by vifonne          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ SRCS		=		main.c			\
 					map_list.c		\
 					ft_tools.c		\
 					link_pipe.c		\
-					printf_review.c
+					printf_review.c	\
+					check_stdin.c
 SRCS_DIR	=		$(addprefix srcs/, $(SRCS))
 LIBFT		=		libft/
 OBJ			=		$(SRCS_DIR:.c=.o)
