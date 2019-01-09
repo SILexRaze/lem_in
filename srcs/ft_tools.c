@@ -6,13 +6,13 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 19:30:08 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/07 13:49:29 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/09 15:06:49 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-size_t		ft_sizetoi(char *str)
+size_t	ft_sizetoi(char *str)
 {
 	size_t i;
 	size_t dst;

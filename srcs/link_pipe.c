@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 07:48:15 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/09 12:47:58 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/09 15:07:18 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_map	*ft_search_map_address(char *str, t_data *data)
 	{
 		if (ft_strequ(tmp->name, str))
 			return (tmp);
-		tmp = tmp->next;	
+		tmp = tmp->next;
 	}
 	return (NULL);
 }
@@ -79,9 +79,9 @@ size_t	ft_pipe_nbr(t_map *map, t_pipe *pipe)
 	n = 0;
 	while (pipe)
 	{
-		if(ft_strequ(map->name, pipe->arg1))
+		if (ft_strequ(map->name, pipe->arg1))
 			n++;
-		if(ft_strequ(map->name, pipe->arg2))
+		if (ft_strequ(map->name, pipe->arg2))
 			n++;
 		pipe = pipe->next;
 	}

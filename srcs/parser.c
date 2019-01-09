@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 13:03:58 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/09 13:34:18 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/09 15:13:15 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		ft_parse_room(t_data *data)
 	while (get_next_line(0, &line) > 0)
 	{
 		ft_state(&line, &state);
-		if(!ft_skip_comment(&line))
+		if (!ft_skip_comment(&line))
 			return (0);
 		tab = ft_strsplit(line, ' ');
 		if (ft_tab_len(tab) != 3)
@@ -62,7 +62,7 @@ int		ft_parse_room(t_data *data)
 			{
 				printf("FT_ISPIPE1=%d\n", ft_ispipe(line, data, tab));
 				return (0);
-			}	
+			}
 		}
 		if (ft_isroom(data, tab) <= 0)
 		{

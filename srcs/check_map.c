@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 12:12:12 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/09 14:22:01 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/09 15:10:46 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ int		ft_check_connection(t_map *tmp, t_map *prev)
 		return (0);
 	else if (tmp->state == 2)
 		return (1);
+	else
+		return (0);
 }
 
 int		ft_tab_struct_len(t_map	**pipe)

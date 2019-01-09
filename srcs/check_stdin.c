@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:43:46 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/09 12:20:28 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/09 15:12:46 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,8 @@ int		ft_ispipe(char *line, t_data *data, char **tab)
 		return (-10);
 	while (tmp)
 	{
-		if (ft_strequ(tmp->name, tab[0]) == 1)
-			i++;
-		if (ft_strequ(tmp->name, tab[1]) == 1)
-			j++;
+		i = (ft_strequ(tmp->name, tab[0]) == 1 ? i + 1 : i);
+		j = (ft_strequ(tmp->name, tab[1]) == 1 ? j + 1 : j);
 		tmp = tmp->next;
 	}
 	if (j > 1)
@@ -110,9 +108,11 @@ int		ft_doublepipe(char **tab, t_data *data)
 	tmp = data->pipe;
 	while (tmp)
 	{
-		if (ft_strequ(tmp->arg1, tab[0]) == 1 && ft_strequ(tmp->arg2, tab[1]) == 1)
+		if (ft_strequ(tmp->arg1, tab[0]) == 1
+				&& ft_strequ(tmp->arg2, tab[1]) == 1)
 			return (-11);
-		if (ft_strequ(tmp->arg2, tab[0]) == 1 && ft_strequ(tmp->arg1, tab[1]) == 1)
+		if (ft_strequ(tmp->arg2, tab[0]) == 1
+				&& ft_strequ(tmp->arg1, tab[1]) == 1)
 			return (-11);
 		tmp = tmp->next;
 	}
