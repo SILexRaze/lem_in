@@ -6,11 +6,12 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:08 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/08 08:19:18 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/09 12:48:38 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+#include <stdio.h>
 
 int		main(void)
 {
@@ -20,6 +21,8 @@ int		main(void)
 		return (0);
 	ft_read_stdin(data);
 	ft_link_pipe(data);
+	if (ft_isvalid_map(data) < 0)
+		printf("FT_ISVALID_MAP=%d\n", ft_isvalid_map(data));
 	printf_review(data);
 	return (0);
 }

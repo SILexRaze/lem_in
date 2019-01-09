@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:43:46 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/09 11:45:16 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/09 12:20:28 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,26 @@ int		ft_isroom(t_data *data, char **tab)
 		return (-4);
 	else if (tab[0][0] == '#' && tab[0][1] != '#')
 		return (-5);
-	if (ft_iscoord(tab) < 0)
-		return (ft_iscoord(tab));
+	if (ft_iscoord(tab, data) < 0)
+		return (ft_iscoord(tab, data));
 	return (1);
 }
 
-int		ft_iscoord(char **tab)
+int		ft_iscoord(char **tab, t_data *data)
 {
+	t_map	*tmp;
+
+	tmp = data->map;
 	if (!ft_strisdigit(tab[1]) || !ft_strisdigit(tab[2]))
 		return (-2);
 	if (tab[1][0] == '-' || tab[2][0] == '-')
 		return (-3);
+	while (tmp)
+	{
+		if (tmp->x == ft_sizetoi(tab[1]) && tmp->y == ft_sizetoi(tab[2]))
+			return (-12);
+		tmp = tmp->next;
+	}
 	return (1);
 }
 

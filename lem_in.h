@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/09 11:43:33 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/09 13:52:35 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct		s_map
 	size_t			x;
 	size_t			y;
 	int				state;
+	size_t			weight;
 	size_t			nbant;
 	size_t			nameant;
 	struct s_map	**pipe;
@@ -55,10 +56,14 @@ void				printf_review(t_data *data); //remove when not needed
 **	CHECKER
 */
 int					ft_isroom(t_data *data, char **tab);
-int					ft_iscoord(char **tab);
+int					ft_iscoord(char **tab, t_data *data);
 int					ft_isminus(char *line);
 int					ft_ispipe(char *line, t_data *data, char **tab);
 int					ft_doublepipe(char **tab, t_data *data);
+int					ft_isvalid_map(t_data *data);
+int					ft_count_state(t_data *data);
+int					ft_check_connection(t_map *tmp, t_map *prev);
+int					ft_tab_struct_len(t_map **pipe);
 /*
 **	PARSER
 */

@@ -11,6 +11,7 @@ It's about management of ant in a ciruit.
 -3	Coordinates can't be negative.
 -4	Room name can't start with 'L'.
 -5	Room name can't start with '#'.
+-12	Room cannot overlap with another.
 ```
 ###int	ft_ispipe(char *line, t_data *data)
 ```C
@@ -21,3 +22,10 @@ It's about management of ant in a ciruit.
 -10	Too few/much connection arguments.
 -11	Connection already declared.
 ```
+###int	ft_isvalid_map(t_data *data)
+```C
+-13	You can only configure 1 "start room" and 1 "end room".
+```
+
+"Toute commande inconnue sera ignoree"
+
