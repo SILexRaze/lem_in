@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/10 15:32:08 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/10 15:47:04 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int					ft_check_weight(t_map *tmp);
 int					ft_check_weight(t_map *tmp);
 long				ft_count_connex(t_map **pipe, t_map *tmp);
 int					ft_explore(t_map *tmp, t_data *data, t_map *prev);
-
+int					ft_priority(t_map *tmp);
 /*
 **	PARSER
 */

@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 13:53:46 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/10 15:40:25 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/10 16:13:25 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,38 @@ int		ft_check_weight(t_map *tmp)
 		return (1);
 }
 
+int		ft_priority(t_map *tmp)
+{
+	size_t	i;
+	size_t	min;
+	int		j;
+
+	min = tmp->pipe[0]->weight;
+	i = 1;
+	j = 0;
+	while (tmp->pipe[i])
+	{
+		if (tmp->pipe[i]->state == 2)
+		{
+			j = i;
+			return (j);
+		}
+		i++;
+	}
+	i = 0;
+	while (tmp->pipe[i])
+	{
+		if ((tmp->pipe[i]->weight < min && tmp->pipe[i]->connex != 0
+					&& ft_check_weight(tmp->pipe[i]) == 0))
+		{
+			min = tmp->pipe[i]->weight;
+			j = i;
+		}
+		i++;
+	}
+	return (j);
+}
+
 int		ft_check_start(t_map *tmp)
 {
 	size_t	i;
@@ -66,6 +98,7 @@ int		ft_explore(t_map *tmp, t_data *data, t_map *prev)
 	{
 		return (ft_explore(data->start, data, NULL));
 	}
+	i = ft_priority(tmp);
 	while (tmp->pipe[i])
 	{
 		if ((tmp->pipe[i] != prev && tmp->pipe[i]->connex != 0 && ft_check_weight(tmp->pipe[i]) == 0)
