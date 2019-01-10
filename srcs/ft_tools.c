@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 19:30:08 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/09 15:06:49 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/10 11:46:53 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,36 @@ void	ft_freetab(char ***tab)
 	}
 	free(*tab);
 	*tab = NULL;
+}
+
+void	ft_free_pipe(t_data *data)
+{
+	t_pipe	*tmp;
+
+	tmp = NULL;
+	while (data->pipe)
+	{
+		tmp = data->pipe;
+		data->pipe = data->pipe->next;
+		ft_strdel(&tmp->arg1);
+		ft_strdel(&tmp->arg2);
+		free(tmp);
+	}
+	data->pipe = NULL;
+}
+
+void	ft_free_map(t_data *data)
+{
+	t_map	*tmp;
+
+	tmp = NULL;
+	while (data->map)
+	{
+		tmp = data->map;
+		data->map = data->map->next;
+		ft_strdel(&tmp->name);
+		free(tmp->pipe);
+		free(tmp);
+	}
+	data->map = NULL;
 }

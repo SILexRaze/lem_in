@@ -25,6 +25,8 @@ It's about management of ant in a ciruit.
 ###int	ft_isvalid_map(t_data *data)
 ```C
 -13	You can only configure 1 "start room" and 1 "end room".
+-14	There is no path between start room and end room.
+-15	No connection declared.
 ```
 "Toute commande inconnue sera ignoree"
-
+"La premiere ligne non conforme OU VIDE entraine la fin de l'acquisitio"

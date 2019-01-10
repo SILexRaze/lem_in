@@ -6,7 +6,7 @@
 #    By: vifonne <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/05 18:03:13 by vifonne           #+#    #+#              #
-#    Updated: 2019/01/09 15:18:04 by vifonne          ###   ########.fr        #
+#    Updated: 2019/01/10 12:25:22 by vifonne          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,11 +17,12 @@ SRCS		=		main.c			\
 					link_pipe.c		\
 					printf_review.c	\
 					check_stdin.c	\
+					ft_error.c		\
 					check_map.c
 SRCS_DIR	=		$(addprefix srcs/, $(SRCS))
 LIBFT		=		libft/
 OBJ			=		$(SRCS_DIR:.c=.o)
-CC			=		gcc -Wall -Wextra -Werror
+CC			=		gcc -Wall -Wextra -Werror -g
 HDR			=		-I $(LIBFT) -I .
 NAME		=		lem_in
 .PHONY		=		all $(NAME) $(OBJ) clean fclean re

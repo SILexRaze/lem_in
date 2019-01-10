@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 12:12:12 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/09 15:10:46 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/10 11:52:23 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ int		ft_isvalid_map(t_data *data)
 		}
 		tmp = tmp->next;
 	}
-	if(!ft_check_connection(tmp, tmp))
-		return (-14);
+	if (data->pipe == NULL)
+		return (-15);
+/*	if (!ft_check_connection(tmp, tmp))
+		return (-14);*/
 	return (1);
 }
 

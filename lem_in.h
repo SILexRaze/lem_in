@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/09 15:54:05 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/10 11:51:29 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,14 @@ void				ft_link_pipe(t_data *data);
 void				ft_assign_pipe(t_map *map, t_data *data, size_t n);
 t_map				*ft_search_map_address(char *str, t_data *data);
 size_t				ft_pipe_nbr(t_map *map, t_pipe *pipe);
-
 /*
 ** TOOLS
 */
 size_t				ft_sizetoi(char *str);
 int					ft_tab_len(char **str);
 void				ft_freetab(char ***tab);
-void				ft_free_struct(t_data *data);
-void				ft_init_errdb(void);
+void				ft_free_map(t_data *data);
+void				ft_free_pipe(t_data *data);
+char				**ft_init_errdb(void);
 void				ft_error(int n);
 #endif
