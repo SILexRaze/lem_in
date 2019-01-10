@@ -11,3 +11,4 @@ do
 	grep "definitely lost:" lemin_checker_log/log_errorfile$i.txt | cut -d '=' -f 5 | cut -c5-
 	sleep 1
 done
+rm -rf lem_in.dSYM lem_in

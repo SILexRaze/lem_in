@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/10 11:51:29 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/10 15:32:08 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct		s_map
 	size_t			weight;
 	size_t			nbant;
 	size_t			nameant;
+	long			connex;
 	struct s_map	**pipe;
 	struct s_map	*next;
 }					t_map;
@@ -40,6 +41,7 @@ typedef struct		s_pipe
 typedef struct		s_data
 {
 	t_map			*map;
+	t_map			*start;
 	t_pipe			*pipe;
 	size_t			ant;
 }					t_data;
@@ -62,16 +64,24 @@ int					ft_ispipe(char *line, t_data *data, char **tab);
 int					ft_doublepipe(char **tab, t_data *data);
 int					ft_isvalid_map(t_data *data);
 int					ft_count_state(t_data *data);
-int					ft_check_connection(t_map *tmp, t_map *prev);
 int					ft_tab_struct_len(t_map **pipe);
+
+/*
+**	EXPLORE
+*/
+int					ft_check_weight(t_map *tmp);
+int					ft_check_weight(t_map *tmp);
+long				ft_count_connex(t_map **pipe, t_map *tmp);
+int					ft_explore(t_map *tmp, t_data *data, t_map *prev);
+
 /*
 **	PARSER
 */
-void				ft_read_stdin(t_data *data);
-void				ft_state(char **line, int *state);
 int					ft_skip_comment(char **line);
 int					ft_parse_pipe(t_data *data);
 int					ft_parse_room(t_data *data);
+void				ft_read_stdin(t_data *data);
+void				ft_state(char **line, int *state);
 void				ft_link_pipe(t_data *data);
 void				ft_assign_pipe(t_map *map, t_data *data, size_t n);
 t_map				*ft_search_map_address(char *str, t_data *data);
@@ -79,11 +89,11 @@ size_t				ft_pipe_nbr(t_map *map, t_pipe *pipe);
 /*
 ** TOOLS
 */
-size_t				ft_sizetoi(char *str);
 int					ft_tab_len(char **str);
+size_t				ft_sizetoi(char *str);
+char				**ft_init_errdb(void);
 void				ft_freetab(char ***tab);
 void				ft_free_map(t_data *data);
 void				ft_free_pipe(t_data *data);
-char				**ft_init_errdb(void);
 void				ft_error(int n);
 #endif

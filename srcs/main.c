@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:08 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/10 11:53:52 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/10 14:50:37 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		main(void)
 	ft_link_pipe(data);
 	if ((ret = ft_isvalid_map(data)) < 0)
 		ft_error(ret);
+	ft_explore(data->start, data, NULL);
 	printf_review(data);
 	ft_free_pipe(data);
 	ft_free_map(data);
