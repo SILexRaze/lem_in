@@ -6,7 +6,7 @@
 #    By: vifonne <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/05 18:03:13 by vifonne           #+#    #+#              #
-#    Updated: 2019/01/11 15:04:36 by vifonne          ###   ########.fr        #
+#    Updated: 2019/01/11 15:54:13 by vifonne          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ LIBFT		=		libft/
 OBJ			=		$(SRCS_DIR:.c=.o)
 CC			=		gcc -Wall -Wextra -Werror -g
 HDR			=		-I $(LIBFT) -I .
-NAME		=		lem_in
+NAME		=		lem-in
 .PHONY		=		all $(NAME) $(OBJ) clean fclean re
 UNDER		=		$'\x1b[4m$'
 RED			=		$'\x1b[31m$'
