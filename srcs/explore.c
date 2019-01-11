@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 13:53:46 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/11 13:36:53 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/11 14:33:22 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,16 @@ void	ft_count_connex(t_map	*tmp)
 		j = 0;
 		while (tmp->pipe[i])
 		{
+			if (tmp->pipe[i]->state == 2)
+			{
+				j = 2;
+				break ;
+			}
 			if (ft_pipesize(tmp->pipe[i]->pipe) > 1)
 				j++;
 			i++;
 		}
-		if (tmp->state != 0)
+		if (tmp->state == 1)
 			tmp->connex = j;
 		else
 			tmp->connex = j - 1;
@@ -95,9 +100,7 @@ int		ft_explore(t_map *tmp, t_data *data, t_map *prev)
 
 	i = ft_priority(tmp);
 	tmp->weight++;
-	printf("room = %s\t", tmp->name);
-	printf("weight = %zu\t", tmp->weight);
-	printf("priority = %s\n", tmp->pipe[i]->name);
+	ft_path_pushback(&data->global_path, tmp, 0);
 	if (tmp->state == 1 && ft_check_start(tmp) == 1)
 		return (1);
 	if (tmp->state == 2)

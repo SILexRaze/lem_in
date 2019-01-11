@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 10:41:11 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/10 14:05:46 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/11 15:23:13 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,14 @@
 void	printf_review(t_data *data)
 {
 	t_map	*tmp;
+	t_path	*tmpath;
 	t_pipe	*tmpipe;
+	t_path	*tmpath2;
 	int		n;
+	int		i;
 
 	tmp = data->map;
+	tmpath = data->global_path;
 	tmpipe = data->pipe;
 	printf("ant= %zu\n\n", data->ant);
 	while (tmp)
@@ -36,7 +40,7 @@ void	printf_review(t_data *data)
 			printf("pipe= %s\n", tmp->pipe[n]->name);
 			n++;
 		}
-		printf("\n\n");
+		printf("\n");
 		tmp = tmp->next;
 	}
 	while (tmpipe)
@@ -44,5 +48,25 @@ void	printf_review(t_data *data)
 		printf("arg1= %s\t", tmpipe->arg1);
 		printf("arg2= %s\t\n", tmpipe->arg2);
 		tmpipe = tmpipe->next;
+	}
+	/*while (tmpath)
+	{
+	printf("%s->", tmpath->room->name);
+		tmpath = tmpath->next;
+	}*/
+	printf("\n");
+	n = ft_npath(data);
+	i = 0;
+	while (data->path_tab[i])
+	{
+		tmpath2 = data->path_tab[i];
+		printf("path[%d]", i);
+		while(tmpath2)
+		{
+			printf("->%s", tmpath2->room->name);
+			tmpath2 = tmpath2->next;
+		}
+	printf("\n");
+		i++;
 	}
 }

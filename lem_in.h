@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/11 11:54:22 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/11 15:23:15 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,20 @@ typedef struct		s_pipe
 	struct s_pipe	*next;
 }					t_pipe;
 
+typedef struct		s_path
+{
+	t_map			*room;
+	size_t			size;
+	struct s_path	*next;
+}					t_path;
+
 typedef struct		s_data
 {
 	t_map			*map;
 	t_map			*start;
 	t_pipe			*pipe;
+	t_path			*global_path;
+	t_path			**path_tab;
 	size_t			ant;
 }					t_data;
 
@@ -54,6 +63,9 @@ void				ft_map_pushback(t_map **begin_list, char **tab, int state);
 t_pipe				*ft_pipe_create_elem(char **tab);
 void				ft_pipe_pushback(t_pipe **begin_list, char **tab);
 void				printf_review(t_data *data); //remove when not needed
+t_path				*ft_path_create_elem(t_map *room, size_t size);
+void				ft_path_pushback(t_path **begin_list, t_map *room, size_t size);
+size_t				ft_path_len(t_path **begin_list);
 /*
 **	CHECKER
 */
@@ -74,6 +86,9 @@ void				ft_count_connex(t_map *tmp);
 int					ft_explore(t_map *tmp, t_data *data, t_map *prev);
 int					ft_priority(t_map *tmp);
 size_t				ft_pipesize(t_map **pipe);
+void				sort_path_tab(t_path **path_tab, size_t len);
+size_t				ft_npath(t_data *data);
+void				ft_pathlist_totab(t_data *data);
 /*
 **	PARSER
 */
