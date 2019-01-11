@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 14:45:30 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/11 15:23:11 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/11 15:44:06 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ size_t	ft_npath(t_data *data)
 void	ft_pathlist_totab(t_data *data)
 {
 	size_t	len;
+	size_t	j;
 	size_t	i;
 	t_path	*tmp;
 	t_path	*prev;
@@ -86,16 +87,20 @@ void	ft_pathlist_totab(t_data *data)
 	{
 		data->path_tab[i] = tmp;
 		prev = tmp;
+		j = 0;
 		while (prev)
 		{
 			if (prev->room->state == 2)
 			{
+				tmp->size = j;
 				tmp = prev->next;
 				prev->next = NULL;
 				break ;
 			}
+			j++;
 			prev = prev->next;
 		}
 		i++;
 	}
+	sort_path_tab(data->path_tab, len - 1);
 }
