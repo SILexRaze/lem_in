@@ -11,4 +11,12 @@ do
 	grep "definitely lost:" lemin_checker_log/log_errorfile$i.txt | cut -d '=' -f 5 | cut -c5-
 	sleep 1
 done
+for i in `seq 0 3`
+do
+	echo "\n\n=== $i | "Correct_$i" ===\n"
+	valgrind --leak-check=full --log-file="lemin_checker_log/log_correctfile$i.txt" ./lem_in < "map.ok$i"
+	echo "\n=== LEAKS ===\n"
+	grep "definitely lost:" lemin_checker_log/log_errorfile$i.txt | cut -d '=' -f 5 | cut -c5-
+	sleep 1
+done
 rm -rf lem_in.dSYM lem_in
