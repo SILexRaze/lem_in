@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 13:53:46 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/11 12:34:42 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/11 13:36:53 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,9 @@ void	ft_count_connex(t_map	*tmp)
 	}
 }
 
-/*
- ** tmp sur start
- ** tmp sur prev
- ** t_data
- ** condition arret sur start
- */
 int		ft_check_weight(t_map *tmp)
 {
-	if (tmp->weight <= (size_t)tmp->connex)
+	if (tmp->weight < (size_t)tmp->connex)
 		return (0);
 	else
 		return (1);
@@ -70,7 +64,7 @@ int		ft_priority(t_map *tmp)
 	i = 0;
 	while (tmp->pipe[i])
 	{
-		if ((tmp->pipe[i]->weight < min && tmp->pipe[i]->connex != 0
+		if ((tmp->pipe[i]->weight <= min && tmp->pipe[i]->connex != 0
 					&& ft_check_weight(tmp->pipe[i]) == 0))
 		{
 			min = tmp->pipe[i]->weight;
@@ -100,6 +94,7 @@ int		ft_explore(t_map *tmp, t_data *data, t_map *prev)
 	size_t	i;
 
 	i = ft_priority(tmp);
+	tmp->weight++;
 	printf("room = %s\t", tmp->name);
 	printf("weight = %zu\t", tmp->weight);
 	printf("priority = %s\n", tmp->pipe[i]->name);
@@ -107,17 +102,7 @@ int		ft_explore(t_map *tmp, t_data *data, t_map *prev)
 		return (1);
 	if (tmp->state == 2)
 		return (ft_explore(data->start, data, NULL));
-	while (tmp->pipe[i])
-	{
-		if ((tmp->pipe[i] != prev && tmp->pipe[i]->connex != 0
-					&& ft_check_weight(tmp->pipe[i]) == 0) || tmp->pipe[i]->state == 2)
-		{
-			tmp->weight++;
-			return (ft_explore(tmp->pipe[i], data, tmp));
-		}
-		else
-			tmp->weight++;
-		i++;
-	}
+	if (tmp->pipe[i] != prev)
+		return (ft_explore(tmp->pipe[i], data, tmp));
 	return (0);
 }
