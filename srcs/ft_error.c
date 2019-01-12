@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 15:43:36 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/10 11:55:45 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/12 14:16:53 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	**ft_init_errdb(void)
 	tab[10] = "Error (-10) : Too few/much connection arguments.\n";
 	tab[11] = "Error (-11) : Connection already declared.\n";
 	tab[12] = "Error (-12) : Room cannot overlap with another.\n";
-	tab[13] = "Error (-13) : You can only configure 1 start and 1 end room.\n";
+	tab[13] = "Error (-13) : Bad start/end room declaration.\n";
 	tab[14] = "Error (-14) : There is no path between start and end.\n";
 	tab[15] = "Error (-15) : No connection declared.\n";
 	return (tab);

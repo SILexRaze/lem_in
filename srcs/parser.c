@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 13:03:58 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/12 11:44:07 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/12 14:54:53 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ void	ft_read_stdin(t_data *data)
 		ft_strdel(&line);
 	}
 	if ((data->errcode = ft_parse_room(data)) < 1)
+	{
+		printf("%d\n", data->errcode);
 		return ;
+	}
 	if ((data->errcode = ft_parse_pipe(data)) < 1)
 		return ;
 	tmp = data->map;
@@ -54,14 +57,20 @@ int		ft_parse_room(t_data *data)
 		{
 			ft_freetab(&tab);
 			tab = ft_strsplit(line, '-');
-			if (ft_tab_len(tab) == 2 && (ret = ft_ispipe(line, data, tab)) == 1)
+			if (ft_tab_len(tab) == 2 && (ret = ft_ispipe(line, data, tab)) == 1
+					&& state == 0)
 			{
 				ft_pipe_pushback(&data->pipe, tab);
 				ft_freetab(&tab);
 				return (1);
 			}
 			else
-				return (ret);
+			{
+				if (ret < 1)
+					return (ret);
+				else if (state != 0)
+					return (-13);
+			}
 		}
 		if ((ret = ft_isroom(data, tab)) <= 0)
 			return (ret);

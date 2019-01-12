@@ -1,100 +1,100 @@
-==85566== Memcheck, a memory error detector
-==85566== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==85566== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
-==85566== Command: ./lem-in
-==85566== Parent PID: 85060
-==85566== 
-==85566== Conditional jump or move depends on uninitialised value(s)
-==85566==    at 0x1004F95E8: _platform_memchr$VARIANT$Base (in /usr/lib/system/libsystem_platform.dylib)
-==85566==    by 0x1002A54D1: __sfvwrite (in /usr/lib/system/libsystem_c.dylib)
-==85566==    by 0x1002AF898: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
-==85566==    by 0x1002D5422: __v2printf (in /usr/lib/system/libsystem_c.dylib)
-==85566==    by 0x1002AB33D: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
-==85566==    by 0x1002A9247: printf (in /usr/lib/system/libsystem_c.dylib)
-==85566==    by 0x1000019AA: printf_review (printf_review.c:27)
-==85566==    by 0x100000D9D: main (main.c:28)
-==85566== 
-==85566== Invalid read of size 16
-==85566==    at 0x1004F95C5: _platform_memchr$VARIANT$Base (in /usr/lib/system/libsystem_platform.dylib)
-==85566==    by 0x1002A54D1: __sfvwrite (in /usr/lib/system/libsystem_c.dylib)
-==85566==    by 0x1002AF898: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
-==85566==    by 0x1002D5422: __v2printf (in /usr/lib/system/libsystem_c.dylib)
-==85566==    by 0x1002AB33D: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
-==85566==    by 0x1002A9247: printf (in /usr/lib/system/libsystem_c.dylib)
-==85566==    by 0x1000019D4: printf_review (printf_review.c:31)
-==85566==    by 0x100000D9D: main (main.c:28)
-==85566==  Address 0x100b62720 is 16 bytes before a block of size 6 alloc'd
-==85566==    at 0x10009E616: malloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==85566==    by 0x100002F5A: ft_strdup (in ./lem-in)
-==85566==    by 0x10000125E: ft_map_create_elem (map_pipe_list.c:21)
-==85566==    by 0x100001330: ft_map_pushback (map_pipe_list.c:42)
-==85566==    by 0x100000FBE: ft_parse_room (parser.c:68)
-==85566==    by 0x100000E04: ft_read_stdin (parser.c:25)
-==85566==    by 0x100000D4D: main (main.c:22)
-==85566== 
-==85566== Invalid read of size 16
-==85566==    at 0x1004F95C9: _platform_memchr$VARIANT$Base (in /usr/lib/system/libsystem_platform.dylib)
-==85566==    by 0x1002A54D1: __sfvwrite (in /usr/lib/system/libsystem_c.dylib)
-==85566==    by 0x1002AF898: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
-==85566==    by 0x1002D5422: __v2printf (in /usr/lib/system/libsystem_c.dylib)
-==85566==    by 0x1002AB33D: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
-==85566==    by 0x1002A9247: printf (in /usr/lib/system/libsystem_c.dylib)
-==85566==    by 0x100001ACA: printf_review (printf_review.c:40)
-==85566==    by 0x100000D9D: main (main.c:28)
-==85566==  Address 0x100b633d0 is 14 bytes after a block of size 2 alloc'd
-==85566==    at 0x10009E616: malloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==85566==    by 0x100002F5A: ft_strdup (in ./lem-in)
-==85566==    by 0x10000125E: ft_map_create_elem (map_pipe_list.c:21)
-==85566==    by 0x100001317: ft_map_pushback (map_pipe_list.c:39)
-==85566==    by 0x100000FBE: ft_parse_room (parser.c:68)
-==85566==    by 0x100000E04: ft_read_stdin (parser.c:25)
-==85566==    by 0x100000D4D: main (main.c:22)
-==85566== 
-==85566== 
-==85566== HEAP SUMMARY:
-==85566==     in use at exit: 22,418 bytes in 166 blocks
-==85566==   total heap usage: 331 allocs, 165 frees, 39,589 bytes allocated
-==85566== 
-==85566== 8 bytes in 1 blocks are definitely lost in loss record 2 of 46
-==85566==    at 0x10009E616: malloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==85566==    by 0x100002F5A: ft_strdup (in ./lem-in)
-==85566==    by 0x100003860: ft_parse_tmp (in ./lem-in)
-==85566==    by 0x100003A65: get_next_line (in ./lem-in)
-==85566==    by 0x100000EB4: ft_parse_room (parser.c:47)
-==85566==    by 0x100000E04: ft_read_stdin (parser.c:25)
-==85566==    by 0x100000D4D: main (main.c:22)
-==85566== 
-==85566== 72 bytes in 3 blocks are possibly lost in loss record 28 of 46
-==85566==    at 0x10009EC82: calloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==85566==    by 0x1005B8832: map_images_nolock (in /usr/lib/libobjc.A.dylib)
-==85566==    by 0x1005CBD6A: map_images (in /usr/lib/libobjc.A.dylib)
-==85566==    by 0x10000D03B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
-==85566==    by 0x10000D255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
-==85566==    by 0x10020600A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
-==85566==    by 0x1005B8072: _objc_init (in /usr/lib/libobjc.A.dylib)
-==85566==    by 0x10019968D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
-==85566==    by 0x10019963A: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
-==85566==    by 0x1000AD9D5: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
-==85566==    by 0x10001DA1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==85566==    by 0x10001DC1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==85566== 
-==85566== 192 bytes in 1 blocks are definitely lost in loss record 34 of 46
-==85566==    at 0x10009E616: malloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==85566==    by 0x100003158: ft_memalloc (in ./lem-in)
-==85566==    by 0x10000286E: ft_path_create_elem (path_list.c:19)
-==85566==    by 0x100002933: ft_path_pushback (path_list.c:39)
-==85566==    by 0x100002623: ft_explore (explore.c:103)
-==85566==    by 0x100000D88: main (main.c:26)
-==85566== 
-==85566== LEAK SUMMARY:
-==85566==    definitely lost: 200 bytes in 2 blocks
-==85566==    indirectly lost: 0 bytes in 0 blocks
-==85566==      possibly lost: 72 bytes in 3 blocks
-==85566==    still reachable: 201 bytes in 7 blocks
-==85566==         suppressed: 21,945 bytes in 154 blocks
-==85566== Reachable blocks (those to which a pointer was found) are not shown.
-==85566== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==85566== 
-==85566== For counts of detected and suppressed errors, rerun with: -v
-==85566== Use --track-origins=yes to see where uninitialised values come from
-==85566== ERROR SUMMARY: 132 errors from 6 contexts (suppressed: 12 from 12)
+==98458== Memcheck, a memory error detector
+==98458== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==98458== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==98458== Command: ./lem-in
+==98458== Parent PID: 97975
+==98458== 
+==98458== Conditional jump or move depends on uninitialised value(s)
+==98458==    at 0x1004F95E8: _platform_memchr$VARIANT$Base (in /usr/lib/system/libsystem_platform.dylib)
+==98458==    by 0x1002A54D1: __sfvwrite (in /usr/lib/system/libsystem_c.dylib)
+==98458==    by 0x1002AF898: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
+==98458==    by 0x1002D5422: __v2printf (in /usr/lib/system/libsystem_c.dylib)
+==98458==    by 0x1002AB33D: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
+==98458==    by 0x1002A9247: printf (in /usr/lib/system/libsystem_c.dylib)
+==98458==    by 0x1000019BA: printf_review (printf_review.c:27)
+==98458==    by 0x100000D6D: main (main.c:28)
+==98458== 
+==98458== Invalid read of size 16
+==98458==    at 0x1004F95C5: _platform_memchr$VARIANT$Base (in /usr/lib/system/libsystem_platform.dylib)
+==98458==    by 0x1002A54D1: __sfvwrite (in /usr/lib/system/libsystem_c.dylib)
+==98458==    by 0x1002AF898: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
+==98458==    by 0x1002D5422: __v2printf (in /usr/lib/system/libsystem_c.dylib)
+==98458==    by 0x1002AB33D: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
+==98458==    by 0x1002A9247: printf (in /usr/lib/system/libsystem_c.dylib)
+==98458==    by 0x1000019E4: printf_review (printf_review.c:31)
+==98458==    by 0x100000D6D: main (main.c:28)
+==98458==  Address 0x100b62720 is 16 bytes before a block of size 6 alloc'd
+==98458==    at 0x10009E616: malloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==98458==    by 0x100002F6A: ft_strdup (in ./lem-in)
+==98458==    by 0x10000126E: ft_map_create_elem (map_pipe_list.c:21)
+==98458==    by 0x100001340: ft_map_pushback (map_pipe_list.c:42)
+==98458==    by 0x100000FD7: ft_parse_room (parser.c:77)
+==98458==    by 0x100000DD4: ft_read_stdin (parser.c:25)
+==98458==    by 0x100000D1D: main (main.c:22)
+==98458== 
+==98458== Invalid read of size 16
+==98458==    at 0x1004F95C9: _platform_memchr$VARIANT$Base (in /usr/lib/system/libsystem_platform.dylib)
+==98458==    by 0x1002A54D1: __sfvwrite (in /usr/lib/system/libsystem_c.dylib)
+==98458==    by 0x1002AF898: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
+==98458==    by 0x1002D5422: __v2printf (in /usr/lib/system/libsystem_c.dylib)
+==98458==    by 0x1002AB33D: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
+==98458==    by 0x1002A9247: printf (in /usr/lib/system/libsystem_c.dylib)
+==98458==    by 0x100001ADA: printf_review (printf_review.c:40)
+==98458==    by 0x100000D6D: main (main.c:28)
+==98458==  Address 0x100b633d0 is 14 bytes after a block of size 2 alloc'd
+==98458==    at 0x10009E616: malloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==98458==    by 0x100002F6A: ft_strdup (in ./lem-in)
+==98458==    by 0x10000126E: ft_map_create_elem (map_pipe_list.c:21)
+==98458==    by 0x100001327: ft_map_pushback (map_pipe_list.c:39)
+==98458==    by 0x100000FD7: ft_parse_room (parser.c:77)
+==98458==    by 0x100000DD4: ft_read_stdin (parser.c:25)
+==98458==    by 0x100000D1D: main (main.c:22)
+==98458== 
+==98458== 
+==98458== HEAP SUMMARY:
+==98458==     in use at exit: 22,418 bytes in 166 blocks
+==98458==   total heap usage: 331 allocs, 165 frees, 39,589 bytes allocated
+==98458== 
+==98458== 8 bytes in 1 blocks are definitely lost in loss record 2 of 46
+==98458==    at 0x10009E616: malloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==98458==    by 0x100002F6A: ft_strdup (in ./lem-in)
+==98458==    by 0x100003870: ft_parse_tmp (in ./lem-in)
+==98458==    by 0x100003A75: get_next_line (in ./lem-in)
+==98458==    by 0x100000E94: ft_parse_room (parser.c:50)
+==98458==    by 0x100000DD4: ft_read_stdin (parser.c:25)
+==98458==    by 0x100000D1D: main (main.c:22)
+==98458== 
+==98458== 72 bytes in 3 blocks are possibly lost in loss record 28 of 46
+==98458==    at 0x10009EC82: calloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==98458==    by 0x1005B8832: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==98458==    by 0x1005CBD6A: map_images (in /usr/lib/libobjc.A.dylib)
+==98458==    by 0x10000D03B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==98458==    by 0x10000D255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==98458==    by 0x10020600A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==98458==    by 0x1005B8072: _objc_init (in /usr/lib/libobjc.A.dylib)
+==98458==    by 0x10019968D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==98458==    by 0x10019963A: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==98458==    by 0x1000AD9D5: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==98458==    by 0x10001DA1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==98458==    by 0x10001DC1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==98458== 
+==98458== 192 bytes in 1 blocks are definitely lost in loss record 34 of 46
+==98458==    at 0x10009E616: malloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==98458==    by 0x100003168: ft_memalloc (in ./lem-in)
+==98458==    by 0x10000287E: ft_path_create_elem (path_list.c:19)
+==98458==    by 0x100002943: ft_path_pushback (path_list.c:39)
+==98458==    by 0x100002633: ft_explore (explore.c:103)
+==98458==    by 0x100000D58: main (main.c:26)
+==98458== 
+==98458== LEAK SUMMARY:
+==98458==    definitely lost: 200 bytes in 2 blocks
+==98458==    indirectly lost: 0 bytes in 0 blocks
+==98458==      possibly lost: 72 bytes in 3 blocks
+==98458==    still reachable: 201 bytes in 7 blocks
+==98458==         suppressed: 21,945 bytes in 154 blocks
+==98458== Reachable blocks (those to which a pointer was found) are not shown.
+==98458== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==98458== 
+==98458== For counts of detected and suppressed errors, rerun with: -v
+==98458== Use --track-origins=yes to see where uninitialised values come from
+==98458== ERROR SUMMARY: 132 errors from 6 contexts (suppressed: 12 from 12)
