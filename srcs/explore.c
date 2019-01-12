@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 13:53:46 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/11 14:33:22 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/12 11:53:34 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_count_connex(t_map	*tmp)
 	{
 		i = 0;
 		j = 0;
-		while (tmp->pipe[i])
+		while (i < tmp->n)
 		{
 			if (tmp->pipe[i]->state == 2)
 			{
@@ -57,7 +57,7 @@ int		ft_priority(t_map *tmp)
 	min = tmp->pipe[0]->weight;
 	i = 1;
 	j = 0;
-	while (tmp->pipe[i])
+	while (i < tmp->n)
 	{
 		if (tmp->pipe[i]->state == 2)
 		{
@@ -67,7 +67,7 @@ int		ft_priority(t_map *tmp)
 		i++;
 	}
 	i = 0;
-	while (tmp->pipe[i])
+	while (i < tmp->n)
 	{
 		if ((tmp->pipe[i]->weight <= min && tmp->pipe[i]->connex != 0
 					&& ft_check_weight(tmp->pipe[i]) == 0))
@@ -85,7 +85,7 @@ int		ft_check_start(t_map *tmp)
 	size_t	i;
 
 	i = 0;
-	while (tmp->pipe[i])
+	while (i < tmp->n)
 	{
 		if (tmp->pipe[i]->weight < (size_t)tmp->pipe[i]->connex)
 			return (0);

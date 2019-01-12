@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/11 17:20:41 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/12 11:53:35 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct		s_map
 	size_t			nbant;
 	size_t			nameant;
 	long			connex;
+	size_t			n;
 	struct s_map	**pipe;
 	struct s_map	*next;
 }					t_map;
@@ -52,6 +53,7 @@ typedef struct		s_data
 	t_pipe			*pipe;
 	t_path			*global_path;
 	t_path			**path_tab;
+	int				errcode;
 	size_t			ant;
 }					t_data;
 

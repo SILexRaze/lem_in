@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 13:03:58 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/11 11:19:43 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/12 11:44:07 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	ft_read_stdin(t_data *data)
 		data->ant = ft_sizetoi(line);
 		ft_strdel(&line);
 	}
-	if (!ft_parse_room(data))
+	if ((data->errcode = ft_parse_room(data)) < 1)
 		return ;
-	if (!ft_parse_pipe(data))
+	if ((data->errcode = ft_parse_pipe(data)) < 1)
 		return ;
 	tmp = data->map;
 	while (tmp)

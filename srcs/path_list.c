@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 14:45:30 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/11 15:44:06 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/12 11:21:42 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,5 @@ void	ft_pathlist_totab(t_data *data)
 		}
 		i++;
 	}
-	sort_path_tab(data->path_tab, len - 1);
+//	sort_path_tab(data->path_tab, len - 1);
 }
