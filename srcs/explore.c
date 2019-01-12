@@ -6,13 +6,13 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 13:53:46 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/12 13:21:27 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/12 16:23:55 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	ft_count_connex(t_map	*tmp)
+void	ft_count_connex(t_map *tmp)
 {
 	size_t	j;
 	size_t	i;
@@ -55,19 +55,15 @@ int		ft_priority(t_map *tmp)
 	int		j;
 
 	min = tmp->pipe[0]->weight;
-	i = 1;
-	j = 0;
-	while (i < tmp->n)
-	{
-		if (tmp->pipe[i]->state == 2)
-		{
-			j = i;
-			return (j);
-		}
-		i++;
-	}
 	i = 0;
-	while (i < tmp->n)
+	j = 0;
+	while (++i < tmp->n)
+	{
+		if (tmp->pipe[i]->state == 2 && (j = i))
+			return (j);
+	}
+	i = -1;
+	while (++i < tmp->n)
 	{
 		if ((tmp->pipe[i]->weight <= min && tmp->pipe[i]->connex != 0
 					&& ft_check_weight(tmp->pipe[i]) == 0))
@@ -75,7 +71,6 @@ int		ft_priority(t_map *tmp)
 			min = tmp->pipe[i]->weight;
 			j = i;
 		}
-		i++;
 	}
 	return (j);
 }

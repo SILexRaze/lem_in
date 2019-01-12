@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 15:43:36 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/12 14:16:53 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/12 16:22:20 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,5 @@ void	ft_error(int n)
 	tab = ft_init_errdb();
 	ft_putstr_fd(tab[-1 * n], 2);
 	free(tab);
-	exit (n);
+	exit(n);
 }
