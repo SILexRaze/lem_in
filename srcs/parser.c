@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 13:03:58 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/12 14:54:53 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/13 14:47:59 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	ft_read_stdin(t_data *data)
 
 	if (get_next_line(0, &line) > 0)
 	{
+		ft_putendl(line);
 		data->ant = ft_sizetoi(line);
 		ft_strdel(&line);
 	}
@@ -59,7 +60,8 @@ int		ft_parse_room(t_data *data)
 			tab = ft_strsplit(line, '-');
 			if (ft_tab_len(tab) == 2 && (ret = ft_ispipe(line, data, tab)) == 1
 					&& state == 0)
-			{
+			{	
+				ft_putendl(line);
 				ft_pipe_pushback(&data->pipe, tab);
 				ft_freetab(&tab);
 				return (1);
@@ -74,6 +76,7 @@ int		ft_parse_room(t_data *data)
 		}
 		if ((ret = ft_isroom(data, tab)) <= 0)
 			return (ret);
+		ft_putendl(line);
 		ft_map_pushback(&data->map, tab, state);
 		ft_strdel(&line);
 		ft_freetab(&tab);
@@ -98,6 +101,7 @@ int		ft_parse_pipe(t_data *data)
 			ft_freetab(&tab);
 			return (ret);
 		}
+		ft_putendl(line);
 		ft_pipe_pushback(&data->pipe, tab);
 		ft_strdel(&line);
 		ft_freetab(&tab);
@@ -125,6 +129,7 @@ void	ft_state(char **line, int *state)
 			*state = 1;
 		else if (ft_strequ(*line, "##end"))
 			*state = 2;
+		ft_putendl(*line);
 		ft_strdel(line);
 		get_next_line(0, line);
 	}
