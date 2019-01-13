@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 10:41:11 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/11 15:23:13 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/13 13:32:19 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	printf_review(t_data *data)
 			printf("->%s", tmpath2->room->name);
 			tmpath2 = tmpath2->next;
 		}
-	printf("\n");
+	printf("\n\n");
 		i++;
 	}
 }

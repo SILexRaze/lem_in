@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 13:53:46 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/13 12:46:00 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/13 13:30:03 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,5 @@ int		ft_explore(t_map *tmp, t_data *data, t_map *prev)
 		return (ft_explore(data->start, data, NULL));
 	if (tmp->pipe[i] != prev)
 		return (ft_explore(tmp->pipe[i], data, tmp));
-	return (0);
+	return (ft_explore(data->start, data, NULL));
 }
