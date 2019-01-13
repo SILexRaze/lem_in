@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 13:53:46 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/13 13:30:03 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/13 15:14:15 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_count_connex(t_map *tmp)
 				j = 2;
 				break ;
 			}
-			if (ft_pipesize(tmp->pipe[i]->pipe) > 1)
+			if (ft_pipesize(tmp->pipe[i]->pipe) > 1 || tmp->pipe[i]->state == 1)
 				j++;
 			i++;
 		}
