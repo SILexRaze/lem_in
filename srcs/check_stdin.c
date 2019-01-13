@@ -6,13 +6,13 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:43:46 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/12 14:54:54 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/13 14:09:44 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int		ft_isroom(t_data *data, char **tab)
+/*int		ft_isroom(t_data *data, char **tab)
 {
 	t_map	*tmp;
 
@@ -78,7 +78,7 @@ int		ft_ispipe(char *line, t_data *data, char **tab)
 	if (ft_doublepipe(tab, data) < 0)
 		return (-11);
 	return (1);
-}
+}*/
 
 int		ft_isminus(char *line)
 {
