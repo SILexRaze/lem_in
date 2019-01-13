@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/13 14:49:55 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/13 18:15:34 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,9 @@ size_t				ft_path_len(t_path **begin_list);
 /*
 **	CHECKER
 */
+int					ft_isvalid_pipe(t_data *data);
 int					ft_isvalid_map(t_data *data);
+int					ft_isvalid_room(t_data *data);
 int					ft_count_state(t_data *data);
 int					ft_tab_struct_len(t_map **pipe);
 /*
@@ -90,9 +92,9 @@ void				ft_pathlist_totab(t_data *data);
 /*
 **	PARSER
 */
-int					ft_isant(char *str);
+int					ft_isant(char *str, t_data *data);
 int					ft_isroom(char *str, t_data *data);
-int					ft_ispipe(char *str);
+int					ft_ispipe(char *str, t_data *data);
 int					ft_isinst(char *str);
 int					ft_isminus(char *line);
 int					ft_iscomment(char *str);
@@ -107,7 +109,6 @@ size_t				ft_pipe_nbr(t_map *map, t_pipe *pipe);
 */
 int					ft_tab_len(char **str);
 size_t				ft_sizetoi(char *str);
-char				**ft_init_errdb(void);
 void				ft_freetab(char ***tab);
 void				ft_free_map(t_data *data);
 void				ft_free_pipe(t_data *data);
