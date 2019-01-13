@@ -1,55 +1,55 @@
-==98436== Memcheck, a memory error detector
-==98436== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==98436== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
-==98436== Command: ./lem-in
-==98436== Parent PID: 97975
-==98436== 
-==98436== 
-==98436== HEAP SUMMARY:
-==98436==     in use at exit: 25,926 bytes in 199 blocks
-==98436==   total heap usage: 306 allocs, 107 frees, 36,040 bytes allocated
-==98436== 
-==98436== 4 bytes in 1 blocks are definitely lost in loss record 3 of 57
-==98436==    at 0x10009E616: malloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==98436==    by 0x100002F6A: ft_strdup (in ./lem-in)
-==98436==    by 0x100003870: ft_parse_tmp (in ./lem-in)
-==98436==    by 0x100003A75: get_next_line (in ./lem-in)
-==98436==    by 0x10000101D: ft_parse_pipe (parser.c:91)
-==98436==    by 0x100000E0A: ft_read_stdin (parser.c:30)
-==98436==    by 0x100000D1D: main (main.c:22)
-==98436== 
-==98436== 6 bytes in 1 blocks are definitely lost in loss record 6 of 57
-==98436==    at 0x10009E616: malloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==98436==    by 0x100002F6A: ft_strdup (in ./lem-in)
-==98436==    by 0x100003870: ft_parse_tmp (in ./lem-in)
-==98436==    by 0x100003A75: get_next_line (in ./lem-in)
-==98436==    by 0x1000011FD: ft_skip_comment (parser.c:113)
-==98436==    by 0x100000EB3: ft_parse_room (parser.c:53)
-==98436==    by 0x100000DD4: ft_read_stdin (parser.c:25)
-==98436==    by 0x100000D1D: main (main.c:22)
-==98436== 
-==98436== 72 bytes in 3 blocks are possibly lost in loss record 35 of 57
-==98436==    at 0x10009EC82: calloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==98436==    by 0x1005B8832: map_images_nolock (in /usr/lib/libobjc.A.dylib)
-==98436==    by 0x1005CBD6A: map_images (in /usr/lib/libobjc.A.dylib)
-==98436==    by 0x10000D03B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
-==98436==    by 0x10000D255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
-==98436==    by 0x10020600A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
-==98436==    by 0x1005B8072: _objc_init (in /usr/lib/libobjc.A.dylib)
-==98436==    by 0x10019968D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
-==98436==    by 0x10019963A: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
-==98436==    by 0x1000AD9D5: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
-==98436==    by 0x10001DA1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==98436==    by 0x10001DC1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==98436== 
-==98436== LEAK SUMMARY:
-==98436==    definitely lost: 10 bytes in 2 blocks
-==98436==    indirectly lost: 0 bytes in 0 blocks
-==98436==      possibly lost: 72 bytes in 3 blocks
-==98436==    still reachable: 7,995 bytes in 41 blocks
-==98436==         suppressed: 17,849 bytes in 153 blocks
-==98436== Reachable blocks (those to which a pointer was found) are not shown.
-==98436== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==98436== 
-==98436== For counts of detected and suppressed errors, rerun with: -v
-==98436== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 12 from 12)
+==95465== Memcheck, a memory error detector
+==95465== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==95465== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==95465== Command: ./lem-in
+==95465== Parent PID: 94911
+==95465== 
+==95465== 
+==95465== HEAP SUMMARY:
+==95465==     in use at exit: 25,968 bytes in 199 blocks
+==95465==   total heap usage: 306 allocs, 107 frees, 36,082 bytes allocated
+==95465== 
+==95465== 4 bytes in 1 blocks are definitely lost in loss record 3 of 57
+==95465==    at 0x10009E616: malloc (in /Users/rvalenti/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==95465==    by 0x100002F6A: ft_strdup (in ./lem-in)
+==95465==    by 0x100003870: ft_parse_tmp (in ./lem-in)
+==95465==    by 0x100003A75: get_next_line (in ./lem-in)
+==95465==    by 0x10000101D: ft_parse_pipe (parser.c:91)
+==95465==    by 0x100000E0A: ft_read_stdin (parser.c:30)
+==95465==    by 0x100000D1D: main (main.c:22)
+==95465== 
+==95465== 6 bytes in 1 blocks are definitely lost in loss record 6 of 57
+==95465==    at 0x10009E616: malloc (in /Users/rvalenti/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==95465==    by 0x100002F6A: ft_strdup (in ./lem-in)
+==95465==    by 0x100003870: ft_parse_tmp (in ./lem-in)
+==95465==    by 0x100003A75: get_next_line (in ./lem-in)
+==95465==    by 0x1000011FD: ft_skip_comment (parser.c:113)
+==95465==    by 0x100000EB3: ft_parse_room (parser.c:53)
+==95465==    by 0x100000DD4: ft_read_stdin (parser.c:25)
+==95465==    by 0x100000D1D: main (main.c:22)
+==95465== 
+==95465== 72 bytes in 3 blocks are possibly lost in loss record 35 of 57
+==95465==    at 0x10009EC82: calloc (in /Users/rvalenti/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==95465==    by 0x1005B8832: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==95465==    by 0x1005CBD6A: map_images (in /usr/lib/libobjc.A.dylib)
+==95465==    by 0x10000D03B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==95465==    by 0x10000D255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==95465==    by 0x10020600A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==95465==    by 0x1005B8072: _objc_init (in /usr/lib/libobjc.A.dylib)
+==95465==    by 0x10019968D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==95465==    by 0x10019963A: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==95465==    by 0x1000AD9D5: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==95465==    by 0x10001DA1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==95465==    by 0x10001DC1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==95465== 
+==95465== LEAK SUMMARY:
+==95465==    definitely lost: 10 bytes in 2 blocks
+==95465==    indirectly lost: 0 bytes in 0 blocks
+==95465==      possibly lost: 72 bytes in 3 blocks
+==95465==    still reachable: 7,995 bytes in 41 blocks
+==95465==         suppressed: 17,891 bytes in 153 blocks
+==95465== Reachable blocks (those to which a pointer was found) are not shown.
+==95465== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==95465== 
+==95465== For counts of detected and suppressed errors, rerun with: -v
+==95465== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 12 from 12)

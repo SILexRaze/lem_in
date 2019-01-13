@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 13:53:46 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/12 16:23:55 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/13 12:46:00 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_count_connex(t_map *tmp)
 				j++;
 			i++;
 		}
-		if (tmp->state == 1)
+		if (tmp->state != 0)
 			tmp->connex = j;
 		else
 			tmp->connex = j - 1;

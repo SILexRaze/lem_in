@@ -1,64 +1,64 @@
-==98404== Memcheck, a memory error detector
-==98404== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==98404== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
-==98404== Command: ./lem-in
-==98404== Parent PID: 97975
-==98404== 
---98404-- run: /usr/bin/dsymutil "./lem-in"
-==98404== Conditional jump or move depends on uninitialised value(s)
-==98404==    at 0x1004F95E8: _platform_memchr$VARIANT$Base (in /usr/lib/system/libsystem_platform.dylib)
-==98404==    by 0x1002A54D1: __sfvwrite (in /usr/lib/system/libsystem_c.dylib)
-==98404==    by 0x1002AF898: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
-==98404==    by 0x1002D5422: __v2printf (in /usr/lib/system/libsystem_c.dylib)
-==98404==    by 0x1002AB33D: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
-==98404==    by 0x1002A9247: printf (in /usr/lib/system/libsystem_c.dylib)
-==98404==    by 0x100000DF9: ft_read_stdin (parser.c:27)
-==98404==    by 0x100000D1D: main (main.c:22)
-==98404== 
-==98404== 
-==98404== HEAP SUMMARY:
-==98404==     in use at exit: 24,983 bytes in 176 blocks
-==98404==   total heap usage: 225 allocs, 49 frees, 33,444 bytes allocated
-==98404== 
-==98404== 7 bytes in 1 blocks are definitely lost in loss record 4 of 52
-==98404==    at 0x10009E616: malloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==98404==    by 0x100002F6A: ft_strdup (in ./lem-in)
-==98404==    by 0x100003870: ft_parse_tmp (in ./lem-in)
-==98404==    by 0x100003A75: get_next_line (in ./lem-in)
-==98404==    by 0x100000E94: ft_parse_room (parser.c:50)
-==98404==    by 0x100000DD4: ft_read_stdin (parser.c:25)
-==98404==    by 0x100000D1D: main (main.c:22)
-==98404== 
-==98404== 39 (32 direct, 7 indirect) bytes in 1 blocks are definitely lost in loss record 18 of 52
-==98404==    at 0x10009E616: malloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==98404==    by 0x1000033E5: ft_strsplit (in ./lem-in)
-==98404==    by 0x100000ED6: ft_parse_room (parser.c:55)
-==98404==    by 0x100000DD4: ft_read_stdin (parser.c:25)
-==98404==    by 0x100000D1D: main (main.c:22)
-==98404== 
-==98404== 72 bytes in 3 blocks are possibly lost in loss record 31 of 52
-==98404==    at 0x10009EC82: calloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==98404==    by 0x1005B8832: map_images_nolock (in /usr/lib/libobjc.A.dylib)
-==98404==    by 0x1005CBD6A: map_images (in /usr/lib/libobjc.A.dylib)
-==98404==    by 0x10000D03B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
-==98404==    by 0x10000D255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
-==98404==    by 0x10020600A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
-==98404==    by 0x1005B8072: _objc_init (in /usr/lib/libobjc.A.dylib)
-==98404==    by 0x10019968D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
-==98404==    by 0x10019963A: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
-==98404==    by 0x1000AD9D5: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
-==98404==    by 0x10001DA1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==98404==    by 0x10001DC1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==98404== 
-==98404== LEAK SUMMARY:
-==98404==    definitely lost: 39 bytes in 2 blocks
-==98404==    indirectly lost: 7 bytes in 3 blocks
-==98404==      possibly lost: 72 bytes in 3 blocks
-==98404==    still reachable: 2,920 bytes in 14 blocks
-==98404==         suppressed: 21,945 bytes in 154 blocks
-==98404== Reachable blocks (those to which a pointer was found) are not shown.
-==98404== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==98404== 
-==98404== For counts of detected and suppressed errors, rerun with: -v
-==98404== Use --track-origins=yes to see where uninitialised values come from
-==98404== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 12 from 12)
+==95439== Memcheck, a memory error detector
+==95439== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==95439== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==95439== Command: ./lem-in
+==95439== Parent PID: 94911
+==95439== 
+--95439-- run: /usr/bin/dsymutil "./lem-in"
+==95439== Conditional jump or move depends on uninitialised value(s)
+==95439==    at 0x1004F95E8: _platform_memchr$VARIANT$Base (in /usr/lib/system/libsystem_platform.dylib)
+==95439==    by 0x1002A54D1: __sfvwrite (in /usr/lib/system/libsystem_c.dylib)
+==95439==    by 0x1002AF898: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
+==95439==    by 0x1002D5422: __v2printf (in /usr/lib/system/libsystem_c.dylib)
+==95439==    by 0x1002AB33D: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
+==95439==    by 0x1002A9247: printf (in /usr/lib/system/libsystem_c.dylib)
+==95439==    by 0x100000DF9: ft_read_stdin (parser.c:27)
+==95439==    by 0x100000D1D: main (main.c:22)
+==95439== 
+==95439== 
+==95439== HEAP SUMMARY:
+==95439==     in use at exit: 25,025 bytes in 176 blocks
+==95439==   total heap usage: 225 allocs, 49 frees, 33,486 bytes allocated
+==95439== 
+==95439== 7 bytes in 1 blocks are definitely lost in loss record 4 of 52
+==95439==    at 0x10009E616: malloc (in /Users/rvalenti/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==95439==    by 0x100002F6A: ft_strdup (in ./lem-in)
+==95439==    by 0x100003870: ft_parse_tmp (in ./lem-in)
+==95439==    by 0x100003A75: get_next_line (in ./lem-in)
+==95439==    by 0x100000E94: ft_parse_room (parser.c:50)
+==95439==    by 0x100000DD4: ft_read_stdin (parser.c:25)
+==95439==    by 0x100000D1D: main (main.c:22)
+==95439== 
+==95439== 39 (32 direct, 7 indirect) bytes in 1 blocks are definitely lost in loss record 18 of 52
+==95439==    at 0x10009E616: malloc (in /Users/rvalenti/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==95439==    by 0x1000033E5: ft_strsplit (in ./lem-in)
+==95439==    by 0x100000ED6: ft_parse_room (parser.c:55)
+==95439==    by 0x100000DD4: ft_read_stdin (parser.c:25)
+==95439==    by 0x100000D1D: main (main.c:22)
+==95439== 
+==95439== 72 bytes in 3 blocks are possibly lost in loss record 31 of 52
+==95439==    at 0x10009EC82: calloc (in /Users/rvalenti/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==95439==    by 0x1005B8832: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==95439==    by 0x1005CBD6A: map_images (in /usr/lib/libobjc.A.dylib)
+==95439==    by 0x10000D03B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==95439==    by 0x10000D255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==95439==    by 0x10020600A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==95439==    by 0x1005B8072: _objc_init (in /usr/lib/libobjc.A.dylib)
+==95439==    by 0x10019968D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==95439==    by 0x10019963A: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==95439==    by 0x1000AD9D5: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==95439==    by 0x10001DA1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==95439==    by 0x10001DC1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==95439== 
+==95439== LEAK SUMMARY:
+==95439==    definitely lost: 39 bytes in 2 blocks
+==95439==    indirectly lost: 7 bytes in 3 blocks
+==95439==      possibly lost: 72 bytes in 3 blocks
+==95439==    still reachable: 2,920 bytes in 14 blocks
+==95439==         suppressed: 21,987 bytes in 154 blocks
+==95439== Reachable blocks (those to which a pointer was found) are not shown.
+==95439== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==95439== 
+==95439== For counts of detected and suppressed errors, rerun with: -v
+==95439== Use --track-origins=yes to see where uninitialised values come from
+==95439== ERROR SUMMARY: 5 errors from 4 contexts (suppressed: 12 from 12)
