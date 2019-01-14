@@ -1,0 +1,48 @@
+==28344== Memcheck, a memory error detector
+==28344== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==28344== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==28344== Command: ./lem-in
+==28344== Parent PID: 27793
+==28344== 
+==28344== Conditional jump or move depends on uninitialised value(s)
+==28344==    at 0x1004F95E8: _platform_memchr$VARIANT$Base (in /usr/lib/system/libsystem_platform.dylib)
+==28344==    by 0x1002A54D1: __sfvwrite (in /usr/lib/system/libsystem_c.dylib)
+==28344==    by 0x1002AF898: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
+==28344==    by 0x1002D5422: __v2printf (in /usr/lib/system/libsystem_c.dylib)
+==28344==    by 0x1002AB33D: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
+==28344==    by 0x1002A9247: printf (in /usr/lib/system/libsystem_c.dylib)
+==28344==    by 0x100000D6D: main (main.c:21)
+==28344== 
+==28344== 
+==28344== HEAP SUMMARY:
+==28344==     in use at exit: 23,094 bytes in 169 blocks
+==28344==   total heap usage: 195 allocs, 26 frees, 29,445 bytes allocated
+==28344== 
+==28344== 2 bytes in 1 blocks are definitely lost in loss record 2 of 49
+==28344==    at 0x10009E616: malloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==28344==    by 0x10000303A: ft_strdup (in ./lem-in)
+==28344==    by 0x100003B70: ft_parse_tmp (in ./lem-in)
+==28344==    by 0x100003D75: get_next_line (in ./lem-in)
+==28344==    by 0x100000E0F: ft_read_stdin (parser.c:21)
+==28344==    by 0x100000D5D: main (main.c:21)
+==28344== 
+==28344== 17 bytes in 1 blocks are definitely lost in loss record 5 of 49
+==28344==    at 0x10009E616: malloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==28344==    by 0x10000303A: ft_strdup (in ./lem-in)
+==28344==    by 0x100003B70: ft_parse_tmp (in ./lem-in)
+==28344==    by 0x100003D75: get_next_line (in ./lem-in)
+==28344==    by 0x100000E82: ft_read_stdin (parser.c:25)
+==28344==    by 0x100000D5D: main (main.c:21)
+==28344== 
+==28344== LEAK SUMMARY:
+==28344==    definitely lost: 19 bytes in 2 blocks
+==28344==    indirectly lost: 2,064 bytes in 1 blocks
+==28344==      possibly lost: 0 bytes in 0 blocks
+==28344==    still reachable: 949 bytes in 10 blocks
+==28344==         suppressed: 20,062 bytes in 156 blocks
+==28344== Reachable blocks (those to which a pointer was found) are not shown.
+==28344== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==28344== 
+==28344== For counts of detected and suppressed errors, rerun with: -v
+==28344== Use --track-origins=yes to see where uninitialised values come from
+==28344== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 13 from 13)

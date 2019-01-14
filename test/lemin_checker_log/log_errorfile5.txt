@@ -1,0 +1,48 @@
+==28303== Memcheck, a memory error detector
+==28303== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==28303== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==28303== Command: ./lem-in
+==28303== Parent PID: 27793
+==28303== 
+==28303== Conditional jump or move depends on uninitialised value(s)
+==28303==    at 0x1004F95E8: _platform_memchr$VARIANT$Base (in /usr/lib/system/libsystem_platform.dylib)
+==28303==    by 0x1002A54D1: __sfvwrite (in /usr/lib/system/libsystem_c.dylib)
+==28303==    by 0x1002AF898: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
+==28303==    by 0x1002D5422: __v2printf (in /usr/lib/system/libsystem_c.dylib)
+==28303==    by 0x1002AB33D: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
+==28303==    by 0x1002A9247: printf (in /usr/lib/system/libsystem_c.dylib)
+==28303==    by 0x100000D6D: main (main.c:21)
+==28303== 
+==28303== 
+==28303== HEAP SUMMARY:
+==28303==     in use at exit: 37,494 bytes in 273 blocks
+==28303==   total heap usage: 422 allocs, 149 frees, 47,450 bytes allocated
+==28303== 
+==28303== 3 bytes in 1 blocks are definitely lost in loss record 3 of 68
+==28303==    at 0x10009E616: malloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==28303==    by 0x10000303A: ft_strdup (in ./lem-in)
+==28303==    by 0x100003B70: ft_parse_tmp (in ./lem-in)
+==28303==    by 0x100003D75: get_next_line (in ./lem-in)
+==28303==    by 0x100000E0F: ft_read_stdin (parser.c:21)
+==28303==    by 0x100000D5D: main (main.c:21)
+==28303== 
+==28303== 13 bytes in 1 blocks are definitely lost in loss record 8 of 68
+==28303==    at 0x10009E616: malloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==28303==    by 0x10000303A: ft_strdup (in ./lem-in)
+==28303==    by 0x100003B70: ft_parse_tmp (in ./lem-in)
+==28303==    by 0x100003D75: get_next_line (in ./lem-in)
+==28303==    by 0x100000E82: ft_read_stdin (parser.c:25)
+==28303==    by 0x100000D5D: main (main.c:21)
+==28303== 
+==28303== LEAK SUMMARY:
+==28303==    definitely lost: 16 bytes in 2 blocks
+==28303==    indirectly lost: 2,064 bytes in 1 blocks
+==28303==      possibly lost: 0 bytes in 0 blocks
+==28303==    still reachable: 15,352 bytes in 114 blocks
+==28303==         suppressed: 20,062 bytes in 156 blocks
+==28303== Reachable blocks (those to which a pointer was found) are not shown.
+==28303== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==28303== 
+==28303== For counts of detected and suppressed errors, rerun with: -v
+==28303== Use --track-origins=yes to see where uninitialised values come from
+==28303== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 13 from 13)

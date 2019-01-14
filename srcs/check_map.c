@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 12:12:12 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/14 14:30:36 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/14 15:28:55 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int		ft_isvalid_map(t_data *data)
 	{
 		if (tmp->state == 1)
 		{
+			tmp->nbant = data->ant;
 			tmp->weight = 1;
 			break ;
 		}
