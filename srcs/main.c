@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:08 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/14 12:05:02 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/14 13:29:49 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		main(void)
 	if(!(data = (t_data *)ft_memalloc(sizeof(t_data))))
 		return (0);
 	printf("%d\n", ft_read_stdin(data));
-	if (!ft_isvalid_room(data) || !ft_count_state(data))
+	if (!ft_isvalid_room(data))
 		ft_error(-1);
 	ft_link_pipe(data);
 	ft_isvalid_map(data);

@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 13:03:58 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/14 11:59:46 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/14 14:30:35 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ int		ft_read_stdin(t_data *data)
 				ft_list_pushback(&data->raw_input, ft_strdup(line), 0);
 			else
 				trig = 1;
-			if (trig == 1 && ft_ispipe(line, data) == 1)
+			if (trig == 1 && ft_ispipe(line, data) == 1 && ft_isstate(data) == 0)
 				ft_list_pushback(&data->raw_input, ft_strdup(line), 0);
 			else if (trig == 1)
 				return (-1);
 		}
-		if (ft_iscomment(line) == 1 && ft_isstate(data) != 0)
+		else if (ft_isstate(data) != 0)
 			return (-1);
 		ft_strdel(&line);
 	}
