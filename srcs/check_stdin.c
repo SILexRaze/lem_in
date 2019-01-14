@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:43:46 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/14 15:17:46 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/14 16:59:58 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		ft_doublepipe(char **tab, t_data *data)
 	return (1);
 }
 
-int			ft_isstate(t_data *data)
+int		ft_isstate(t_data *data)
 {
 	t_list	*tmp;
 
@@ -68,7 +68,7 @@ int			ft_isstate(t_data *data)
 	return (0);
 }
 
-int			ft_isinst(char *str)
+int		ft_isinst(char *str)
 {
 	if (ft_strequ(str, "##start") || ft_strequ(str, "##end"))
 		return (1);
@@ -77,7 +77,7 @@ int			ft_isinst(char *str)
 	return (0);
 }
 
-int			ft_iscomment(char *str)
+int		ft_iscomment(char *str)
 {
 	if (str[0] == '#' && str[1] != '#')
 		return (1);

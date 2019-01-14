@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 13:03:58 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/14 15:28:52 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/14 17:04:41 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@ int		ft_read_stdin(t_data *data)
 	int		trig;
 
 	trig = 0;
-	if (get_next_line(0, &line) > 0 && ft_isant(line, data) == 1)
-		ft_list_pushback(&data->raw_input, ft_strdup(line), ft_strlen(line));
-	else
+	line = NULL;
+	if (!ft_isant(line, data))
 		return (-1);
 	while (get_next_line(0, &line) > 0)
 	{
@@ -44,21 +43,27 @@ int		ft_read_stdin(t_data *data)
 	return (1);
 }
 
-int			ft_isant(char *str, t_data *data)
+int		ft_isant(char *str, t_data *data)
 {
-	if (!ft_strisdigit(str))
-		return (0);
-	data->ant = ft_sizetoi(str);
-	return (1);
+	if (get_next_line(0, &str) > 0)
+	{
+		if (!ft_strisdigit(str))
+			return (0);
+		data->ant = ft_sizetoi(str);
+		ft_list_pushback(&data->raw_input, ft_strdup(str), 0);
+		ft_strdel(&str);
+		return (1);
+	}
+	return (0);
 }
 
-int			ft_isroom(char *str, t_data *data)
+int		ft_isroom(char *str, t_data *data)
 {
 	char	**tab;
 
 	tab = ft_strsplit(str, 32);
 	if (ft_tab_len(tab) != 3 || tab[0][0] == 'L' || !ft_strisdigit(tab[1])
-		|| !ft_strisdigit(tab[2]) || ft_strchr(str, '-'))
+			|| !ft_strisdigit(tab[2]) || ft_strchr(str, '-'))
 	{
 		ft_freetab(&tab);
 		return (0);
@@ -71,13 +76,13 @@ int			ft_isroom(char *str, t_data *data)
 	return (1);
 }
 
-int			ft_ispipe(char *str, t_data *data)
+int		ft_ispipe(char *str, t_data *data)
 {
 	char	**tab;
 
 	tab = ft_strsplit(str, '-');
 	if (ft_tab_len(tab) != 2 || ft_isminus(str) < 0
-		|| ft_strequ(tab[0], tab[1]) == 1)
+			|| ft_strequ(tab[0], tab[1]) == 1)
 	{
 		ft_freetab(&tab);
 		return (0);

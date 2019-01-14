@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/14 16:14:24 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/14 17:04:52 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,8 +118,6 @@ int					ft_tab_len(char **str);
 size_t				ft_sizetoi(char *str);
 void				ft_freetab(char ***tab);
 void				ft_free_map(t_data *data);
-void				ft_free_pipe(t_data *data);
-void				ft_free_path(t_data *data);
 void				ft_free_struct(t_data *data);
 void				ft_error(int n);
 #endif
