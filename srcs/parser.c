@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 13:03:58 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/13 18:11:23 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/14 11:59:46 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int		ft_read_stdin(t_data *data)
 			else if (trig == 1)
 				return (-1);
 		}
+		if (ft_iscomment(line) == 1 && ft_isstate(data) != 0)
+			return (-1);
 		ft_strdel(&line);
 	}
 	return (1);
@@ -61,7 +63,6 @@ int			ft_isroom(char *str, t_data *data)
 		ft_freetab(&tab);
 		return (0);
 	}
-	
 	if (ft_isstate(data) != 0)
 		ft_map_pushback(&data->map, tab, ft_isstate(data));
 	else

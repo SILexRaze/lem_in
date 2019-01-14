@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 12:12:12 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/13 18:12:30 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/14 12:05:06 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@ int		ft_isvalid_map(t_data *data)
 	t_map	*tmp;
 
 	tmp = data->map;
-	if (!ft_isvalid_room(data) || !ft_isvalid_pipe(data))
-		ft_error(-1);
-	if ((data->errcode = ft_count_state(data)) < 0)
-		ft_error(data->errcode);
 	while (tmp)
 	{
 		if (tmp->state == 1)
@@ -54,7 +50,7 @@ int		ft_count_state(t_data *data)
 		tmp = tmp->next;
 	}
 	if (start != 1 || start != 1)
-		return (-13);
+		return (0);
 	return (1);
 }
 
