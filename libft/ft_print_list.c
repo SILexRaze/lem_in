@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 16:24:29 by vifonne           #+#    #+#             */
-/*   Updated: 2018/12/19 18:55:17 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/14 17:44:55 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ void	ft_print_list(t_list **begin_list)
 			ft_putendl(tmp->data);
 			tmp = tmp->next;
 		}
+		ft_putchar('\n');
 	}
 }
