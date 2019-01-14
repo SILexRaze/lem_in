@@ -30,6 +30,8 @@ void	ft_link_pipe(t_data *data)
 		}
 		tmp = tmp->next;
 	}
+	if (!ft_isvalid_pipe(data))
+		ft_error(-1);
 	ft_count_connex(data->map);
 }
 

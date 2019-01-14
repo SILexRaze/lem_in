@@ -9,14 +9,14 @@ debut 23 3
 6 1 5
 7 4 8
 ##end
+fin 9 5
 #autre commentaire
 fin-4
 fin-6
 debut-3
 4-3
-#3-4
+4-4
 5-2
-3-5
 4-2
 2-debut
 7-6
