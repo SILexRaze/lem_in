@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/12 15:33:54 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/14 14:56:22 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,12 @@ size_t				ft_pipesize(t_map **pipe);
 void				sort_path_tab(t_path **path_tab, size_t len);
 size_t				ft_npath(t_data *data);
 void				ft_pathlist_totab(t_data *data);
+/*
+** ANT MOVE
+*/
+int					ant_move(t_path *path);
+int					check_ant(t_path *path);
+int					ant_path(t_data *data);
 /*
 **	PARSER
 */
