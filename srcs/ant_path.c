@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 15:44:01 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/14 17:24:25 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/14 17:42:56 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		ant_move(t_path *path,t_path *prev , t_data *data)
 		path->room->nbant--;
 		print_ant(path);
 		if (prev->room->nbant)
-			return (ant_move(prev, data->path_tab[0], data));
+			return (ant_move(data->path_tab[0], data->path_tab[0], data));
 	}
 	else if (path->next)
 		return (ant_move(path->next, path, data));
