@@ -6,36 +6,45 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 15:44:01 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/14 15:28:56 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/14 16:14:22 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-/*
- ** fontion recursive de deplacement des fourmis
- ** condition d'arret: quand toutes les foumis sont passer de start a end
- ** check si la room next est vide, si oui faire avancer la formis sinon faire avancer la fourmis de la room next ect
- */
 
-int		ant_move(t_path *path)
+int		ant_move(t_path *path,t_path *prev , t_data *data)
 {
-	if (path->next
-			&& (path->next->room->nbant == 0 || path->next->room->state != 0))
+	if (path->room->state == 1 && path->room->nbant && path->next->room->nbant == 0)
+	{
+		path->room->nbant--;
+		path->room->nameant = data->ant - path->room->nbant;
+		path->next->room->nameant = path->room->nameant;
+		path->next->room->nbant++;
+		print_ant(path);
+	}
+	else if (path->next
+			&& (path->next->room->nbant == 0 || path->next->room->state == 2))
 	{
 		path->next->room->nameant = path->room->nameant;
 		path->room->nameant = 0;
 		path->next->room->nbant++;
 		path->room->nbant--;
-		write(1, "L", 1);
-		ft_putnbr(path->next->room->nameant);
-		write(1, "-", 1);
-		ft_putstr(path->next->room->name);
-		write(1, " ", 1);
+		print_ant(path);
+		if (prev->room->nbant)
+			return (ant_move(prev, NULL, data));
 	}
-	if (path->next)
-		return (ant_move(path->next));
-	else
-		return (0);
+	else if (path->next)
+		return (ant_move(path->next, path, data));
+	return (0);
+}
+
+void	print_ant(t_path *path)
+{
+	write(1, "L", 1);
+	ft_putnbr(path->next->room->nameant);
+	write(1, "-", 1);
+	ft_putstr(path->next->room->name);
+	write(1, " ", 1);
 }
 
 int		check_ant(t_path *path)
@@ -56,7 +65,7 @@ int		ant_path(t_data *data)
 {
 	while (check_ant(data->path_tab[0]))
 	{
-		ant_move(data->path_tab[0]);
+		ant_move(data->path_tab[0], NULL, data);
 		write(1, "\n", 1);
 	}
 	return (0);
