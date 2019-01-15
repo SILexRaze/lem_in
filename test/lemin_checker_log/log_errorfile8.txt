@@ -1,0 +1,85 @@
+==65229== Memcheck, a memory error detector
+==65229== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==65229== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==65229== Command: ./lem-in
+==65229== Parent PID: 64647
+==65229== 
+==65229== Invalid read of size 16
+==65229==    at 0x1004F95C9: _platform_memchr$VARIANT$Base (in /usr/lib/system/libsystem_platform.dylib)
+==65229==    by 0x1002A54D1: __sfvwrite (in /usr/lib/system/libsystem_c.dylib)
+==65229==    by 0x1002AF898: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
+==65229==    by 0x1002D5422: __v2printf (in /usr/lib/system/libsystem_c.dylib)
+==65229==    by 0x1002AB33D: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
+==65229==    by 0x1002A9247: printf (in /usr/lib/system/libsystem_c.dylib)
+==65229==    by 0x1000018B7: printf_review (printf_review.c:67)
+==65229==    by 0x100000CBB: main (main.c:28)
+==65229==  Address 0x100b62af0 is 10 bytes after a block of size 6 alloc'd
+==65229==    at 0x10009E616: malloc (in /Users/rvalenti/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==65229==    by 0x100002FAA: ft_strdup (in ./lem-in)
+==65229==    by 0x1000011AE: ft_map_create_elem (map_pipe_list.c:21)
+==65229==    by 0x100001280: ft_map_pushback (map_pipe_list.c:42)
+==65229==    by 0x10000108E: ft_isroom (parser.c:74)
+==65229==    by 0x100000D7E: ft_read_stdin (parser.c:28)
+==65229==    by 0x100000C5D: main (main.c:21)
+==65229== 
+==65229== Conditional jump or move depends on uninitialised value(s)
+==65229==    at 0x1004F95E8: _platform_memchr$VARIANT$Base (in /usr/lib/system/libsystem_platform.dylib)
+==65229==    by 0x1002A54D1: __sfvwrite (in /usr/lib/system/libsystem_c.dylib)
+==65229==    by 0x1002AF898: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
+==65229==    by 0x1002D5422: __v2printf (in /usr/lib/system/libsystem_c.dylib)
+==65229==    by 0x1002AB33D: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
+==65229==    by 0x1002A9247: printf (in /usr/lib/system/libsystem_c.dylib)
+==65229==    by 0x1000018B7: printf_review (printf_review.c:67)
+==65229==    by 0x100000CBB: main (main.c:28)
+==65229== 
+==65229== 
+==65229== HEAP SUMMARY:
+==65229==     in use at exit: 22,521 bytes in 166 blocks
+==65229==   total heap usage: 350 allocs, 184 frees, 43,835 bytes allocated
+==65229== 
+==65229== 4 bytes in 1 blocks are definitely lost in loss record 1 of 46
+==65229==    at 0x10009E616: malloc (in /Users/rvalenti/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==65229==    by 0x100002FAA: ft_strdup (in ./lem-in)
+==65229==    by 0x100003B10: ft_parse_tmp (in ./lem-in)
+==65229==    by 0x100003D15: get_next_line (in ./lem-in)
+==65229==    by 0x100000D4C: ft_read_stdin (parser.c:24)
+==65229==    by 0x100000C5D: main (main.c:21)
+==65229== 
+==65229== 72 bytes in 3 blocks are possibly lost in loss record 28 of 46
+==65229==    at 0x10009EC82: calloc (in /Users/rvalenti/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==65229==    by 0x1005B8832: map_images_nolock (in /usr/lib/libobjc.A.dylib)
+==65229==    by 0x1005CBD6A: map_images (in /usr/lib/libobjc.A.dylib)
+==65229==    by 0x10000D03B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
+==65229==    by 0x10000D255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
+==65229==    by 0x10020600A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
+==65229==    by 0x1005B8072: _objc_init (in /usr/lib/libobjc.A.dylib)
+==65229==    by 0x10019968D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
+==65229==    by 0x10019963A: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
+==65229==    by 0x1000AD9D5: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
+==65229==    by 0x10001DA1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==65229==    by 0x10001DC1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
+==65229== 
+==65229== 192 bytes in 1 blocks are definitely lost in loss record 34 of 46
+==65229==    at 0x10009E616: malloc (in /Users/rvalenti/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==65229==    by 0x1000031A8: ft_memalloc (in ./lem-in)
+==65229==    by 0x1000023BE: ft_path_create_elem (path_list.c:19)
+==65229==    by 0x100002469: ft_path_pushback (path_list.c:36)
+==65229==    by 0x100001FA3: ft_explore (explore.c:98)
+==65229==    by 0x100001FF2: ft_explore (explore.c:102)
+==65229==    by 0x100002031: ft_explore (explore.c:104)
+==65229==    by 0x100002031: ft_explore (explore.c:104)
+==65229==    by 0x100002031: ft_explore (explore.c:104)
+==65229==    by 0x100000CA6: main (main.c:26)
+==65229== 
+==65229== LEAK SUMMARY:
+==65229==    definitely lost: 196 bytes in 2 blocks
+==65229==    indirectly lost: 0 bytes in 0 blocks
+==65229==      possibly lost: 72 bytes in 3 blocks
+==65229==    still reachable: 266 bytes in 7 blocks
+==65229==         suppressed: 21,987 bytes in 154 blocks
+==65229== Reachable blocks (those to which a pointer was found) are not shown.
+==65229== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==65229== 
+==65229== For counts of detected and suppressed errors, rerun with: -v
+==65229== Use --track-origins=yes to see where uninitialised values come from
+==65229== ERROR SUMMARY: 11 errors from 5 contexts (suppressed: 12 from 12)

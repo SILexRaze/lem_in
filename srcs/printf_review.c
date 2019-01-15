@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 10:41:11 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/15 16:39:31 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/15 17:03:16 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	printf_review(t_data *data)
 {
-	t_map	*tmp;
-	t_path	*tmpath;
-	t_pipe	*tmpipe;
+//	t_map	*tmp;
+//	t_path	*tmpath;
+//	t_pipe	*tmpipe;
 	t_path	*tmpath2;
 	int		n;
 	int		i;
-
+/*
 	tmp = data->map;
 	tmpath = data->global_path;
 	tmpipe = data->pipe;
@@ -49,12 +49,12 @@ void	printf_review(t_data *data)
 		printf("arg2= %s\t\n", tmpipe->arg2);
 		tmpipe = tmpipe->next;
 	}
-	/*while (tmpath)
+	*while (tmpath)
 	{
 	printf("%s->", tmpath->room->name);
 		tmpath = tmpath->next;
-	}*/
-	printf("\n");
+	}
+	printf("\n");*/
 	n = ft_npath(data);
 	i = 0;
 	while (data->path_tab[i])

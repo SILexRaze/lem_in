@@ -6,7 +6,7 @@
 #    By: vifonne <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/05 18:03:13 by vifonne           #+#    #+#              #
-#    Updated: 2019/01/14 16:25:33 by vifonne          ###   ########.fr        #
+#    Updated: 2019/01/15 18:16:53 by rvalenti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS		=		main.c				\
 					path_list.c			\
 					sort_path_tab.c		\
 					ant_path.c			\
+					tab_struc_len.c		\
 					free_struct.c
 SRCS_DIR	=		$(addprefix srcs/, $(SRCS))
 LIBFT		=		libft/

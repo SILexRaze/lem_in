@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/15 16:15:48 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/15 18:18:51 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int					ft_isvalid_pipe(t_data *data);
 int					ft_isvalid_map(t_data *data);
 int					ft_isvalid_room(t_data *data);
 int					ft_count_state(t_data *data);
-int					ft_tab_struct_len(t_map **pipe);
+size_t				ft_tab_struc_len(t_path **pipe);
 /*
 **	EXPLORE
 */
