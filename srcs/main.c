@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:08 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/15 15:17:17 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/15 16:41:45 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		main(void)
 	ft_isvalid_map(data);
 	ft_explore(data->start, data, NULL);
 	ft_pathlist_totab(data);
-	printf_review(data);
+//	printf_review(data);
 	ft_print_list(&data->raw_input);
 	ant_path(data);
 	ft_free_struct(data);

@@ -6,13 +6,13 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 15:44:01 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/14 17:42:56 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/15 16:41:44 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int		ant_move(t_path *path,t_path *prev , t_data *data)
+int		ant_move(t_path *path, t_path *prev , t_data *data, int n)
 {
 	if (path->room->state == 1 && path->room->nbant && path->next->room->nbant == 0)
 	{
@@ -31,10 +31,10 @@ int		ant_move(t_path *path,t_path *prev , t_data *data)
 		path->room->nbant--;
 		print_ant(path);
 		if (prev->room->nbant)
-			return (ant_move(data->path_tab[0], data->path_tab[0], data));
+			return (ant_move(data->path_tab[n], data->path_tab[n], data, n));
 	}
 	else if (path->next)
-		return (ant_move(path->next, path, data));
+		return (ant_move(path->next, path, data, n));
 	return (0);
 }
 
@@ -47,25 +47,40 @@ void	print_ant(t_path *path)
 	write(1, " ", 1);
 }
 
-int		check_ant(t_path *path)
+int		check_ant(t_data *data, int n)
 {
-	t_path *tmp;
+	int		j;
+	t_path	*tmp;
 
-	tmp = path;
-	while (tmp)
+	j = 0;
+	while (j < n)
 	{
-		if (tmp->room->nbant != 0 && tmp->room->state != 2)
-			return (1);
-		tmp = tmp->next;
+		tmp = data->path_tab[j];
+		while (tmp)
+		{
+			if (tmp->room->nbant != 0 && tmp->room->state != 2)
+				return (0);
+			tmp = tmp->next;
+		}
+		j++;
 	}
-	return (0);
+	return (1);
 }
 
 int		ant_path(t_data *data)
 {
-	while (check_ant(data->path_tab[0]))
+	int	i;
+	int	n;
+
+	n = ft_pipesize(data->start->pipe);
+	while (!check_ant(data, n))
 	{
-		ant_move(data->path_tab[0], data->path_tab[0], data);
+		i = 0;
+		while (i < n)
+		{
+			ant_move(data->path_tab[i], data->path_tab[i], data, i);
+			i++;
+		}
 		write(1, "\n", 1);
 	}
 	return (0);

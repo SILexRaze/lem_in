@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/14 17:24:24 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/15 16:15:48 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ void				ft_pathlist_totab(t_data *data);
 /*
 ** ANT MOVE
 */
-int					ant_move(t_path *path, t_path *prev, t_data *data);
-int					check_ant(t_path *path);
+int					ant_move(t_path *path, t_path *prev, t_data *data, int n);
+int					check_ant(t_data *data, int n);
 int					ant_path(t_data *data);
 void				print_ant(t_path *path);
 /*

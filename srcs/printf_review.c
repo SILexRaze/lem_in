@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/07 10:41:11 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/13 13:32:19 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/15 16:39:31 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	printf_review(t_data *data)
 	while (data->path_tab[i])
 	{
 		tmpath2 = data->path_tab[i];
+		printf("%zu | ", data->path_tab[i]->size);
 		printf("path[%d]", i);
 		while(tmpath2)
 		{

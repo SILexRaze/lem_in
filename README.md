@@ -8,4 +8,6 @@ It's about management of ant in a ciruit.
 	-3 : Bad tunnel declaration.
 ```
 "Toute commande inconnue sera ignoree"
+NOTER SUR LA STDOUT LES COMMENTAIRES AUSSI
+
 "La premiere ligne non conforme OU VIDE entraine la fin de l'acquisition"
