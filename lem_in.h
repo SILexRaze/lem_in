@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/15 18:18:51 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/15 19:32:43 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ int					ft_isvalid_pipe(t_data *data);
 int					ft_isvalid_map(t_data *data);
 int					ft_isvalid_room(t_data *data);
 int					ft_count_state(t_data *data);
+int					check_overlap_path(t_data *data);
+void				merge_ifeq_path(t_data *data);
 size_t				ft_tab_struc_len(t_path **pipe);
 /*
 **	EXPLORE

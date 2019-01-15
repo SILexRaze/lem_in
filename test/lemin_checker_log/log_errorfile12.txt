@@ -1,44 +1,30 @@
-==65283== Memcheck, a memory error detector
-==65283== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==65283== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
-==65283== Command: ./lem-in
-==65283== Parent PID: 64647
-==65283== 
-==65283== 
-==65283== HEAP SUMMARY:
-==65283==     in use at exit: 18,929 bytes in 167 blocks
-==65283==   total heap usage: 194 allocs, 27 frees, 25,282 bytes allocated
-==65283== 
-==65283== 17 bytes in 1 blocks are definitely lost in loss record 4 of 47
-==65283==    at 0x10009E616: malloc (in /Users/rvalenti/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==65283==    by 0x100002FAA: ft_strdup (in ./lem-in)
-==65283==    by 0x100003B10: ft_parse_tmp (in ./lem-in)
-==65283==    by 0x100003D15: get_next_line (in ./lem-in)
-==65283==    by 0x100000D4C: ft_read_stdin (parser.c:24)
-==65283==    by 0x100000C5D: main (main.c:21)
-==65283== 
-==65283== 72 bytes in 3 blocks are possibly lost in loss record 29 of 47
-==65283==    at 0x10009EC82: calloc (in /Users/rvalenti/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
-==65283==    by 0x1005B8832: map_images_nolock (in /usr/lib/libobjc.A.dylib)
-==65283==    by 0x1005CBD6A: map_images (in /usr/lib/libobjc.A.dylib)
-==65283==    by 0x10000D03B: dyld::notifyBatchPartial(dyld_image_states, bool, char const* (*)(dyld_image_states, unsigned int, dyld_image_info const*), bool, bool) (in /usr/lib/dyld)
-==65283==    by 0x10000D255: dyld::registerObjCNotifiers(void (*)(unsigned int, char const* const*, mach_header const* const*), void (*)(char const*, mach_header const*), void (*)(char const*, mach_header const*)) (in /usr/lib/dyld)
-==65283==    by 0x10020600A: _dyld_objc_notify_register (in /usr/lib/system/libdyld.dylib)
-==65283==    by 0x1005B8072: _objc_init (in /usr/lib/libobjc.A.dylib)
-==65283==    by 0x10019968D: _os_object_init (in /usr/lib/system/libdispatch.dylib)
-==65283==    by 0x10019963A: libdispatch_init (in /usr/lib/system/libdispatch.dylib)
-==65283==    by 0x1000AD9D5: libSystem_initializer (in /usr/lib/libSystem.B.dylib)
-==65283==    by 0x10001DA1A: ImageLoaderMachO::doModInitFunctions(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==65283==    by 0x10001DC1D: ImageLoaderMachO::doInitialization(ImageLoader::LinkContext const&) (in /usr/lib/dyld)
-==65283== 
-==65283== LEAK SUMMARY:
-==65283==    definitely lost: 17 bytes in 1 blocks
-==65283==    indirectly lost: 0 bytes in 0 blocks
-==65283==      possibly lost: 72 bytes in 3 blocks
-==65283==    still reachable: 949 bytes in 10 blocks
-==65283==         suppressed: 17,891 bytes in 153 blocks
-==65283== Reachable blocks (those to which a pointer was found) are not shown.
-==65283== To see them, rerun with: --leak-check=full --show-leak-kinds=all
-==65283== 
-==65283== For counts of detected and suppressed errors, rerun with: -v
-==65283== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 12 from 12)
+==46857== Memcheck, a memory error detector
+==46857== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==46857== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==46857== Command: ./lem-in
+==46857== Parent PID: 46311
+==46857== 
+==46857== 
+==46857== HEAP SUMMARY:
+==46857==     in use at exit: 18,887 bytes in 167 blocks
+==46857==   total heap usage: 194 allocs, 27 frees, 25,240 bytes allocated
+==46857== 
+==46857== 17 bytes in 1 blocks are definitely lost in loss record 4 of 47
+==46857==    at 0x10009E616: malloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==46857==    by 0x100002FAA: ft_strdup (in ./lem-in)
+==46857==    by 0x100003B10: ft_parse_tmp (in ./lem-in)
+==46857==    by 0x100003D15: get_next_line (in ./lem-in)
+==46857==    by 0x100000BBC: ft_read_stdin (parser.c:24)
+==46857==    by 0x100000AAD: main (main.c:21)
+==46857== 
+==46857== LEAK SUMMARY:
+==46857==    definitely lost: 17 bytes in 1 blocks
+==46857==    indirectly lost: 2,064 bytes in 1 blocks
+==46857==      possibly lost: 0 bytes in 0 blocks
+==46857==    still reachable: 949 bytes in 10 blocks
+==46857==         suppressed: 15,857 bytes in 155 blocks
+==46857== Reachable blocks (those to which a pointer was found) are not shown.
+==46857== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==46857== 
+==46857== For counts of detected and suppressed errors, rerun with: -v
+==46857== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 13 from 13)
