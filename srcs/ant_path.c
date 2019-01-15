@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 15:44:01 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/15 18:18:56 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/15 19:27:44 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		ant_move(t_path *path, t_path *prev , t_data *data, int n)
 {
-	if (path->room->state == 1 && path->room->nbant && path->next->room->nbant == 0)
+	if (path->room->state == 1 && path->room->nbant && (path->next->room->nbant == 0 || path->next->room->state == 2))
 	{
 		path->room->nbant--;
 		path->room->nameant = data->ant - path->room->nbant;
