@@ -20,7 +20,7 @@ int		check_overlap_path(t_data *data)
 	t_path	*tmp2;
 
 	i = 0;
-	n = ft_tab_struc_len(data->path_tab);
+	n = tab_struc_len(data->path_tab);
 	while (i < n - 1)
 	{
 		tmp = data->path_tab[i];
@@ -53,7 +53,7 @@ void	merge_ifeq_path(t_data *data)
 	int		n;
 
 	i = 0;
-	n = ft_tab_struc_len(data->path_tab);
+	n = tab_struc_len(data->path_tab);
 	while (i < n)
 	{
 		tmp = data->path_tab[i];

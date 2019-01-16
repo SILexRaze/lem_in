@@ -6,13 +6,13 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 14:45:30 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/15 17:50:58 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/16 15:01:59 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_path	*ft_path_create_elem(t_map *room, size_t size)
+t_path	*path_create_elem(t_map *room, size_t size)
 {
 	t_path	*new;
 
@@ -24,7 +24,7 @@ t_path	*ft_path_create_elem(t_map *room, size_t size)
 	return (new);
 }
 
-void	ft_path_pushback(t_path **begin_list, t_map *room, size_t size)
+void	path_pushback(t_path **begin_list, t_map *room, size_t size)
 {
 	t_path	*tmp;
 
@@ -33,13 +33,13 @@ void	ft_path_pushback(t_path **begin_list, t_map *room, size_t size)
 		tmp = *begin_list;
 		while (tmp->next)
 			tmp = tmp->next;
-		tmp->next = ft_path_create_elem(room, size);
+		tmp->next = path_create_elem(room, size);
 	}
 	else
-		*begin_list = ft_path_create_elem(room, size);
+		*begin_list = path_create_elem(room, size);
 }
 
-size_t	ft_path_len(t_path **begin_list)
+size_t	path_len(t_path **begin_list)
 {
 	t_path	*tmp;
 	size_t	i;
@@ -54,7 +54,7 @@ size_t	ft_path_len(t_path **begin_list)
 	return (i);
 }
 
-size_t	ft_npath(t_data *data)
+size_t	npath(t_data *data)
 {
 	size_t	i;
 	t_path	*tmp;
@@ -70,7 +70,7 @@ size_t	ft_npath(t_data *data)
 	return (i + 1);
 }
 
-void	ft_pathlist_totab(t_data *data)
+void	pathlist_totab(t_data *data)
 {
 	size_t	len;
 	size_t	j;
@@ -79,7 +79,7 @@ void	ft_pathlist_totab(t_data *data)
 	t_path	*prev;
 
 	i = 0;
-	len = ft_npath(data);
+	len = npath(data);
 	if (!(data->path_tab = (t_path **)ft_memalloc(sizeof(t_path*) * len)))
 		exit(0);
 	tmp = data->global_path;
@@ -108,5 +108,7 @@ void	ft_pathlist_totab(t_data *data)
 		}
 		i++;
 	}
+	check_overlap_path(data);
+	merge_ifeq_path(data);
 	sort_path_tab(data->path_tab, len - 1);
 }

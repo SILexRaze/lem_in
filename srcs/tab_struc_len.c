@@ -12,7 +12,7 @@
 
 #include "lem_in.h"
 
-size_t	ft_tab_struc_len(t_path **path_tab)
+size_t	tab_struc_len(t_path **path_tab)
 {
 	size_t	count;
 

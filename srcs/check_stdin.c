@@ -6,13 +6,13 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 14:43:46 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/14 16:59:58 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/16 15:00:56 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int		ft_isminus(char *line)
+int		isminus(char *line)
 {
 	int	i;
 	int	k;
@@ -33,7 +33,7 @@ int		ft_isminus(char *line)
 		return (1);
 }
 
-int		ft_doublepipe(char **tab, t_data *data)
+int		doublepipe(char **tab, t_data *data)
 {
 	t_pipe	*tmp;
 
@@ -51,14 +51,14 @@ int		ft_doublepipe(char **tab, t_data *data)
 	return (1);
 }
 
-int		ft_isstate(t_data *data)
+int		isstate(t_data *data)
 {
 	t_list	*tmp;
 
 	tmp = data->raw_input;
 	while (tmp->next)
 		tmp = tmp->next;
-	if (ft_isinst(tmp->data) == 1)
+	if (isinst(tmp->data) == 1)
 	{
 		if (ft_strequ(tmp->data, "##end") == 1)
 			return (2);
@@ -68,7 +68,7 @@ int		ft_isstate(t_data *data)
 	return (0);
 }
 
-int		ft_isinst(char *str)
+int		isinst(char *str)
 {
 	if (ft_strequ(str, "##start") || ft_strequ(str, "##end"))
 		return (1);
@@ -77,7 +77,7 @@ int		ft_isinst(char *str)
 	return (0);
 }
 
-int		ft_iscomment(char *str)
+int		iscomment(char *str)
 {
 	if (str[0] == '#' && str[1] != '#')
 		return (1);

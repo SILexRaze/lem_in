@@ -55,7 +55,7 @@ void	printf_review(t_data *data)
 		tmpath = tmpath->next;
 	}
 	printf("\n");*/
-	n = ft_npath(data);
+	n = npath(data);
 	i = 0;
 	while (data->path_tab[i])
 	{

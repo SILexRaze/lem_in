@@ -6,13 +6,13 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 07:48:15 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/12 13:23:18 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/16 15:00:23 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	ft_link_pipe(t_data *data)
+void	link_pipe(t_data *data)
 {
 	t_map	*tmp;
 	size_t	n;
@@ -20,22 +20,22 @@ void	ft_link_pipe(t_data *data)
 	tmp = data->map;
 	while (tmp)
 	{
-		n = ft_pipe_nbr(tmp, data->pipe);
+		n = pipe_nbr(tmp, data->pipe);
 		if (n)
 		{
 			if (!(tmp->pipe = (t_map **)ft_memalloc(sizeof(t_map *) * (n + 1))))
 				return ;
-			ft_assign_pipe(tmp, data, n);
+			assign_pipe(tmp, data, n);
 			tmp->n = n;
 		}
 		tmp = tmp->next;
 	}
-	if (!ft_isvalid_pipe(data))
-		ft_error(-1);
-	ft_count_connex(data->map);
+	if (!isvalid_pipe(data))
+		error(-1);
+	count_connex(data->map);
 }
 
-void	ft_assign_pipe(t_map *map, t_data *data, size_t n)
+void	assign_pipe(t_map *map, t_data *data, size_t n)
 {
 	t_map	**tmp;
 	t_pipe	*tmpipe;
@@ -48,19 +48,19 @@ void	ft_assign_pipe(t_map *map, t_data *data, size_t n)
 	{
 		if (ft_strequ(map->name, tmpipe->arg1))
 		{
-			tmp[i] = ft_search_map_address(tmpipe->arg2, data);
+			tmp[i] = search_map_address(tmpipe->arg2, data);
 			i++;
 		}
 		if (ft_strequ(map->name, tmpipe->arg2))
 		{
-			tmp[i] = ft_search_map_address(tmpipe->arg1, data);
+			tmp[i] = search_map_address(tmpipe->arg1, data);
 			i++;
 		}
 		tmpipe = tmpipe->next;
 	}
 }
 
-t_map	*ft_search_map_address(char *str, t_data *data)
+t_map	*search_map_address(char *str, t_data *data)
 {
 	t_map *tmp;
 
@@ -74,7 +74,7 @@ t_map	*ft_search_map_address(char *str, t_data *data)
 	return (NULL);
 }
 
-size_t	ft_pipe_nbr(t_map *map, t_pipe *pipe)
+size_t	pipe_nbr(t_map *map, t_pipe *pipe)
 {
 	t_pipe	*tmp;
 	size_t	n;

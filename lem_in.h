@@ -61,36 +61,36 @@ typedef struct		s_data
 /*
 **	LIST FUNCTION (t_pipe, t_map)
 */
-t_map				*ft_map_create_elem(char **tab, int state);
-void				ft_map_pushback(t_map **begin_list, char **tab, int state);
-t_pipe				*ft_pipe_create_elem(char **tab);
-void				ft_pipe_pushback(t_pipe **begin_list, char **tab);
+t_map				*map_create_elem(char **tab, int state);
+void				map_pushback(t_map **begin_list, char **tab, int state);
+t_pipe				*pipe_create_elem(char **tab);
+void				pipe_pushback(t_pipe **begin_list, char **tab);
 void				printf_review(t_data *data); //remove when not needed
-t_path				*ft_path_create_elem(t_map *room, size_t size);
-void				ft_path_pushback(t_path **begin_list, t_map *room, size_t size);
-size_t				ft_path_len(t_path **begin_list);
+t_path				*path_create_elem(t_map *room, size_t size);
+void				path_pushback(t_path **begin_list, t_map *room, size_t size);
+size_t				path_len(t_path **begin_list);
 /*
 **	CHECKER
 */
-int					ft_isvalid_pipe(t_data *data);
-int					ft_isvalid_map(t_data *data);
-int					ft_isvalid_room(t_data *data);
-int					ft_count_state(t_data *data);
+int					isvalid_pipe(t_data *data);
+int					isvalid_map(t_data *data);
+int					isvalid_room(t_data *data);
+int					count_state(t_data *data);
 int					check_overlap_path(t_data *data);
 void				merge_ifeq_path(t_data *data);
-size_t				ft_tab_struc_len(t_path **pipe);
+size_t				tab_struc_len(t_path **pipe);
 /*
 **	EXPLORE
 */
-int					ft_check_weight(t_map *tmp);
-int					ft_check_weight(t_map *tmp);
-void				ft_count_connex(t_map *tmp);
-int					ft_explore(t_map *tmp, t_data *data, t_map *prev);
-int					ft_priority(t_map *tmp);
-size_t				ft_pipesize(t_map **pipe);
+int					check_weight(t_map *tmp);
+int					check_weight(t_map *tmp);
+void				count_connex(t_map *tmp);
+int					explore(t_map *tmp, t_data *data, t_map *prev);
+int					priority(t_map *tmp);
+size_t				pipesize(t_map **pipe);
 void				sort_path_tab(t_path **path_tab, size_t len);
-size_t				ft_npath(t_data *data);
-void				ft_pathlist_totab(t_data *data);
+size_t				npath(t_data *data);
+void				pathlist_totab(t_data *data);
 /*
 ** ANT MOVE
 */
@@ -101,25 +101,25 @@ void				print_ant(t_path *path);
 /*
 **	PARSER
 */
-int					ft_isant(char *str, t_data *data);
-int					ft_isroom(char *str, t_data *data);
-int					ft_ispipe(char *str, t_data *data);
-int					ft_isinst(char *str);
-int					ft_isminus(char *line);
-int					ft_iscomment(char *str);
-int					ft_isstate(t_data *data);
-int					ft_read_stdin(t_data *data);
-void				ft_link_pipe(t_data *data);
-void				ft_assign_pipe(t_map *map, t_data *data, size_t n);
-t_map				*ft_search_map_address(char *str, t_data *data);
-size_t				ft_pipe_nbr(t_map *map, t_pipe *pipe);
+int					isant(char *str, t_data *data);
+int					isroom(char *str, t_data *data);
+int					ispipe(char *str, t_data *data);
+int					isinst(char *str);
+int					isminus(char *line);
+int					iscomment(char *str);
+int					isstate(t_data *data);
+int					read_stdin(t_data *data);
+void				link_pipe(t_data *data);
+void				assign_pipe(t_map *map, t_data *data, size_t n);
+t_map				*search_map_address(char *str, t_data *data);
+size_t				pipe_nbr(t_map *map, t_pipe *pipe);
 /*
 ** TOOLS
 */
-int					ft_tab_len(char **str);
-size_t				ft_sizetoi(char *str);
-void				ft_freetab(char ***tab);
-void				ft_free_map(t_data *data);
-void				ft_free_struct(t_data *data);
-void				ft_error(int n);
+int					tab_len(char **str);
+size_t				sizetoi(char *str);
+void				freetab(char ***tab);
+void				free_map(t_data *data);
+void				free_struct(t_data *data);
+void				error(int n);
 #endif

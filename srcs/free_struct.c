@@ -6,13 +6,13 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 16:25:37 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/14 17:16:58 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/16 15:03:03 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	ft_free_map(t_data *data)
+void	free_map(t_data *data)
 {
 	t_map	*tmp;
 
@@ -30,7 +30,7 @@ void	ft_free_map(t_data *data)
 	data->map = NULL;
 }
 
-void	ft_free_path(t_data *data)
+void	free_path(t_data *data)
 {
 	t_path	*tmp;
 
@@ -45,7 +45,7 @@ void	ft_free_path(t_data *data)
 	data->global_path = NULL;
 }
 
-void	ft_free_pipe(t_data *data)
+void	free_pipe(t_data *data)
 {
 	t_pipe	*tmp;
 
@@ -62,11 +62,11 @@ void	ft_free_pipe(t_data *data)
 	data->pipe = NULL;
 }
 
-void	ft_free_struct(t_data *data)
+void	free_struct(t_data *data)
 {
-	ft_free_map(data);
-	ft_free_path(data);
-	ft_free_pipe(data);
+	free_map(data);
+	free_path(data);
+	free_pipe(data);
 	ft_list_del(&data->raw_input);
 	free(data->path_tab);
 	data->path_tab = NULL;

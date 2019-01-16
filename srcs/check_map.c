@@ -6,21 +6,21 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 12:12:12 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/15 19:32:25 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/16 15:01:40 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int		ft_isvalid_map(t_data *data)
+int		isvalid_map(t_data *data)
 {
 	t_map	*tmp;
 
 	tmp = data->map;
-	if (!ft_isvalid_pipe(data))
-		ft_error(-2);
-	if (!ft_count_state(data))
-		ft_error(-1);
+	if (!isvalid_pipe(data))
+		error(-2);
+	if (!count_state(data))
+		error(-1);
 	while (tmp)
 	{
 		if (tmp->state == 1)
@@ -33,11 +33,11 @@ int		ft_isvalid_map(t_data *data)
 	}
 	data->start = tmp;
 	if (data->pipe == NULL)
-		ft_error(-15);
+		error(-15);
 	return (1);
 }
 
-int		ft_count_state(t_data *data)
+int		count_state(t_data *data)
 {
 	t_map	*tmp;
 	int		start;
@@ -59,7 +59,7 @@ int		ft_count_state(t_data *data)
 	return (1);
 }
 
-int		ft_isvalid_room(t_data *data)
+int		isvalid_room(t_data *data)
 {
 	t_map	*tmp;
 	t_map	*tmp2;
@@ -80,7 +80,7 @@ int		ft_isvalid_room(t_data *data)
 	return (1);
 }
 
-int		ft_isvalid_pipe(t_data *data)
+int		isvalid_pipe(t_data *data)
 {
 	t_pipe	*tmpipe;
 	t_pipe	*tmpipe2;

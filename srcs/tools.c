@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tools.c                                         :+:      :+:    :+:   */
+/*   tools.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "lem_in.h"
 
-size_t	ft_sizetoi(char *str)
+size_t	sizetoi(char *str)
 {
 	size_t i;
 	size_t dst;
@@ -27,7 +27,7 @@ size_t	ft_sizetoi(char *str)
 	return (dst);
 }
 
-int		ft_tab_len(char **tab)
+int		tab_len(char **tab)
 {
 	int i;
 
@@ -37,7 +37,7 @@ int		ft_tab_len(char **tab)
 	return (i);
 }
 
-void	ft_freetab(char ***tab)
+void	freetab(char ***tab)
 {
 	size_t i;
 
@@ -52,7 +52,7 @@ void	ft_freetab(char ***tab)
 	*tab = NULL;
 }
 
-size_t	ft_pipesize(t_map **pipe)
+size_t	pipesize(t_map **pipe)
 {
 	size_t	i;
 

@@ -6,14 +6,14 @@
 #    By: vifonne <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/05 18:03:13 by vifonne           #+#    #+#              #
-#    Updated: 2019/01/15 18:47:01 by vifonne          ###   ########.fr        #
+#    Updated: 2019/01/16 15:03:05 by vifonne          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS		=		main.c				\
 					parser.c			\
 					map_pipe_list.c		\
-					ft_tools.c			\
+					tools.c				\
 					link_pipe.c			\
 					printf_review.c		\
 					check_stdin.c		\

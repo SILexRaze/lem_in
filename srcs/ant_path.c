@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 15:44:01 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/15 19:27:44 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/16 15:02:15 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ int		ant_path(t_data *data)
 	size_t	n;
 	size_t count;
 
-	count = ft_tab_struc_len(data->path_tab);
-	n = ft_pipesize(data->start->pipe);
+	count = tab_struc_len(data->path_tab);
+	n = pipesize(data->start->pipe);
 	if (n > count)
 		n = count;
 	while (!check_ant(data, n))
