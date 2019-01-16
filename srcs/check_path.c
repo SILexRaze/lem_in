@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 18:35:33 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/16 16:10:51 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/16 16:32:37 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,10 @@ void	merge_ifeq_path(t_data *data)
 				if (tmp2->room == tmp->room
 						&& tmp->room->state == tmp2->room->state
 						&& tmp->room->state == 0)
-					tmp->next = tmp2->next; 
+				{
+					tmp->next = tmp2->next;
+					data->path_tab[i]->size = path_len(&data->path_tab[i]);
+				}
 				tmp2 = tmp2->next;
 			}
 			tmp = tmp->next;

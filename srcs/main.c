@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:08 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/16 16:10:24 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/16 16:29:36 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		main(void)
 	check_ifpath(data);
 	pathlist_totab(data);
 	printf_review(data);
-	ft_print_list(&data->raw_input);
+//	ft_print_list(&data->raw_input);
 	check_overlap_path(data);
 	merge_ifeq_path(data);
 	ant_path(data);
