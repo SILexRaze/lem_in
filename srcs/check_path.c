@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 18:35:33 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/16 16:32:37 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/16 16:40:37 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,6 @@ void	check_ifpath(t_data *data)
 			end++;
 		tmp = tmp->next;
 	}
-	if (!(start > 0 && end > 0))
+	if (start == 0 || end == 0)
 		error(-3);
 }
