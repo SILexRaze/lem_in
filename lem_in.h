@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/15 19:32:43 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/16 15:07:20 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct		s_path
 {
 	t_map			*room;
 	size_t			size;
+	struct s_path	*freenext;
 	struct s_path	*next;
 }					t_path;
 

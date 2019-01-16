@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 14:45:30 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/16 15:01:59 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/16 15:07:56 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_path	*path_create_elem(t_map *room, size_t size)
 	new->room = room;
 	new->size = size;
 	new->next = NULL;
+	new->freenext = NULL;
 	return (new);
 }
 
@@ -34,6 +35,7 @@ void	path_pushback(t_path **begin_list, t_map *room, size_t size)
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = path_create_elem(room, size);
+		tmp->freenext = tmp->next;
 	}
 	else
 		*begin_list = path_create_elem(room, size);

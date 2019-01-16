@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/14 16:25:37 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/16 15:03:03 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/16 15:07:56 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	free_path(t_data *data)
 	while (data->global_path)
 	{
 		tmp = data->global_path;
-		data->global_path = data->global_path->next;
+		data->global_path = data->global_path->freenext;
 		free(tmp);
 		tmp = NULL;
 	}
