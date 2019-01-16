@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 18:35:33 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/16 15:17:00 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/16 16:10:51 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,25 @@ void	delete_path(t_data *data, int index)
 	}
 	free(data->path_tab);
 	data->path_tab = tab;
+}
+
+void	check_ifpath(t_data *data)
+{
+	t_path	*tmp;
+	int		end;
+	int		start;
+
+	start = 0;
+	end = 0;
+	tmp = data->global_path;
+	while (tmp)
+	{
+		if (tmp->room->state == 1)
+			start++;
+		else if (tmp->room->state == 2)
+			end++;
+		tmp = tmp->next;
+	}
+	if (!(start > 0 && end > 0))
+		error(-3);
 }

@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:08 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/16 14:58:39 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/16 16:10:24 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int		main(void)
 	link_pipe(data);
 	isvalid_map(data);
 	explore(data->start, data, NULL);
+	check_ifpath(data);
 	pathlist_totab(data);
 	printf_review(data);
 	ft_print_list(&data->raw_input);

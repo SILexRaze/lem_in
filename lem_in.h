@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/16 15:20:19 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/16 16:11:07 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ int					isstate(t_data *data);
 */
 void				check_overlap_path(t_data *data);
 void				merge_ifeq_path(t_data *data);
+void				check_ifpath(t_data *data);
 void				delete_path(t_data *data, int index);
 /*
 **	EXPLORE

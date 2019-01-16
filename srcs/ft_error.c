@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 15:43:36 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/16 15:01:09 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/16 16:11:08 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,7 @@ void	error(int n)
 		ft_putendl_fd("Error (-1) : Bad room declaration.", 2);
 	else if (n == -2)
 		ft_putendl_fd("Error (-2) : Bad tunnel declaration.", 2);
+	else if (n == -3)
+		ft_putendl_fd("Error (-3) : No path between Start and End.", 2);
 	exit(n);
 }

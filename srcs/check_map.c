@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 12:12:12 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/16 15:01:40 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/16 16:05:36 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		isvalid_map(t_data *data)
 	}
 	data->start = tmp;
 	if (data->pipe == NULL)
-		error(-15);
+		error(-2);
 	return (1);
 }
 
