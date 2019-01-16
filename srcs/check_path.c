@@ -6,13 +6,13 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 18:35:33 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/15 19:36:12 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/16 15:17:00 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int		check_overlap_path(t_data *data)
+void	check_overlap_path(t_data *data)
 {
 	int		n;
 	int 	i;
@@ -33,8 +33,8 @@ int		check_overlap_path(t_data *data)
 						&& tmp->room->state == tmp2->room->state
 						&& tmp->room->state == 0)
 				{
-					//supprimer le chemin le plus long
-					return (1);
+					delete_path(data, i + 1);
+					break ;
 				}
 				tmp2 = tmp2->next;
 			}
@@ -42,7 +42,6 @@ int		check_overlap_path(t_data *data)
 		}
 		i++;
 	}
-	return (0);
 }
 
 void	merge_ifeq_path(t_data *data)
@@ -72,4 +71,24 @@ void	merge_ifeq_path(t_data *data)
 		}
 		i++;
 	}
+}
+
+void	delete_path(t_data *data, int index)
+{
+	t_path	**tab;
+	int		n;
+	int		j;
+
+	j = 0;
+	n = tab_struc_len(data->path_tab);
+	if (!(tab = (t_path **)ft_memalloc(sizeof(t_path *) * (n - 1))))
+		exit(0);
+	while (j < n)
+	{
+		if (j != index)
+			tab[j] = data->path_tab[j];
+		j++;
+	}
+	free(data->path_tab);
+	data->path_tab = tab;
 }

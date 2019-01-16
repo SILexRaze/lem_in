@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/16 15:07:20 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/16 15:20:19 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,36 +62,49 @@ typedef struct		s_data
 /*
 **	LIST FUNCTION (t_pipe, t_map)
 */
-t_map				*map_create_elem(char **tab, int state);
 void				map_pushback(t_map **begin_list, char **tab, int state);
-t_pipe				*pipe_create_elem(char **tab);
 void				pipe_pushback(t_pipe **begin_list, char **tab);
 void				printf_review(t_data *data); //remove when not needed
-t_path				*path_create_elem(t_map *room, size_t size);
 void				path_pushback(t_path **begin_list, t_map *room, size_t size);
+t_map				*map_create_elem(char **tab, int state);
+t_path				*path_create_elem(t_map *room, size_t size);
+t_pipe				*pipe_create_elem(char **tab);
 size_t				path_len(t_path **begin_list);
 /*
-**	CHECKER
+**	CHECKER	MAP
 */
 int					isvalid_pipe(t_data *data);
 int					isvalid_map(t_data *data);
 int					isvalid_room(t_data *data);
 int					count_state(t_data *data);
-int					check_overlap_path(t_data *data);
+/*
+**	CHECKER STDIN
+*/
+int					isant(char *str, t_data *data);
+int					isroom(char *str, t_data *data);
+int					ispipe(char *str, t_data *data);
+int					isinst(char *str);
+int					isminus(char *line);
+int					iscomment(char *str);
+int					isstate(t_data *data);
+/*
+**	CHECKER PATH
+*/
+void				check_overlap_path(t_data *data);
 void				merge_ifeq_path(t_data *data);
-size_t				tab_struc_len(t_path **pipe);
+void				delete_path(t_data *data, int index);
 /*
 **	EXPLORE
 */
 int					check_weight(t_map *tmp);
 int					check_weight(t_map *tmp);
-void				count_connex(t_map *tmp);
 int					explore(t_map *tmp, t_data *data, t_map *prev);
 int					priority(t_map *tmp);
-size_t				pipesize(t_map **pipe);
 void				sort_path_tab(t_path **path_tab, size_t len);
-size_t				npath(t_data *data);
+void				count_connex(t_map *tmp);
 void				pathlist_totab(t_data *data);
+size_t				npath(t_data *data);
+size_t				pipesize(t_map **pipe);
 /*
 ** ANT MOVE
 */
@@ -102,25 +115,19 @@ void				print_ant(t_path *path);
 /*
 **	PARSER
 */
-int					isant(char *str, t_data *data);
-int					isroom(char *str, t_data *data);
-int					ispipe(char *str, t_data *data);
-int					isinst(char *str);
-int					isminus(char *line);
-int					iscomment(char *str);
-int					isstate(t_data *data);
 int					read_stdin(t_data *data);
 void				link_pipe(t_data *data);
 void				assign_pipe(t_map *map, t_data *data, size_t n);
 t_map				*search_map_address(char *str, t_data *data);
-size_t				pipe_nbr(t_map *map, t_pipe *pipe);
 /*
 ** TOOLS
 */
 int					tab_len(char **str);
-size_t				sizetoi(char *str);
 void				freetab(char ***tab);
 void				free_map(t_data *data);
 void				free_struct(t_data *data);
 void				error(int n);
+size_t				sizetoi(char *str);
+size_t				pipe_nbr(t_map *map, t_pipe *pipe);
+size_t				tab_struc_len(t_path **pipe);
 #endif
