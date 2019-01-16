@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/16 16:36:31 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/16 18:31:17 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,10 +109,12 @@ size_t				pipesize(t_map **pipe);
 /*
 ** ANT MOVE
 */
+int					ant_move_nostart(t_path *path, t_path *prev, t_data *data, int n);
 int					ant_move(t_path *path, t_path *prev, t_data *data, int n);
 int					check_ant(t_data *data, int n);
 int					ant_path(t_data *data);
 void				print_ant(t_path *path);
+size_t				pathcalculator(t_data *data, size_t i);
 /*
 **	PARSER
 */
