@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/16 18:31:17 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/17 13:52:03 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ int					isstate(t_data *data);
 /*
 **	CHECKER PATH
 */
-void				check_overlap_path(t_data *data);
-void				merge_ifeq_path(t_data *data);
+void				check_overlap_path(t_data *data, int n);
+void				merge_ifeq_path(t_data *data, int n);
 void				check_ifpath(t_data *data);
 void				delete_path(t_data *data, int index);
 /*
@@ -110,14 +110,15 @@ size_t				pipesize(t_map **pipe);
 /*
 ** ANT MOVE
 */
+int					alterpathcalc(t_data *data, size_t i);
 int					ant_move_nostart(t_path *path, t_path *prev, t_data *data, int n);
 int					ant_move(t_path *path, t_path *prev, t_data *data, int n);
 int					check_ant(t_data *data, int n);
 int					ant_path(t_data *data);
 void				print_ant(t_path *path);
 size_t				pathcalculator(t_data *data, size_t i);
-int				ant_calcul(t_data *data);
-int				dispatch_ant(size_t medant, size_t medpath, t_data *data);
+int					ant_calcul(t_data *data);
+int					dispatch_ant(size_t medant, size_t medpath, t_data *data);
 /*
 **	PARSER
 */

@@ -6,22 +6,20 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 18:35:33 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/16 16:40:37 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/17 15:25:06 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	check_overlap_path(t_data *data)
+void	check_overlap_path(t_data *data, int n)
 {
-	int		n;
-	int 	i;
+	int		i;
 	t_path	*tmp;
 	t_path	*tmp2;
 
-	i = 0;
-	n = tab_struc_len(data->path_tab);
-	while (i < n - 1)
+	i = -1;
+	while (++i < n - 1)
 	{
 		tmp = data->path_tab[i];
 		while (tmp)
@@ -29,9 +27,8 @@ void	check_overlap_path(t_data *data)
 			tmp2 = data->path_tab[i + 1];
 			while (tmp2)
 			{
-				if (tmp2->room == tmp->room
-						&& tmp->room->state == tmp2->room->state
-						&& tmp->room->state == 0)
+				if (tmp2->room == tmp->room && tmp->room->state == 0
+						&& tmp->room->state == tmp2->room->state)
 				{
 					delete_path(data, i + 1);
 					break ;
@@ -40,20 +37,17 @@ void	check_overlap_path(t_data *data)
 			}
 			tmp = tmp->next;
 		}
-		i++;
 	}
 }
 
-void	merge_ifeq_path(t_data *data)
+void	merge_ifeq_path(t_data *data, int n)
 {
 	t_path	*tmp;
 	t_path	*tmp2;
 	int		i;
-	int		n;
 
-	i = 0;
-	n = tab_struc_len(data->path_tab);
-	while (i < n)
+	i = -1;
+	while (++i < n)
 	{
 		tmp = data->path_tab[i];
 		while (tmp)
@@ -72,7 +66,6 @@ void	merge_ifeq_path(t_data *data)
 			}
 			tmp = tmp->next;
 		}
-		i++;
 	}
 }
 

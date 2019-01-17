@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:08 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/17 12:10:49 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/17 13:49:31 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		main(void)
 //	printf_review(data);
 //	ft_print_list(&data->raw_input);
 	ant_path(data);
-	ant_calcul(data);
+//	ant_calcul(data);
 	free_struct(data);
 	return (0);
 }

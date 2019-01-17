@@ -6,13 +6,13 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 15:44:01 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/17 12:14:02 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/17 15:16:30 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int		ant_move_nostart(t_path *path, t_path *prev , t_data *data, int n)
+int		ant_move_nostart(t_path *path, t_path *prev, t_data *data, int n)
 {
 	if (path->next && path->room->state != 1 && path->room->nbant == 1
 			&& (path->next->room->nbant == 0 || path->next->room->state == 2))
@@ -30,9 +30,10 @@ int		ant_move_nostart(t_path *path, t_path *prev , t_data *data, int n)
 	return (0);
 }
 
-int		ant_move(t_path *path, t_path *prev , t_data *data, int n)
+int		ant_move(t_path *path, t_path *prev, t_data *data, int n)
 {
-	if (path->room->state == 1 && path->room->nbant && (path->next->room->nbant == 0 || path->next->room->state == 2))
+	if (path->room->state == 1 && path->room->nbant
+			&& (path->next->room->nbant == 0 || path->next->room->state == 2))
 	{
 		path->room->nbant--;
 		path->room->nameant = data->ant - path->room->nbant;
@@ -86,22 +87,38 @@ int		check_ant(t_data *data, int n)
 }
 
 size_t	pathcalculator(t_data *data, size_t i)
-  {
-	  size_t	counti;
-	  size_t	countprev;
+{
+	size_t	counti;
+	size_t	countprev;
 
-	  counti = (data->path_tab[i]->size + data->start->nbant - 1) / 2;
-	  countprev = (data->path_tab[0]->size + data->start->nbant - 1) / 2;
-	  if (counti - countprev < data->start->nbant / i)
-		  return (1);
-	  return(0);
-  }
+	counti = (data->path_tab[i]->size + data->start->nbant - 1) / 2;
+	countprev = (data->path_tab[i - 1]->size + data->start->nbant - 1) / 2;
+	if (counti - countprev < data->start->nbant / i)
+		return (1);
+	return (0);
+}
+
+int		alterpathcalc(t_data *data, size_t i)
+{
+	size_t	len;
+	size_t	len_prev;
+	size_t	t;
+	size_t	tprev;
+
+	len = data->path_tab[i]->size;
+	len_prev = data->path_tab[i - 1]->size;
+	t = len + (data->start->nbant / i) - 1;
+	tprev = len_prev + (data->start->nbant / i - 1) - 1;
+	if (t - tprev > 0)
+		return (0);
+	return (1);
+}
 
 int		ant_path(t_data *data)
 {
 	size_t	i;
 	size_t	n;
-	size_t count;
+	size_t	count;
 
 	count = tab_struc_len(data->path_tab);
 	n = pipesize(data->start->pipe);
@@ -122,6 +139,6 @@ int		ant_path(t_data *data)
 		count++;
 		write(1, "\n", 1);
 	}
-//	printf("l=%zu\n", count);
+	printf("\nl=%zu\n", count);
 	return (0);
 }

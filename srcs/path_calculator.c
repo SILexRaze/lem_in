@@ -6,13 +6,13 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 12:11:19 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/17 12:11:25 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/17 13:58:24 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int	ant_calcul(t_data *data)
+int		ant_calcul(t_data *data)
 {
 	size_t	medant;
 	size_t	medpath;
@@ -30,22 +30,22 @@ int	ant_calcul(t_data *data)
 		i++;
 	}
 	medpath = medpath / nbpipe;
-//	printf("medant=%zu\tmedpath=%zu\n",medant,medpath);
+	printf("medant=%zu\tmedpath=%zu\n", medant, medpath);
 	dispatch_ant(medant, medpath, data);
 	return (0);
 }
 
-int	dispatch_ant(size_t medant,size_t medpath, t_data *data)
+int		dispatch_ant(size_t medant, size_t medpath, t_data *data)
 {
 	size_t	i;
 	t_path	**tmp;
-	
+
 	i = 0;
 	tmp = data->path_tab;
 	while (tmp[i])
 	{
 		tmp[i]->ant = medant + medpath - tmp[i]->size;
-//		printf("tmp[%zu]=%ld\n", i, tmp[i]->ant);
+		printf("tmp[%zu]=%ld\n", i, tmp[i]->ant);
 		i++;
 	}
 	return (0);
