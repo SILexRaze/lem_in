@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 15:44:01 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/17 15:16:30 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/17 16:14:46 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ size_t	pathcalculator(t_data *data, size_t i)
 	size_t	countprev;
 
 	counti = (data->path_tab[i]->size + data->start->nbant - 1) / 2;
-	countprev = (data->path_tab[i - 1]->size + data->start->nbant - 1) / 2;
+	countprev = (data->path_tab[0]->size + data->start->nbant - 1) / 2;
 	if (counti - countprev < data->start->nbant / i)
 		return (1);
 	return (0);

@@ -14,8 +14,7 @@ do
 	./generator --flow-one > tmp.map
 	l=`cat tmp.map | grep "lines" | tr '\n' ' ' | cut -d ' ' -f 16`
 	r=`./lem-in < tmp.map | wc -l | cut -d ' ' -f 7`
-	r=$[$r+2]
-	if [ $l -lt $r ]
+	if [ $r -le $l ]
 	then
 		echo "OK lines = $r"
 		ok=$[$ok+1]
@@ -38,8 +37,7 @@ do
 	./generator --flow-ten > tmp.map
 	l=`cat tmp.map | grep "lines" | tr '\n' ' ' | cut -d ' ' -f 16`
 	r=`./lem-in < tmp.map | wc -l | cut -d ' ' -f 7`
-	r=$[$r+2]
-	if [ $l -lt $r ]
+	if [ $r -le $l ]
 	then
 		echo "OK lines = $r"
 		ok=$[$ok+1]
@@ -61,8 +59,7 @@ do
 	./generator --flow-thousand > tmp.map
 	l=`cat tmp.map | grep "lines" | tr '\n' ' ' | cut -d ' ' -f 16`
 	r=`./lem-in < tmp.map | wc -l | cut -d ' ' -f 7`
-	r=$[$r+2]
-	if [ $l -lt $r ]
+	if [ $r -lt $l ]
 	then
 		echo "OK lines = $r"
 		ok=$[$ok+1]
