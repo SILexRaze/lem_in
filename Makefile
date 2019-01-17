@@ -25,6 +25,7 @@ SRCS		=		main.c				\
 					ant_path.c			\
 					tab_struc_len.c		\
 					check_path.c		\
+					path_calculator.c	\
 					free_struct.c
 SRCS_DIR	=		$(addprefix srcs/, $(SRCS))
 LIBFT		=		libft/

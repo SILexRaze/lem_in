@@ -29,6 +29,7 @@ int		main(void)
 	printf_review(data);
 //	ft_print_list(&data->raw_input);
 	ant_path(data);
+	ant_calcul(data);
 	free_struct(data);
 	return (0);
 }

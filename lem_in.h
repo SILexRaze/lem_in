@@ -43,6 +43,7 @@ typedef struct		s_path
 {
 	t_map			*room;
 	size_t			size;
+	long			ant;
 	struct s_path	*freenext;
 	struct s_path	*next;
 }					t_path;
@@ -115,6 +116,8 @@ int					check_ant(t_data *data, int n);
 int					ant_path(t_data *data);
 void				print_ant(t_path *path);
 size_t				pathcalculator(t_data *data, size_t i);
+int				ant_calcul(t_data *data);
+int				dispatch_ant(size_t medant, size_t medpath, t_data *data);
 /*
 **	PARSER
 */
