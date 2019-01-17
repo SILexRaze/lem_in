@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 15:44:01 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/16 20:31:56 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/17 12:14:02 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,6 @@ int		ant_path(t_data *data)
 		count++;
 		write(1, "\n", 1);
 	}
-	printf("l=%zu\n", count);
+//	printf("l=%zu\n", count);
 	return (0);
 }

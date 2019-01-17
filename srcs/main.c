@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:08 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/16 18:35:59 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/17 12:10:49 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		main(void)
 	explore(data->start, data, NULL);
 	check_ifpath(data);
 	pathlist_totab(data);
-	printf_review(data);
+//	printf_review(data);
 //	ft_print_list(&data->raw_input);
 	ant_path(data);
 	ant_calcul(data);
