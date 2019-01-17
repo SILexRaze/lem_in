@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 12:11:19 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/17 17:48:08 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/17 18:23:12 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,22 @@ int		dispatch_ant(size_t medant, size_t medpath, t_data *data, size_t *n)
 	size_t		i;
 	int			test;
 	long long	count;
+	long long	diff;
 	t_path		**tmp;
 
 	i = 0;
 	test = 0;
+	diff = 0;
 	tmp = data->path_tab;
 	while (tmp[i] && (*n))
 	{
 		count = medpath - tmp[i]->size + medant;
 		printf("COUNT=%lld|I=%zu\n", count, i);
-		if (count > 0)
+		if (i > 0)
+			diff = tmp[i]->size - tmp[i-1]->size;	
+		printf("diff=%lld n=%zu\n", diff, *n);
+
+		if (count > 0 && diff < (long long)*n)
 		{
 			tmp[i]->ant += medant;
 			test = *n - medant;
