@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 15:44:01 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/17 18:23:14 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/17 19:46:56 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int		ant_move_nostart(t_path *path, t_path *prev, t_data *data, int n)
 		path->room->nbant--;
 		print_ant(path);
 		if (prev->room->nbant && prev->room->state != 1)
-			return (ant_move(data->path_tab[n], data->path_tab[n], data, n));
+			return (ant_move_nostart(data->path_tab[n], data->path_tab[n], data, n));
 	}
 	else if (path->next)
-		return (ant_move(path->next, path, data, n));
+		return (ant_move_nostart(path->next, path, data, n));
 	return (0);
 }
 
@@ -135,7 +135,6 @@ int		ant_path(t_data *data)
 			else
 			{
 				ant_move(data->path_tab[i], data->path_tab[i], data, i);
-			printf("|%zu|\n",data->path_tab[i]->ant);
 				data->path_tab[i]->ant--;
 			}
 			i++;
