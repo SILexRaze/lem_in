@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 15:44:01 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/17 16:14:46 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/17 17:26:02 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,10 +130,13 @@ int		ant_path(t_data *data)
 		i = 0;
 		while (i < n)
 		{
-			if (i > 0 && !pathcalculator(data, i))
+			if (i > 0 && data->path_tab[i]->ant == 0)
 				ant_move_nostart(data->path_tab[i], data->path_tab[i], data, i);
 			else
+			{
 				ant_move(data->path_tab[i], data->path_tab[i], data, i);
+				data->path_tab[i]->ant--;
+			}
 			i++;
 		}
 		count++;

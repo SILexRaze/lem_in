@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 12:11:19 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/17 16:40:40 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/17 17:48:08 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,26 @@ int		ant_calcul(t_data *data, size_t *n)
 int		dispatch_ant(size_t medant, size_t medpath, t_data *data, size_t *n)
 {
 	size_t		i;
+	int			test;
 	long long	count;
 	t_path		**tmp;
 
 	i = 0;
+	test = 0;
 	tmp = data->path_tab;
 	while (tmp[i] && (*n))
 	{
 		count = medpath - tmp[i]->size + medant;
+		printf("COUNT=%lld|I=%zu\n", count, i);
 		if (count > 0)
 		{
 			tmp[i]->ant += medant;
-			if (*n - medant > 0)
-				(*n) -= tmp[i]->ant;
+			test = *n - medant;
+			if (test > 0)
+				(*n) -= medant;
 			else
-				*n = *n - medant;
+				*n = -test;
 		}
-		printf("tmp[%zu]=%ld\n", i, tmp[i]->ant);
 		i++;
 	}
 	return (0);
@@ -71,5 +74,11 @@ void	newpathfinder(t_data *data)
 	{
 		ant_calcul(data, &nant);
 		printf("%zu|\n", nant);
+	}
+	nant = 0;
+	while (data->path_tab[nant])
+	{
+		printf("tmp[%zu]=%ld\n", nant, data->path_tab[nant]->ant);
+		nant++;
 	}
 }
