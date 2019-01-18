@@ -14,7 +14,7 @@ while [ $i -lt $tryfo ]
 do
 	./generator --flow-one > tmp.map
 	l=`cat tmp.map | grep "lines" | tr '\n' ' ' | cut -d ' ' -f 16`
-	r=`./lem-in < tmp.map | wc -l | cut -d ' ' -f 7`
+	r=`./lem-in < tmp.map | grep L | wc -l | sed -e 's/ //g'`
 	l=$[$l+3]
 	if [ $r -le $l ]
 	then
@@ -35,7 +35,7 @@ while [ $i -lt $tryft ]
 do
 	./generator --flow-ten > tmp.map
 	l=`cat tmp.map | grep "lines" | tr '\n' ' ' | cut -d ' ' -f 16`
-	r=`./lem-in < tmp.map | wc -l | cut -d ' ' -f 7`
+	r=`./lem-in < tmp.map | grep L | wc -l | sed -e 's/ //g'`
 	l=$[$l+3]
 	if [ $r -le $l ]
 	then
@@ -56,7 +56,7 @@ while [ $i -lt $tryfth ]
 do
 	./generator --flow-thousand > tmp.map
 	l=`cat tmp.map | grep "lines" | tr '\n' ' ' | cut -d ' ' -f 16`
-	r=`./lem-in < tmp.map | wc -l | cut -d ' ' -f 7`
+	r=`./lem-in < tmp.map | grep L | wc -l | sed -e 's/ //g'`
 	l=$[$l+3]
 	if [ $r -le $l ]
 	then
@@ -69,4 +69,5 @@ do
 	fi
 	i=$[$i+1]
 done
+rm tmp.map
 echo "OK : $ok | KO : $ko"
