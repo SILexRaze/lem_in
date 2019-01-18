@@ -1,4 +1,4 @@
-#!/Users/vifonne/.brew/bin/python3
+#!/Usr/bin/python
 import  sys
 import  matplotlib.pyplot as plt
 mapread = []
