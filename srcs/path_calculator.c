@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 12:11:19 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/17 19:46:38 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/18 03:07:15 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int		ant_calcul(t_data *data, size_t *n)
 	nbpipe = 0;
 	medpath = 0;
 	nbpipe = tab_struc_len(data->path_tab);
-	medant = *n / nbpipe;
+	//medant = *n / nbpipe;
+	medant = 1;
 	if (medant == 0)
 		medant = 1;
 	while (data->path_tab[i])
@@ -32,7 +33,7 @@ int		ant_calcul(t_data *data, size_t *n)
 		i++;
 	}
 	medpath = medpath / nbpipe;
-//	printf("medant=%zu\tmedpath=%zu\n", medant, medpath);
+	//printf("medant=%zu\tmedpath=%zu\n", medant, medpath);
 	dispatch_ant(medant, medpath, data, n);
 	return (0);
 }
@@ -43,6 +44,7 @@ int		dispatch_ant(size_t medant, size_t medpath, t_data *data, size_t *n)
 	int			test;
 	long long	count;
 	long long	diff;
+	long long	test2;
 	t_path		**tmp;
 
 	i = 0;
@@ -51,20 +53,22 @@ int		dispatch_ant(size_t medant, size_t medpath, t_data *data, size_t *n)
 	tmp = data->path_tab;
 	while (tmp[i] && (*n))
 	{
-		count = medpath - tmp[i]->size + medant;
-//		printf("COUNT=%lld|I=%zu\n", count, i);
+		count = medpath - tmp[i]->size;
+//		printf("COUNT=%lld|\tI=%zu\n", count, i);
 		if (i > 0)
-			diff = tmp[i]->size - tmp[0]->size;	
-//		printf("diff=%lld n=%zu\n", diff, *n);
-
-		if (count > 0 && diff < (long long)*n)
+		{
+			test = tmp[i - 1]->ant;
+			diff = tmp[i]->size - tmp[i - 1]->size + 1;
+		}
+//		printf("diff=%lld\tn=%zu\n", diff, *n);
+		if (diff <= test)
 		{
 			tmp[i]->ant += medant;
-			test = *n - medant;
-			if (test > 0)
+			test2 = *n - medant;
+			if (test2 > 0)
 				(*n) -= medant;
 			else
-				*n = -test;
+				*n = -test2;
 		}
 		i++;
 	}
@@ -74,17 +78,18 @@ int		dispatch_ant(size_t medant, size_t medpath, t_data *data, size_t *n)
 void	newpathfinder(t_data *data)
 {
 	size_t	nant;
+	size_t	i;
 
 	nant = data->ant;
 	while (nant)
 	{
 		ant_calcul(data, &nant);
 //		printf("%zu|\n", nant);
-	}
-	nant = 0;
-	while (data->path_tab[nant])
-	{
-	printf("tmp[%zu]=%ld\n", nant, data->path_tab[nant]->ant);
-		nant++;
+		i = 0;
+		while (data->path_tab[i])
+		{
+//			printf("tmp[%zu]=%ld\n", i, data->path_tab[i]->ant);
+			i++;
+		}
 	}
 }
