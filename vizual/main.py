@@ -1,7 +1,6 @@
 #!/Library/Frameworks/Python.framework/Versions/3.7/bin/python3
 #/usr/bin/python
 import  sys
-import  matplotlib.pyplot as plt
 import	pygame as pg
 from	random import *
 import	time
@@ -13,68 +12,95 @@ white = (255,255,255)
 black = (0,0,0)
 pink = (255,200,200)
 brown = (61, 31, 33)
-colors = [red, green, blue, white , pink]
-mapread = []
-x = []
-y = []
-name = []
-fg_color = 'red'
-def connectpoints(x, y, p1, p2, ):
-    x1, x2 = x[p1], x[p2]
-    y1, y2 = y[p1], y[p2]
-    plt.plot([x1, x2], [y1, y2], lw=4)
-for line in sys.stdin:
-    mapread.append(line)
-ant = int(mapread[0])
-mapread.pop(0)
-for line in mapread:
-    if len(line.split()) == 3:
-        name.append(line.split()[0])
-        x.append(int(line.split()[1]))
-        y.append(int(line.split()[2]))
-    elif len(line.split("-")) == 2:
-        ret = line.split("-")
-        connectpoints(x, y, name.index(ret[0].rstrip()), name.index(ret[1].rstrip()))
-i = 0
-while i < len(name):
-    plt.text(x[i], y[i], name[i], position=(x[i] + 7, y[i] + 7))
-    i += 1
-plt.axis('off')
-plt.plot(x, y, 'bs', color=fg_color, markersize=20)
-plt.tight_layout()
-plt.margins(0.07)
-#plt.show()
-done = False
-pg.init()
-width = 800
-height = 535
-rectw = 40
-recth = 30
-size = (width, height)
-i = 0
-j = 0
-coordxprev = 0
-coordyprev = 0
-screen = pg.display.set_mode(size)
-bg = pg.image.load("dirt800x535.jpg").convert()
-screen.blit(bg, [0, 0])
-while not done:
-	for event in pg.event.get():
-		if event.type == pg.QUIT:
-			done = True
-	while (i < len(x)):
-		coordx = randint(0, width - rectw)
-		#int((x[i]*(width-rectw))/max(x))
-		coordy = randint(0, height - recth)
-		#int((y[i]*(height-recth))/max(y))
-		print (coordx, coordy)
-		if (i > 0):
-			pg.draw.line(screen, white, ((coordx+rectw/2), (coordy+recth/2)), ((coordxprev+rectw/2), (coordyprev+recth/2)), 2)
-		pg.draw.rect(screen, brown, pg.Rect(coordx, coordy, rectw, recth))
-		pg.draw.rect(screen, white, pg.Rect(coordx, coordy, rectw, recth), 2)
-		coordxprev = coordx
-		coordyprev = coordy
-		i += 1
-	pg.display.flip()
-pg.quit()
-sys.exit()
+colors = [red, green, blue, white, pink]
+win_w = 800
+win_h = 535
+room_w = 40
+room_h = 30
+def	read_stdin():
+	l_stdin = []
+	for line in sys.stdin:
+		l_stdin.append(line)
+	return l_stdin;
+
+def	parse_stdin(l_stdin):
+	x = []
+	y = []
+	name = []
+	pipe_l = []
+	pipe_r = []
+	room = [name, x, y, pipe_l, pipe_r]
+	ant = int(l_stdin[0])
+	l_stdin.pop(0)
+	for line in l_stdin:
+	    if len(line.split()) == 3:
+	        name.append(line.split()[0])
+	        x.append(int(line.split()[1]))
+	        y.append(int(line.split()[2]))
+	    elif len(line.split("-")) == 2:
+		    ret = line.split("-")
+		    pipe_l.append(name.index(ret[0].rstrip()))
+		    pipe_r.append(name.index(ret[1].rstrip()))
+	return room;
+def	print_map(room):
+	done = False
+	i = 0
+	j = 0
+	pg.init()
+	tmp_x = 0
+	tmp_y = 0
+	screen = pg.display.set_mode([win_w, win_h])
+	bg = pg.image.load("dirt800x535.jpg").convert()
+	screen.blit(bg, [0, 0])
+	while not done:
+		for event in pg.event.get():
+			if event.type == pg.QUIT:
+				done = True
+		while (i < len(room[1])):
+			coordx = randint(0, win_w - room_w)
+			#int((x[i]*(width-rectw))/max(x))
+			coordy = randint(0, win_h - room_h)
+			#int((y[i]*(height-recth))/max(y))
+#				pg.draw.line(
+#					screen,
+#					white,
+#					(coordx+room_w/2 + 2, coordy+room_h/2 + 2),
+#					(tmp_x+room_w/2 + 2, tmp_y+room_h/2 + 2), 2)
+			room[1][i] = coordx
+			room[2][i] = coordy
+			pg.draw.rect(
+				screen,
+				brown,
+				pg.Rect(coordx, coordy, room_w, room_h))
+			pg.draw.rect(
+				screen,
+				white,
+				pg.Rect(coordx, coordy, room_w, room_h),
+				2)
+			tmp_x = coordx
+			tmp_y = coordy
+			i += 1
+		j = 0
+		while j < len(room[3]):
+			src_x = room[1][room[3].index(room[3][j])]
+			src_y = room[2][room[3].index(room[3][j])]
+			dst_x = room[1][room[4].index(room[4][j])]
+			dst_y = room[2][room[4].index(room[4][j])]
+			print(src_x)
+			pg.draw.line(
+				screen,
+				white,
+				(src_x, src_y),
+				(dst_x, dst_y),
+				2
+			)
+			j += 1
+		pg.display.flip()
+	pg.quit()
+
+def	main():
+	l_stdin = read_stdin()
+	room = parse_stdin(l_stdin)
+	print_map(room)
+	sys.exit()
+main()
