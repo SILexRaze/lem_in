@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 13:53:46 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/15 17:48:08 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/20 04:31:34 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int		priority(t_map *tmp)
 	i = -1;
 	while (++i < tmp->n)
 	{
-		if ((tmp->pipe[i]->weight <= min && tmp->pipe[i]->connex != 0
+		if ((tmp->pipe[i]->weight <= min && tmp->pipe[i]->connex != -1
 					&& check_weight(tmp->pipe[i]) == 0))
 		{
 			min = tmp->pipe[i]->weight;
@@ -92,7 +92,8 @@ int		check_start(t_map *tmp)
 int		explore(t_map *tmp, t_data *data, t_map *prev)
 {
 	size_t	i;
-
+	printf("%s-", tmp->name);
+	sleep(5000);
 	i = priority(tmp);
 	tmp->weight++;
 	path_pushback(&data->global_path, tmp, 0);
