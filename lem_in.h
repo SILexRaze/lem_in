@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/17 16:40:41 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/20 05:50:18 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct		s_map
 	size_t			x;
 	size_t			y;
 	int				state;
-	size_t			weight;
+	long			weight;
 	size_t			nbant;
 	size_t			nameant;
 	long			connex;
@@ -104,6 +104,9 @@ int					explore(t_map *tmp, t_data *data, t_map *prev);
 int					priority(t_map *tmp);
 void				sort_path_tab(t_path **path_tab, size_t len);
 void				count_connex(t_map *tmp);
+void				count_connex2(t_map *tmp, t_map *prev);
+int					count_real_pipe(t_map *map, t_map *prev);
+int					check_dead_end(t_map *map, t_map *prev);
 void				pathlist_totab(t_data *data);
 size_t				npath(t_data *data);
 size_t				pipesize(t_map **pipe);

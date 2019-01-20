@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 15:44:01 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/18 03:33:10 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/20 06:02:36 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,34 +83,6 @@ int		check_ant(t_data *data, int n)
 		}
 		j++;
 	}
-	return (1);
-}
-
-size_t	pathcalculator(t_data *data, size_t i)
-{
-	size_t	counti;
-	size_t	countprev;
-
-	counti = (data->path_tab[i]->size + data->start->nbant - 1) / 2;
-	countprev = (data->path_tab[0]->size + data->start->nbant - 1) / 2;
-	if (counti - countprev < data->start->nbant / i)
-		return (1);
-	return (0);
-}
-
-int		alterpathcalc(t_data *data, size_t i)
-{
-	size_t	len;
-	size_t	len_prev;
-	size_t	t;
-	size_t	tprev;
-
-	len = data->path_tab[i]->size;
-	len_prev = data->path_tab[i - 1]->size;
-	t = len + (data->start->nbant / i) - 1;
-	tprev = len_prev + (data->start->nbant / i - 1) - 1;
-	if (t - tprev > 0)
-		return (0);
 	return (1);
 }
 
