@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 13:53:46 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/20 04:31:34 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/20 05:51:58 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	count_connex(t_map *tmp)
 
 int		check_weight(t_map *tmp)
 {
-	if (tmp->weight < (size_t)tmp->connex)
+	if (tmp->weight < tmp->connex)
 		return (0);
 	else
 		return (1);
@@ -51,10 +51,13 @@ int		check_weight(t_map *tmp)
 int		priority(t_map *tmp)
 {
 	size_t	i;
-	size_t	min;
+	long	min;
 	int		j;
 
-	min = tmp->pipe[0]->weight;
+	i = 0;
+	while (tmp->pipe[i] < 0)
+		i++;
+	min = tmp->pipe[i]->weight;
 	i = 0;
 	j = 0;
 	while (++i < tmp->n)
@@ -82,7 +85,7 @@ int		check_start(t_map *tmp)
 	i = 0;
 	while (i < tmp->n)
 	{
-		if (tmp->pipe[i]->weight < (size_t)tmp->pipe[i]->connex)
+		if (tmp->pipe[i]->weight < tmp->pipe[i]->connex)
 			return (0);
 		i++;
 	}
@@ -92,8 +95,7 @@ int		check_start(t_map *tmp)
 int		explore(t_map *tmp, t_data *data, t_map *prev)
 {
 	size_t	i;
-	printf("%s-", tmp->name);
-	sleep(5000);
+
 	i = priority(tmp);
 	tmp->weight++;
 	path_pushback(&data->global_path, tmp, 0);

@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 01:37:31 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/20 04:22:19 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/20 05:52:49 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ void	count_connex2(t_map *tmp, t_map *prev)
 {
 	size_t  i;
 	i = 0;
-	//usleep(50000);
-	printf("%s\tconnex=%ld\n",tmp->name, tmp->connex);
+	//printf("%s\tconnex=%ld\n",tmp->name, tmp->connex);
 	while(tmp->pipe[i] && (tmp->connex == 0 || tmp->connex == -2))
 	{
 		if (tmp->state == 2)

@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/20 04:19:49 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/20 05:50:18 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct		s_map
 	size_t			x;
 	size_t			y;
 	int				state;
-	size_t			weight;
+	long			weight;
 	size_t			nbant;
 	size_t			nameant;
 	long			connex;
