@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 12:11:19 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/21 11:22:59 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/21 16:43:32 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,15 @@ int		dispatch_ant(t_data *data, size_t *n)
 	diff = 0;
 	while (data->path_tab[i] && (*n))
 	{
-//		printf("COUNT=%lld|\tI=%zu\n", count, i);
 		if (i > 0)
 		{
 			test = data->path_tab[i - 1]->ant;
 			diff = data->path_tab[i]->size - data->path_tab[i - 1]->size + 1;
 		}
-//		printf("diff=%lld\tn=%zu\n", diff, *n);
 		if (diff <= test)
 		{
 			data->path_tab[i]->ant += 1;
-			if (*n - 1 > 0)
-				(*n) -= 1;
-			else
-				*n = -(*n - 1);
+			(*n)--;
 		}
 		i++;
 	}
@@ -46,18 +41,8 @@ int		dispatch_ant(t_data *data, size_t *n)
 void	pathfinder(t_data *data)
 {
 	size_t	nant;
-	size_t	i;
 
 	nant = data->ant;
 	while (nant)
-	{
 		dispatch_ant(data, &nant);
-//		printf("%zu|\n", nant);
-		i = 0;
-		while (data->path_tab[i])
-		{
-//			printf("tmp[%zu]=%ld\n", i, data->path_tab[i]->ant);
-			i++;
-		}
-	}
 }

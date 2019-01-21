@@ -6,17 +6,16 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 01:37:31 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/21 15:45:43 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/21 16:30:43 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	count_connex2(t_map *tmp, t_map *prev)
+void	count_connex(t_map *tmp, t_map *prev)
 {
 	size_t  i;
 	i = 0;
-	//printf("%s\tconnex=%ld\n",tmp->name, tmp->connex);
 	while(tmp->pipe[i] && (tmp->connex == 0 || tmp->connex == -2))
 	{
 		if (tmp->state == 2)
@@ -24,7 +23,7 @@ void	count_connex2(t_map *tmp, t_map *prev)
 		if (tmp->pipe[i]->connex == 0  && tmp->pipe[i] != prev)
 		{
 			tmp->connex = -2;
-			count_connex2(tmp->pipe[i], tmp);
+			count_connex(tmp->pipe[i], tmp);
 		}
 		i++;
 	}

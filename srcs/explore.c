@@ -6,39 +6,11 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 13:53:46 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/20 05:51:58 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/21 16:21:13 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-
-void	count_connex(t_map *tmp)
-{
-	size_t	j;
-	size_t	i;
-
-	while (tmp)
-	{
-		i = 0;
-		j = 0;
-		while (i < tmp->n)
-		{
-			if (tmp->pipe[i]->state == 2)
-			{
-				j = 2;
-				break ;
-			}
-			if (pipesize(tmp->pipe[i]->pipe) > 1 || tmp->pipe[i]->state == 1)
-				j++;
-			i++;
-		}
-		if (tmp->state != 0)
-			tmp->connex = j;
-		else
-			tmp->connex = j - 1;
-		tmp = tmp->next;
-	}
-}
 
 int		check_weight(t_map *tmp)
 {

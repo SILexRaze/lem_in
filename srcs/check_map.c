@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 12:12:12 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/16 16:28:52 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/21 16:19:25 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ int		isvalid_pipe(t_data *data)
 	t_pipe	*tmpipe2;
 
 	tmpipe = data->pipe;
+	if (!tmpipe)
+		return (0);
 	while (tmpipe)
 	{
 		tmpipe2 = tmpipe->next;
