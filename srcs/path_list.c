@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 14:45:30 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/21 14:50:12 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/21 16:08:04 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,42 +75,42 @@ size_t	npath(t_data *data)
 void	pathlist_totab(t_data *data)
 {
 	size_t	len;
-	size_t	j;
 	size_t	i;
+	size_t	j;
+	t_path	*start;
 	t_path	*tmp;
 	t_path	*prev;
 
-	i = 0;
 	len = npath(data);
+	i = 0;
+	start = NULL;
 	if (!(data->path_tab = (t_path **)ft_memalloc(sizeof(t_path*) * len)))
 		exit(0);
 	tmp = data->global_path;
-	while (i < len - 1)
+	while (i < len)
 	{
-		prev = tmp;
 		j = 0;
-		while (prev)
+		while (tmp)
 		{
-			if (prev->room->state == 2)
+			if (tmp->room->state == 1)
+				start = tmp;
+			if (tmp->room->state == 2)
 			{
-				tmp->size = j;
-				data->path_tab[i] = tmp;
-				tmp = prev->next;
+				start->size = j;
+				data->path_tab[i] = start;
+				prev = tmp;
+				tmp = tmp->next;
+				start = tmp;
 				prev->next = NULL;
-				break ;
+				break; 
 			}
-			else if (prev->next->room->state == 1)
-			{
-				j = 0;
-				tmp = prev->next;
-			}
+			else
+				tmp = tmp->next;
 			j++;
-			if (prev->next)
-				prev = prev->next;
 		}
 		i++;
 	}
-//	check_overlap_path(data, tab_struc_len(data->path_tab));
-//	merge_ifeq_path(data, tab_struc_len(data->path_tab));
+	merge_ifeq_path(data, tab_struc_len(data->path_tab));
 	sort_path_tab(data->path_tab, tab_struc_len(data->path_tab));
+	check_overlap_path(data, tab_struc_len(data->path_tab));
 }

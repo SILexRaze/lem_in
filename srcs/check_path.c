@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 18:35:33 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/20 07:05:03 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/21 16:08:47 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,17 @@ void	check_overlap_path(t_data *data, int n)
 	i = -1;
 	while (++i < n - 1)
 	{
-		tmp = data->path_tab[i];
-		while (tmp)
+		tmp = data->path_tab[i]->next;
+		while (tmp && i < n - 1)
 		{
-			tmp2 = data->path_tab[i + 1];
-			while (tmp2)
+			tmp2 = data->path_tab[i + 1]->next;
+			while (tmp2 && i < n - 1)
 			{
-				if (tmp2->room == tmp->room && tmp->room->state == 0
-						&& tmp->room->state == tmp2->room->state)
+				if (ft_strequ(tmp->room->name, tmp2->room->name) == 1
+						&& tmp->room->state == 0 && tmp2->room->state == 0)
 				{
 					delete_path(data, i + 1);
+					n = tab_struc_len(data->path_tab);
 					break ;
 				}
 				tmp2 = tmp2->next;
@@ -74,18 +75,22 @@ void	delete_path(t_data *data, int index)
 	t_path	**tab;
 	int		n;
 	int		j;
+	int		i;
 
 	j = 0;
+	i = 0;
 	n = tab_struc_len(data->path_tab);
-	if (!(tab = (t_path **)ft_memalloc(sizeof(t_path *) * (n - 1))))
+	if (!(tab = (t_path **)ft_memalloc(sizeof(t_path *) * (n))))
 		exit(0);
 	while (j < n)
 	{
 		if (j != index)
-			tab[j] = data->path_tab[j];
+		{
+			tab[i] = data->path_tab[j];
+			i++;
+		}
 		j++;
 	}
-	free(data->path_tab);
 	data->path_tab = tab;
 }
 
