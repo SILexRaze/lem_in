@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 13:53:46 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/21 16:21:13 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/21 19:55:38 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,56 +20,66 @@ int		check_weight(t_map *tmp)
 		return (1);
 }
 
-int		priority(t_map *tmp)
+int		priority(t_map *tmp, t_map *prev)
 {
 	size_t	i;
 	long	min;
 	int		j;
 
 	i = 0;
-	while (tmp->pipe[i] < 0)
+	while (tmp->pipe[i] && tmp->pipe[i]->connex < 0)
 		i++;
+	if (!tmp->pipe[i])
+		return (-1);
 	min = tmp->pipe[i]->weight;
-	i = 0;
+	i = 1;
 	j = 0;
-	while (++i < tmp->n)
+//	while (i < tmp->n)
+//	{
+//		if (tmp->pipe[i]->state == 2 && (j = i))
+//			return (j);
+//		i++;
+//	}
+	i = 0;
+	while (i < tmp->n)
 	{
-		if (tmp->pipe[i]->state == 2 && (j = i))
-			return (j);
-	}
-	i = -1;
-	while (++i < tmp->n)
-	{
-		if ((tmp->pipe[i]->weight <= min && tmp->pipe[i]->connex != -1
-					&& check_weight(tmp->pipe[i]) == 0))
+		if ((tmp->pipe[i]->weight <= min && tmp->pipe[i]->connex != -1 && tmp->pipe[i] != prev))
 		{
 			min = tmp->pipe[i]->weight;
 			j = i;
 		}
+		i++;
 	}
 	return (j);
 }
 
 int		check_start(t_map *tmp)
 {
-	size_t	i;
+	t_map	*tmap;
 
-	i = 0;
-	while (i < tmp->n)
+	tmap = tmp;
+	while (tmap)
 	{
-		if (tmp->pipe[i]->weight < tmp->pipe[i]->connex)
+		printf("%s\tweight=%ld", tmap->name, tmap->weight);
+		if (tmap->weight == 0 && tmap->connex != -1)
 			return (0);
-		i++;
+		tmap = tmap->next;
 	}
 	return (1);
 }
 
 int		explore(t_map *tmp, t_data *data, t_map *prev)
 {
-	size_t	i;
+	int	i;
 
-	i = priority(tmp);
+	i = priority(tmp, prev);
 	tmp->weight++;
+	if (i == -1)
+		return (explore(data->start, data, NULL));
+	if (tmp->state != 1)
+		printf("(%s|%ld)->", tmp->name, tmp->connex);
+	else
+		printf("\n(%s|%ld)->", tmp->name, tmp->connex);
 	path_pushback(&data->global_path, tmp, 0);
 	if (tmp->state == 1 && check_start(tmp) == 1)
 		return (1);
