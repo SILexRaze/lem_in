@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:08 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/21 16:18:54 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/22 00:28:25 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,18 @@ int		main(void)
 	//	printf_review(data);
 	link_pipe(data);
 	tmp = data->map;
+	count_connex(tmp, NULL);
+	tmp = data->map;
 	while (tmp)
 	{
-		if (data->map->connex == 0)
-		{
-			//printf("%s\t%zu\n",data->map->name,  data->map->connex);
-			data->map->connex = -1;
-		}
+		printf("%s\t%ld\n", tmp->name,  tmp->connex);
 		tmp = tmp->next;
 	}
 	isvalid_map(data);
 	explore(data->start, data, NULL);
 	check_ifpath(data);
 	pathlist_totab(data);
-	ft_print_list(&data->raw_input);
+//	ft_print_list(&data->raw_input);
 	pathfinder(data);
 	ant_path(data);
 	free_struct(data);

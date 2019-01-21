@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 01:37:31 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/21 19:16:19 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/22 00:27:17 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	count_connex(t_map *tmp, t_map *prev)
 	{
 		if (tmp->state == 2)
 			break ;
-		if (tmp->pipe[i]->connex == 0  && tmp->pipe[i] != prev)
+		if ((tmp->pipe[i]->connex == 0||tmp->pipe[i]->connex == -2)  && tmp->pipe[i] != prev)
 		{
 			tmp->connex = -2;
 			count_connex(tmp->pipe[i], tmp);

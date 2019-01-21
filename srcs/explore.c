@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 13:53:46 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/21 19:55:38 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/22 00:24:32 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int		check_start(t_map *tmp)
 	tmap = tmp;
 	while (tmap)
 	{
-		printf("%s\tweight=%ld", tmap->name, tmap->weight);
+//		printf("|%s\tweight=%ld|", tmap->name, tmap->weight);
 		if (tmap->weight == 0 && tmap->connex != -1)
 			return (0);
 		tmap = tmap->next;
@@ -76,10 +76,10 @@ int		explore(t_map *tmp, t_data *data, t_map *prev)
 	tmp->weight++;
 	if (i == -1)
 		return (explore(data->start, data, NULL));
-	if (tmp->state != 1)
-		printf("(%s|%ld)->", tmp->name, tmp->connex);
-	else
-		printf("\n(%s|%ld)->", tmp->name, tmp->connex);
+//	if (tmp->state != 1)
+//		printf("(%s|%ld)->", tmp->name, tmp->connex);
+//	else
+//		printf("\n(%s|%ld)->", tmp->name, tmp->connex);
 	path_pushback(&data->global_path, tmp, 0);
 	if (tmp->state == 1 && check_start(tmp) == 1)
 		return (1);
