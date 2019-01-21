@@ -15,14 +15,25 @@
 int		main(void)
 {
 	t_data	*data;
+	t_map	*tmp;
 
 	if (!(data = (t_data *)ft_memalloc(sizeof(t_data))))
 		return (0);
 	read_stdin(data);
 	if (!isvalid_room(data))
 		error(-1);
-//	printf_review(data);
+	//	printf_review(data);
 	link_pipe(data);
+	tmp = data->map;
+	while (tmp)
+	{
+		if (data->map->connex == 0)
+		{
+			//printf("%s\t%zu\n",data->map->name,  data->map->connex);
+			data->map->connex = -1;
+		}
+		tmp = tmp->next;
+	}
 	isvalid_map(data);
 	explore(data->start, data, NULL);
 	check_ifpath(data);
