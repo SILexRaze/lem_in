@@ -10,11 +10,9 @@ r6 43 43
 ##end
 end 17 32
 start-r1
-r4-r3
-r3-end
-r3-r1
 r1-r2
-r1-r5
-r2-r6
-r4-end
+r2-r3
+r3-r4
+r4-r5
+r5-r6
 r6-end

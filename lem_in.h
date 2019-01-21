@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/20 05:50:18 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/21 11:36:16 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,12 @@ typedef struct		s_data
 {
 	t_map			*map;
 	t_map			*start;
+	t_map			*m_end;
 	t_pipe			*pipe;
+	t_pipe			*p_end;
 	t_path			*global_path;
 	t_path			**path_tab;
+	t_path			*pth_end;
 	t_list			*raw_input;
 	int				errcode;
 	size_t			ant;
@@ -113,16 +116,14 @@ size_t				pipesize(t_map **pipe);
 /*
 ** ANT MOVE
 */
-void				newpathfinder(t_data *data);
-int					alterpathcalc(t_data *data, size_t i);
+void				pathfinder(t_data *data);
 int					ant_move_nostart(t_path *path, t_path *prev, t_data *data, int n);
 int					ant_move(t_path *path, t_path *prev, t_data *data, int n);
 int					check_ant(t_data *data, int n);
 int					ant_path(t_data *data);
 void				print_ant(t_path *path);
 size_t				pathcalculator(t_data *data, size_t i);
-int					ant_calcul(t_data *data, size_t *n);
-int					dispatch_ant(size_t medant, size_t medpath, t_data *data, size_t *n);
+int					dispatch_ant(t_data *data, size_t *n);
 /*
 **	PARSER
 */
