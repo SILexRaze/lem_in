@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 07:48:15 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/21 11:36:21 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/21 14:41:39 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ void	link_pipe(t_data *data)
 		error(-1);
 	//count_connex(data->map);
 	count_connex2(data->map, NULL);
+	tmp = data->map;
+	while(tmp)
+	{
+		printf("%s\tconnex=%ld\n",tmp->name, tmp->connex);
+	tmp =tmp->next;
+	}
 }
 
 void	assign_pipe(t_map *map, t_data *data, size_t n)

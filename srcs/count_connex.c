@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 01:37:31 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/20 05:52:49 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/21 14:38:59 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		count_real_pipe(t_map *map, t_map *prev)
 	tmp = map->pipe;
 	while (tmp[i])
 	{
-		if (tmp[i]->connex > 0 && tmp[i] != prev)
+		if ((tmp[i]->connex > 0 || tmp[i]->connex == -2) && tmp[i] != prev)
 			j++;
 		i++;
 	}
@@ -63,7 +63,7 @@ int		check_dead_end(t_map *map, t_map *prev)
 	tmp = map->pipe;
 	while (tmp[i]) 
 	{
-		if (tmp[i]->connex > 0 && tmp[i] != prev)
+		if ((tmp[i]->connex > 0 || tmp[i]->connex == -2)&& tmp[i] != prev)
 			return (0);
 		i++;
 	}
