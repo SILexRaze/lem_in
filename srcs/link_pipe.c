@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 07:48:15 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/21 16:20:48 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/22 16:51:50 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	link_pipe(t_data *data)
 			if (!(tmp->pipe = (t_map **)ft_memalloc(sizeof(t_map *) * (n + 1))))
 				return ;
 			assign_pipe(tmp, data, n);
-			tmp->n = n;
 		}
+		tmp->n = -1;
 		tmp = tmp->next;
 	}
 	if (!isvalid_pipe(data))

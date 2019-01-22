@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 01:37:31 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/22 14:48:19 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/22 17:18:29 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,40 @@ int		check_dead_end(t_map *map, t_map *prev)
 	tmp = map->pipe;
 	while (tmp[i]) 
 	{
-		if ((tmp[i]->connex > 0 || tmp[i]->connex == -2)&& tmp[i] != prev)
+		if ((tmp[i]->connex > 0 || tmp[i]->connex == -2) && tmp[i] != prev)
 			return (0);
 		i++;
 	}
 	return(1);
 
+}
+
+void	set_dimension(t_map *tmp, t_map *prev, size_t dim)
+{
+	int	i;
+
+	i = go_explore(prev);
+	tmp->n = dim;
+	printf("|%zu|tmp->name=%s|%d|\n", dim, tmp->name, i);
+	if (i >= 0)
+		set_dimension(prev->pipe[i], prev, dim);
+	i = 0;
+	while (tmp->pipe[i] && tmp->pipe[i]->n != -1)
+		i++;
+	if (tmp->pipe[i])
+		set_dimension(tmp->pipe[i], tmp, dim + 1);
+}
+
+int		go_explore(t_map *tmp)
+{
+	size_t	i;
+
+	i = 0;
+	while (tmp->pipe[i])
+	{
+		if (tmp->pipe[i]->n == -1)
+			return (i);
+		i++;
+	}
+	return (-1);
 }

@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/21 16:43:33 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/22 16:56:51 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct		s_map
 	size_t			nbant;
 	size_t			nameant;
 	long			connex;
-	size_t			n;
+	int				n;
 	struct s_map	**pipe;
 	struct s_map	*next;
 }					t_map;
@@ -101,6 +101,8 @@ void				delete_path(t_data *data, int index);
 /*
 **	EXPLORE
 */
+int					go_explore(t_map *tmp);
+void				set_dimension(t_map *tmp, t_map *prev, size_t dim);
 int					check_weight(t_map *tmp);
 int					check_weight(t_map *tmp);
 int					explore(t_map *tmp, t_data *data, t_map *prev);
