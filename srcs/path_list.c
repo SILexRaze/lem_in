@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 14:45:30 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/21 16:08:04 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/22 09:20:17 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,10 @@ void	pathlist_totab(t_data *data)
 		while (tmp)
 		{
 			if (tmp->room->state == 1)
+			{
+				j = 0;
 				start = tmp;
+			}
 			if (tmp->room->state == 2)
 			{
 				start->size = j;

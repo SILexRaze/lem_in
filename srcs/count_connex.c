@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 01:37:31 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/22 09:06:42 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/22 09:36:06 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,10 @@ int		check_dead_end(t_map *map, t_map *prev)
 	size_t	i;
 
 	i = 0;
-	(void)prev;
 	tmp = map->pipe;
 	while (tmp[i]) 
 	{
-		if ((tmp[i]->connex >= 0 || tmp[i]->connex == -2))
+		if ((tmp[i]->connex >= 0 || tmp[i]->connex == -2) && tmp[i] != prev)
 			return (0);
 		i++;
 	}
