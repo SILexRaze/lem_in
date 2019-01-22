@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 13:53:46 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/21 19:55:38 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/22 09:05:23 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,17 @@ int		priority(t_map *tmp, t_map *prev)
 	long	min;
 	int		j;
 
+	i = 0;
+	if (tmp->connex == 1)
+	{
+		tmp->connex = 2;
+		while(tmp->pipe[i])
+		{
+			if (tmp->pipe[i]->state == 2)
+				return (i);
+			i++;
+		}
+	}
 	i = 0;
 	while (tmp->pipe[i] && tmp->pipe[i]->connex < 0)
 		i++;
@@ -51,7 +62,7 @@ int		check_start(t_map *tmp)
 	t_map	*tmap;
 
 	tmap = tmp;
-printf("\n\n");
+	printf("\n\n");
 	while (tmap)
 	{
 		printf("%s\tweight=%ld\n", tmap->name, tmap->weight);
