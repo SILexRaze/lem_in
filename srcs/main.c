@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:08 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/22 17:18:30 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/22 17:44:45 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,24 @@ int		main(void)
 		error(-1);
 	link_pipe(data);
 	tmp = data->map;
-	while (tmp)
+/*	while (tmp)
 	{
 		printf("%s\t%ld\n",tmp->name,  tmp->connex);
 		tmp = tmp->next;
-	}
+	}*/
 	isvalid_map(data);
+	set_dimension(data->start, data->start, 0);
 	explore(data->start, data, NULL);
 	tmpath = data->global_path;
 	printf("\n\n");
-	while (tmpath)
+/*	while (tmpath)
 	{
 		printf("%s-", tmpath->room->name);
 		tmpath = tmpath->next;
 	}
-	printf("\n\n");
+	printf("\n\n");*/
 	check_ifpath(data);
 	pathlist_totab(data);
-	set_dimension(data->start, data->start, 0);
 	/*ft_print_list(&data->raw_input);
 	pathfinder(data);
 	ant_path(data);*/
