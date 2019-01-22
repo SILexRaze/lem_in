@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:08 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/22 17:44:45 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/22 18:04:22 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int		main(void)
 {
 	t_data	*data;
 	t_map	*tmp;
-	t_path	*tmpath;
 
 	if (!(data = (t_data *)ft_memalloc(sizeof(t_data))))
 		return (0);
@@ -31,16 +30,15 @@ int		main(void)
 		tmp = tmp->next;
 	}*/
 	isvalid_map(data);
-	set_dimension(data->start, data->start, 0);
-	explore(data->start, data, NULL);
-	tmpath = data->global_path;
-	printf("\n\n");
-/*	while (tmpath)
+	set_dimension(data->start, data->start, 1);
+	data->start->n = 0;
+	tmp = data->map;
+	while (tmp)
 	{
-		printf("%s-", tmpath->room->name);
-		tmpath = tmpath->next;
+		printf("|%d|%s|\n", tmp->n, tmp->name);
+		tmp = tmp->next;
 	}
-	printf("\n\n");*/
+	explore(data->start, data, NULL);
 	check_ifpath(data);
 	pathlist_totab(data);
 	/*ft_print_list(&data->raw_input);

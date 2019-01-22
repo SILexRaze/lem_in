@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 01:37:31 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/22 17:53:02 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/22 18:02:23 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void	set_dimension(t_map *tmp, t_map *prev, size_t dim)
 
 	i = go_explore(prev);
 	tmp->n = dim;
-	printf("|%zu|tmp->name=%s|%d|\n", dim, tmp->name, i);
 	if (i >= 0)
 		set_dimension(prev->pipe[i], prev, dim);
 	i = go_explore(tmp);
