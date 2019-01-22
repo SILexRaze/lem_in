@@ -31,9 +31,11 @@ void	count_connex(t_map *tmp, t_map *prev)
 	if (check_dead_end(tmp, prev) && tmp->state == 0)
 		tmp->connex = -1;
 	else if (tmp->state != 0)
-		tmp->connex = pipesize(tmp->pipe);
+		tmp->connex = 1;
+		//tmp->connex = pipesize(tmp->pipe);
 	else
-		tmp->connex = count_real_pipe(tmp, prev) - 1;
+		tmp->connex = 1;
+		//tmp->connex = count_real_pipe(tmp, prev) - 1;
 }
 
 int		count_real_pipe(t_map *map, t_map *prev)
@@ -61,10 +63,11 @@ int		check_dead_end(t_map *map, t_map *prev)
 	size_t	i;
 
 	i = 0;
+	(void)prev;
 	tmp = map->pipe;
 	while (tmp[i]) 
 	{
-		if ((tmp[i]->connex > 0 || tmp[i]->connex == -2) && tmp[i] != prev)
+		if ((tmp[i]->connex > 0 || tmp[i]->connex == -2))
 			return (0);
 		i++;
 	}

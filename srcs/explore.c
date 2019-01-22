@@ -32,15 +32,8 @@ int		priority(t_map *tmp, t_map *prev)
 	if (!tmp->pipe[i])
 		return (-1);
 	min = tmp->pipe[i]->weight;
-	i = 1;
-	j = 0;
-//	while (i < tmp->n)
-//	{
-//		if (tmp->pipe[i]->state == 2 && (j = i))
-//			return (j);
-//		i++;
-//	}
 	i = 0;
+	j = 0;
 	while (i < tmp->n)
 	{
 		if ((tmp->pipe[i]->weight <= min && tmp->pipe[i]->connex != -1 && tmp->pipe[i] != prev))
@@ -58,9 +51,10 @@ int		check_start(t_map *tmp)
 	t_map	*tmap;
 
 	tmap = tmp;
+printf("\n\n");
 	while (tmap)
 	{
-		printf("%s\tweight=%ld", tmap->name, tmap->weight);
+		printf("%s\tweight=%ld\n", tmap->name, tmap->weight);
 		if (tmap->weight == 0 && tmap->connex != -1)
 			return (0);
 		tmap = tmap->next;
