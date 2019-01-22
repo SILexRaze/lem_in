@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:08 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/22 00:28:25 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/22 01:14:17 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int		main(void)
 	tmp = data->map;
 	while (tmp)
 	{
+		if (tmp->connex == 0)
+			tmp->connex = -1;
 		printf("%s\t%ld\n", tmp->name,  tmp->connex);
 		tmp = tmp->next;
 	}
