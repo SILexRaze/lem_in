@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:08 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/22 13:09:29 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/22 14:43:39 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ int		main(void)
 	printf("\n\n");
 	check_ifpath(data);
 	pathlist_totab(data);
-	printf_review(data);
 	ft_print_list(&data->raw_input);
 	pathfinder(data);
 	ant_path(data);
+	printf_review(data);
 	free_struct(data);
 	return (0);
 }
