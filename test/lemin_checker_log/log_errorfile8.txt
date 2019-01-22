@@ -1,0 +1,71 @@
+==46803== Memcheck, a memory error detector
+==46803== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==46803== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==46803== Command: ./lem-in
+==46803== Parent PID: 46311
+==46803== 
+==46803== Conditional jump or move depends on uninitialised value(s)
+==46803==    at 0x1004F95E8: _platform_memchr$VARIANT$Base (in /usr/lib/system/libsystem_platform.dylib)
+==46803==    by 0x1002A54D1: __sfvwrite (in /usr/lib/system/libsystem_c.dylib)
+==46803==    by 0x1002AF898: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
+==46803==    by 0x1002D5422: __v2printf (in /usr/lib/system/libsystem_c.dylib)
+==46803==    by 0x1002AB33D: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
+==46803==    by 0x1002A9247: printf (in /usr/lib/system/libsystem_c.dylib)
+==46803==    by 0x1000016ED: printf_review (printf_review.c:63)
+==46803==    by 0x100000B0B: main (main.c:28)
+==46803== 
+==46803== Invalid read of size 16
+==46803==    at 0x1004F95C5: _platform_memchr$VARIANT$Base (in /usr/lib/system/libsystem_platform.dylib)
+==46803==    by 0x1002A54D1: __sfvwrite (in /usr/lib/system/libsystem_c.dylib)
+==46803==    by 0x1002AF898: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
+==46803==    by 0x1002D5422: __v2printf (in /usr/lib/system/libsystem_c.dylib)
+==46803==    by 0x1002AB33D: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
+==46803==    by 0x1002A9247: printf (in /usr/lib/system/libsystem_c.dylib)
+==46803==    by 0x100001727: printf_review (printf_review.c:67)
+==46803==    by 0x100000B0B: main (main.c:28)
+==46803==  Address 0x100b62aa0 is 16 bytes before a block of size 6 alloc'd
+==46803==    at 0x10009E616: malloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==46803==    by 0x100002FAA: ft_strdup (in ./lem-in)
+==46803==    by 0x10000101E: ft_map_create_elem (map_pipe_list.c:21)
+==46803==    by 0x1000010F0: ft_map_pushback (map_pipe_list.c:42)
+==46803==    by 0x100000EFE: ft_isroom (parser.c:74)
+==46803==    by 0x100000BEE: ft_read_stdin (parser.c:28)
+==46803==    by 0x100000AAD: main (main.c:21)
+==46803== 
+==46803== 
+==46803== HEAP SUMMARY:
+==46803==     in use at exit: 22,479 bytes in 166 blocks
+==46803==   total heap usage: 350 allocs, 184 frees, 43,793 bytes allocated
+==46803== 
+==46803== 4 bytes in 1 blocks are definitely lost in loss record 1 of 46
+==46803==    at 0x10009E616: malloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==46803==    by 0x100002FAA: ft_strdup (in ./lem-in)
+==46803==    by 0x100003B10: ft_parse_tmp (in ./lem-in)
+==46803==    by 0x100003D15: get_next_line (in ./lem-in)
+==46803==    by 0x100000BBC: ft_read_stdin (parser.c:24)
+==46803==    by 0x100000AAD: main (main.c:21)
+==46803== 
+==46803== 192 bytes in 1 blocks are definitely lost in loss record 33 of 46
+==46803==    at 0x10009E616: malloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==46803==    by 0x1000031A8: ft_memalloc (in ./lem-in)
+==46803==    by 0x10000222E: ft_path_create_elem (path_list.c:19)
+==46803==    by 0x1000022D9: ft_path_pushback (path_list.c:36)
+==46803==    by 0x100001E13: ft_explore (explore.c:98)
+==46803==    by 0x100001E62: ft_explore (explore.c:102)
+==46803==    by 0x100001EA1: ft_explore (explore.c:104)
+==46803==    by 0x100001EA1: ft_explore (explore.c:104)
+==46803==    by 0x100001EA1: ft_explore (explore.c:104)
+==46803==    by 0x100000AF6: main (main.c:26)
+==46803== 
+==46803== LEAK SUMMARY:
+==46803==    definitely lost: 196 bytes in 2 blocks
+==46803==    indirectly lost: 2,064 bytes in 1 blocks
+==46803==      possibly lost: 0 bytes in 0 blocks
+==46803==    still reachable: 266 bytes in 7 blocks
+==46803==         suppressed: 19,953 bytes in 156 blocks
+==46803== Reachable blocks (those to which a pointer was found) are not shown.
+==46803== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==46803== 
+==46803== For counts of detected and suppressed errors, rerun with: -v
+==46803== Use --track-origins=yes to see where uninitialised values come from
+==46803== ERROR SUMMARY: 12 errors from 4 contexts (suppressed: 13 from 13)

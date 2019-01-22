@@ -1,0 +1,81 @@
+==46960== Memcheck, a memory error detector
+==46960== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==46960== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==46960== Command: ./lem-in
+==46960== Parent PID: 46311
+==46960== 
+==46960== Conditional jump or move depends on uninitialised value(s)
+==46960==    at 0x1004F95E8: _platform_memchr$VARIANT$Base (in /usr/lib/system/libsystem_platform.dylib)
+==46960==    by 0x1002A54D1: __sfvwrite (in /usr/lib/system/libsystem_c.dylib)
+==46960==    by 0x1002AF898: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
+==46960==    by 0x1002D5422: __v2printf (in /usr/lib/system/libsystem_c.dylib)
+==46960==    by 0x1002AB33D: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
+==46960==    by 0x1002A9247: printf (in /usr/lib/system/libsystem_c.dylib)
+==46960==    by 0x1000016ED: printf_review (printf_review.c:63)
+==46960==    by 0x100000B0B: main (main.c:28)
+==46960== 
+==46960== Invalid read of size 16
+==46960==    at 0x1004F95C5: _platform_memchr$VARIANT$Base (in /usr/lib/system/libsystem_platform.dylib)
+==46960==    by 0x1002A54D1: __sfvwrite (in /usr/lib/system/libsystem_c.dylib)
+==46960==    by 0x1002AF898: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
+==46960==    by 0x1002D5422: __v2printf (in /usr/lib/system/libsystem_c.dylib)
+==46960==    by 0x1002AB33D: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
+==46960==    by 0x1002A9247: printf (in /usr/lib/system/libsystem_c.dylib)
+==46960==    by 0x100001727: printf_review (printf_review.c:67)
+==46960==    by 0x100000B0B: main (main.c:28)
+==46960==  Address 0x100b62aa0 is 16 bytes before a block of size 6 alloc'd
+==46960==    at 0x10009E616: malloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==46960==    by 0x100002FAA: ft_strdup (in ./lem-in)
+==46960==    by 0x10000101E: ft_map_create_elem (map_pipe_list.c:21)
+==46960==    by 0x1000010F0: ft_map_pushback (map_pipe_list.c:42)
+==46960==    by 0x100000EFE: ft_isroom (parser.c:74)
+==46960==    by 0x100000BEE: ft_read_stdin (parser.c:28)
+==46960==    by 0x100000AAD: main (main.c:21)
+==46960== 
+==46960== Invalid read of size 16
+==46960==    at 0x1004F95C9: _platform_memchr$VARIANT$Base (in /usr/lib/system/libsystem_platform.dylib)
+==46960==    by 0x1002A54D1: __sfvwrite (in /usr/lib/system/libsystem_c.dylib)
+==46960==    by 0x1002AF898: __vfprintf (in /usr/lib/system/libsystem_c.dylib)
+==46960==    by 0x1002D5422: __v2printf (in /usr/lib/system/libsystem_c.dylib)
+==46960==    by 0x1002AB33D: vfprintf_l (in /usr/lib/system/libsystem_c.dylib)
+==46960==    by 0x1002A9247: printf (in /usr/lib/system/libsystem_c.dylib)
+==46960==    by 0x100001727: printf_review (printf_review.c:67)
+==46960==    by 0x100000B0B: main (main.c:28)
+==46960==  Address 0x100b651b0 is 11 bytes after a block of size 5 alloc'd
+==46960==    at 0x10009E616: malloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==46960==    by 0x100002FAA: ft_strdup (in ./lem-in)
+==46960==    by 0x10000101E: ft_map_create_elem (map_pipe_list.c:21)
+==46960==    by 0x1000010D7: ft_map_pushback (map_pipe_list.c:39)
+==46960==    by 0x100000F12: ft_isroom (parser.c:76)
+==46960==    by 0x100000BEE: ft_read_stdin (parser.c:28)
+==46960==    by 0x100000AAD: main (main.c:21)
+==46960== 
+==46960== 
+==46960== HEAP SUMMARY:
+==46960==     in use at exit: 22,986 bytes in 168 blocks
+==46960==   total heap usage: 349 allocs, 181 frees, 43,209 bytes allocated
+==46960== 
+==46960== 768 (192 direct, 576 indirect) bytes in 1 blocks are definitely lost in loss record 41 of 48
+==46960==    at 0x10009E616: malloc (in /Users/vifonne/.brew/Cellar/valgrind/3.14.0/lib/valgrind/vgpreload_memcheck-amd64-darwin.so)
+==46960==    by 0x1000031A8: ft_memalloc (in ./lem-in)
+==46960==    by 0x10000222E: ft_path_create_elem (path_list.c:19)
+==46960==    by 0x1000022D9: ft_path_pushback (path_list.c:36)
+==46960==    by 0x100001E13: ft_explore (explore.c:98)
+==46960==    by 0x100001E62: ft_explore (explore.c:102)
+==46960==    by 0x100001EA1: ft_explore (explore.c:104)
+==46960==    by 0x100001EA1: ft_explore (explore.c:104)
+==46960==    by 0x100001EA1: ft_explore (explore.c:104)
+==46960==    by 0x100000AF6: main (main.c:26)
+==46960== 
+==46960== LEAK SUMMARY:
+==46960==    definitely lost: 192 bytes in 1 blocks
+==46960==    indirectly lost: 2,640 bytes in 4 blocks
+==46960==      possibly lost: 0 bytes in 0 blocks
+==46960==    still reachable: 201 bytes in 7 blocks
+==46960==         suppressed: 19,953 bytes in 156 blocks
+==46960== Reachable blocks (those to which a pointer was found) are not shown.
+==46960== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==46960== 
+==46960== For counts of detected and suppressed errors, rerun with: -v
+==46960== Use --track-origins=yes to see where uninitialised values come from
+==46960== ERROR SUMMARY: 11 errors from 4 contexts (suppressed: 13 from 13)
