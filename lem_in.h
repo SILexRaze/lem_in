@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/23 10:54:36 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/23 23:43:07 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ int					check_weight(t_map *tmp);
 int					explore(t_map *tmp, t_data *data, t_map *prev);
 int					explore_safe_mode(t_map *tmp, t_data *data);
 int					priority(t_map *tmp);
+int					priority_safe_mode(t_map *tmp);
 int					count_real_pipe(t_map *map, t_map *prev);
 int					check_dead_end(t_map *map, t_map *prev);
 void				pathlist_totab(t_data *data);

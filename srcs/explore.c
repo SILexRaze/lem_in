@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 13:53:46 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/23 10:47:23 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/23 23:43:49 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,37 @@ int		priority(t_map *tmp)
 	return (j);
 }
 
+int		priority_safe_mode(t_map *tmp)
+{
+	size_t	i;
+	long	min;
+	int		j;
+
+	i = 0;
+	while (tmp->pipe[i] < 0)
+		i++;
+	min = tmp->pipe[i]->weight;
+	i = 0;
+	j = 0;
+	while (tmp->pipe[i])
+	{
+		if (tmp->pipe[i]->state == 2 && (j = i))
+			return (j);
+		i++;
+	}
+	i = 0;
+	while (tmp->pipe[i])
+	{
+		if (tmp->pipe[i]->weight <= min && tmp->pipe[i]->connex != -1)
+		{
+			min = tmp->pipe[i]->weight;
+			j = i;
+		}
+		i++;
+	}
+	return (j);
+}
+
 int		check_start(t_map *tmp)
 {
 	size_t	i;
@@ -86,7 +117,7 @@ int		explore_safe_mode(t_map *tmp, t_data *data)
 {
 	size_t	i;
 
-	i = priority(tmp);
+	i = priority_safe_mode(tmp);
 	tmp->weight++;
 	path_pushback(&data->global_path, tmp, 0);
 	if (tmp->state == 1 && check_start(tmp) == 1)
