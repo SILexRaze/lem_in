@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 13:53:46 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/22 15:02:48 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/23 10:47:23 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,18 @@ int		explore(t_map *tmp, t_data *data, t_map *prev)
 	if (tmp->pipe[i] != prev)
 		return (explore(tmp->pipe[i], data, tmp));
 	return (explore(data->start, data, NULL));
+}
+
+int		explore_safe_mode(t_map *tmp, t_data *data)
+{
+	size_t	i;
+
+	i = priority(tmp);
+	tmp->weight++;
+	path_pushback(&data->global_path, tmp, 0);
+	if (tmp->state == 1 && check_start(tmp) == 1)
+		return (1);
+	if (tmp->state == 2)
+		return (1);
+	return (explore_safe_mode(tmp->pipe[i], data));
 }
