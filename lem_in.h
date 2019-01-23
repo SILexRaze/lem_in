@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/23 10:47:22 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/23 10:54:36 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct		s_map
 	size_t			nbant;
 	size_t			nameant;
 	long			connex;
-	int				n;
 	struct s_map	**pipe;
 	struct s_map	*next;
 }					t_map;
@@ -95,37 +94,36 @@ int					isstate(t_data *data);
 **	CHECKER PATH
 */
 int					check_ifpath(t_data *data);
+void				check_ifend(t_map *tmp);
 void				check_overlap_path(t_data *data, int n);
 void				merge_ifeq_path(t_data *data, int n);
 void				delete_path(t_data *data, int index);
 /*
 **	EXPLORE
 */
-int					go_explore(t_map *tmp);
-void				set_dimension(t_map *tmp, t_map *prev, size_t dim);
 int					check_weight(t_map *tmp);
 int					check_weight(t_map *tmp);
 int					explore(t_map *tmp, t_data *data, t_map *prev);
 int					explore_safe_mode(t_map *tmp, t_data *data);
 int					priority(t_map *tmp);
-void				sort_path_tab(t_path **path_tab, size_t len);
-void				count_connex(t_map *tmp, t_map *prev);
 int					count_real_pipe(t_map *map, t_map *prev);
 int					check_dead_end(t_map *map, t_map *prev);
 void				pathlist_totab(t_data *data);
+void				sort_path_tab(t_path **path_tab, size_t len);
+void				count_connex(t_map *tmp, t_map *prev);
 size_t				npath(t_data *data);
 size_t				pipesize(t_map **pipe);
 /*
 ** ANT MOVE
 */
-void				pathfinder(t_data *data);
 int					ant_move_nostart(t_path *path, t_path *prev, t_data *data, int n);
 int					ant_move(t_path *path, t_path *prev, t_data *data, int n);
 int					check_ant(t_data *data, int n);
 int					ant_path(t_data *data);
-void				print_ant(t_path *path);
-size_t				pathcalculator(t_data *data, size_t i);
 int					dispatch_ant(t_data *data, size_t *n);
+void				print_ant(t_path *path);
+void				pathfinder(t_data *data);
+size_t				pathcalculator(t_data *data, size_t i);
 /*
 **	PARSER
 */

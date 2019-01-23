@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/08 07:48:15 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/23 10:42:01 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/23 10:59:13 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ void	link_pipe(t_data *data)
 				return ;
 			assign_pipe(tmp, data, n);
 		}
-		tmp->n = -1;
 		tmp = tmp->next;
 	}
 	if (!isvalid_pipe(data))
 		error(-1);
 	count_connex(data->map, NULL);
+	check_ifend(data->map);
 }
 
 void	assign_pipe(t_map *map, t_data *data, size_t n)

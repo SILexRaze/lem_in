@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 01:37:31 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/23 10:48:49 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/23 10:59:14 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,25 @@ void	count_connex(t_map *tmp, t_map *prev)
 		tmp->connex = pipesize(tmp->pipe);
 	else
 		tmp->connex = count_real_pipe(tmp, prev);
+}
+
+void	check_ifend(t_map *tmp)
+{
+	int	start;
+	int	end;
+
+	start = 0;
+	end = 0;
+	while (tmp)
+	{
+		if (tmp->state == 1)
+			start++;
+		else if (tmp->state == 2)
+			end++;
+		tmp = tmp->next;
+	}
+	if (!start || !end)
+		error(-3);
 }
 
 int		count_real_pipe(t_map *map, t_map *prev)
@@ -65,35 +84,4 @@ int		check_dead_end(t_map *map, t_map *prev)
 		i++;
 	}
 	return(1);
-
-}
-
-void	set_dimension(t_map *tmp, t_map *prev, size_t dim)
-{
-	int	i;
-
-	i = go_explore(prev);
-	if (tmp->connex != -1)
-		tmp->n = dim;
-	else
-		tmp->n = -2;
-	if (i >= 0)
-		set_dimension(prev->pipe[i], prev, dim);
-	i = go_explore(tmp);
-	if (i >= 0)
-		set_dimension(tmp->pipe[i], tmp, dim + 1);
-}
-
-int		go_explore(t_map *tmp)
-{
-	size_t	i;
-
-	i = 0;
-	while (tmp->pipe[i])
-	{
-		if (tmp->pipe[i]->n == -1)
-			return (i);
-		i++;
-	}
-	return (-1);
 }

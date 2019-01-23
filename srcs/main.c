@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:08 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/23 10:47:24 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/23 10:53:27 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ int		main(void)
 		error(-1);
 	link_pipe(data);
 	isvalid_map(data);
-	set_dimension(data->start, data->start, 1);
-	data->start->n = 0;
 	explore(data->start, data, NULL);
 	if (!check_ifpath(data))
 	{
