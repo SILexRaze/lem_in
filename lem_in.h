@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/22 16:56:51 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/23 10:47:22 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,9 @@ int					isstate(t_data *data);
 /*
 **	CHECKER PATH
 */
+int					check_ifpath(t_data *data);
 void				check_overlap_path(t_data *data, int n);
 void				merge_ifeq_path(t_data *data, int n);
-void				check_ifpath(t_data *data);
 void				delete_path(t_data *data, int index);
 /*
 **	EXPLORE
@@ -106,6 +106,7 @@ void				set_dimension(t_map *tmp, t_map *prev, size_t dim);
 int					check_weight(t_map *tmp);
 int					check_weight(t_map *tmp);
 int					explore(t_map *tmp, t_data *data, t_map *prev);
+int					explore_safe_mode(t_map *tmp, t_data *data);
 int					priority(t_map *tmp);
 void				sort_path_tab(t_path **path_tab, size_t len);
 void				count_connex(t_map *tmp, t_map *prev);
@@ -138,6 +139,8 @@ t_map				*search_map_address(char *str, t_data *data);
 int					tab_len(char **str);
 void				freetab(char ***tab);
 void				free_map(t_data *data);
+void				free_path(t_data *data);
+void				free_pipe(t_data *data);
 void				free_struct(t_data *data);
 void				error(int n);
 size_t				sizetoi(char *str);
