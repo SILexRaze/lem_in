@@ -23,6 +23,7 @@ speed = 30
 ant_m = []
 x_m = []
 y_m = []
+ant_num = 0
 room_m = [x_m, y_m]
 move = [ant_m, room_m]
 start_img = pg.transform.scale(pg.image.load("start.png"), (room_w, room_h))
@@ -47,17 +48,20 @@ def	parse_stdin(l_stdin):
 	for line in l_stdin:
 		if len(line.split()) == 3:
 			name.append(line.split()[0])
-			x.append(randint(0, win_w - room_w))
-			y.append(randint(0, win_h - room_h))
+			x.append(randint(room_w, win_w - room_w))
+			y.append(randint(room_h, win_h - room_h))
 		elif len(line.split("-")) == 2 and line.split("-")[0][0] != 'L':
 			ret = line.split("-")
 			pipe_l.append(name.index(ret[0].rstrip()))
 			pipe_r.append(name.index(ret[1].rstrip()))
 		elif line.split("-")[0][0] == 'L':
-			ret = line.split("-")
-			move[0].append(ret[0].rstrip())
-			move[1][0].append(x[name.index(ret[1].rstrip())]+room_w/2)
-			move[1][1].append(y[name.index(ret[1].rstrip())]+room_h/2)
+			ret = line.split()
+			for tmp in ret:
+				tmp = tmp.split("-")
+				move[0].append(tmp[0].rstrip())
+				move[1][0].append(x[name.index(tmp[1].rstrip())]+room_w/2)
+				move[1][1].append(y[name.index(tmp[1].rstrip())]+room_h/2)
+			print(move)
 	print("\n", x,"\n",move[1][0],"\n", y,"\n",move[1][1])
 	return room;
 def gen_coord(room):
@@ -141,7 +145,7 @@ def	print_map(room):
 					ant_p[1] = d1.reduite(ant_p[0])
 					time.sleep(0.10)
 					pg.display.flip()
-			else:
+			elif move[0][i]:
 				while ant_p[0] < move[1][0][i] and ant_p[1] != move[1][1][i] and not done:
 					flag = not flag
 					for event in pg.event.get():
