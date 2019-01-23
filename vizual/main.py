@@ -19,6 +19,7 @@ win_h = 1080
 room_w = 90
 room_h = 70
 ant_size = 95
+speed = 30
 ant_m = []
 x_m = []
 y_m = []
@@ -55,8 +56,9 @@ def	parse_stdin(l_stdin):
 		elif line.split("-")[0][0] == 'L':
 			ret = line.split("-")
 			move[0].append(ret[0].rstrip())
-			move[1][0].append(room[1][room[0].index(ret[1].rstrip())])
-			move[1][1].append(room[2][room[0].index(ret[1].rstrip())])
+			move[1][0].append(x[name.index(ret[1].rstrip())]+room_w/2)
+			move[1][1].append(y[name.index(ret[1].rstrip())]+room_h/2)
+	print("\n", x,"\n",move[1][0],"\n", y,"\n",move[1][1])
 	return room;
 def gen_coord(room):
 	i = 0
@@ -85,10 +87,10 @@ def	print_map(room):
 	room_name = pg.font.SysFont('Arial', 25)
 	screen.blit(bg, [0, 0])
 	while i < len(room[3]):
-		dst[0].append(room[1][room[3][i]]+room_w/2)
-		dst[1].append(room[2][room[3][i]]+room_h/2)
-		src[0].append(room[1][room[4][i]]+room_w/2)
-		src[1].append(room[2][room[4][i]]+room_h/2)
+		src[0].append(room[1][room[3][i]]+room_w/2)
+		src[1].append(room[2][room[3][i]]+room_h/2)
+		dst[0].append(room[1][room[4][i]]+room_w/2)
+		dst[1].append(room[2][room[4][i]]+room_h/2)
 		pg.draw.line(screen, white, (dst[0][i], dst[1][i]), (src[0][i], src[1][i]), 2)
 		i += 1
 	i = 0
@@ -112,35 +114,62 @@ def	print_map(room):
 		i += 1
 	solid_bg = pg.Surface.copy(screen)
 	flag = True
+	anim = True
+	i = 0
 	while not done:
-		flag = not flag
+		a = ft_math.Point(ant_p[0]+room_w/2, ant_p[1]+room_h/2)
+		b = ft_math.Point(move[1][0][0], move[1][1][0])
 		for event in pg.event.get():
 			if event.type == pg.QUIT:
 				done = True
-		screen.blit(solid_bg, [0, 0])
-		if flag:
-			rot_p1 = pg.transform.rotate(ant_p1, 90)
-			screen.blit(rot_p1, [ant_p[0], ant_p[1]])
-		else:
-			rot_p2 = pg.transform.rotate(ant_p2, 90)
-			screen.blit(rot_p2, [ant_p[0], ant_p[1]])
-		ant_p[0] += 10
-		ant_p[1] += 10
-		time.sleep(0.15)
-		pg.display.flip()
+		while i < (len(move[1][0])) and anim and not done:
+			d1 = ft_math.Droite(a, b)
+			if (ant_p[0] > move[1][0][i]):
+				while ant_p[0] > move[1][0][i] and ant_p[1] != move[1][1][i] and not done:	
+					flag = not flag
+					for event in pg.event.get():
+						if event.type == pg.QUIT:
+							done = True
+					screen.blit(solid_bg, [0, 0])
+					if flag:
+						rot_p1 = pg.transform.rotate(ant_p1, 90)
+						screen.blit(rot_p1, [ant_p[0]-ant_size/2, ant_p[1]-ant_size/2])
+					else:
+						rot_p2 = pg.transform.rotate(ant_p2, 90)
+						screen.blit(rot_p2, [ant_p[0]-ant_size/2, ant_p[1]-ant_size/2])
+					ant_p[0] -= speed
+					ant_p[1] = d1.reduite(ant_p[0])
+					time.sleep(0.10)
+					pg.display.flip()
+			else:
+				while ant_p[0] < move[1][0][i] and ant_p[1] != move[1][1][i] and not done:
+					flag = not flag
+					for event in pg.event.get():
+						if event.type == pg.QUIT:
+							done = True
+					screen.blit(solid_bg, [0, 0])
+					if flag:
+						rot_p1 = pg.transform.rotate(ant_p1, 90)
+						screen.blit(rot_p1, [ant_p[0]-ant_size/2, ant_p[1]-ant_size/2])
+					else:
+						rot_p2 = pg.transform.rotate(ant_p2, 90)
+						screen.blit(rot_p2, [ant_p[0]-ant_size/2, ant_p[1]-ant_size/2])
+					ant_p[0] += speed
+					ant_p[1] = d1.reduite(ant_p[0])
+					time.sleep(0.10)
+					pg.display.flip()
+			if i+1 == len(move[1][0]):
+				anim=False
+				break
+			a = ft_math.Point(move[1][0][i], move[1][1][i])
+			b = ft_math.Point(move[1][0][i+1], move[1][1][i+1])
+			i += 1
 	pg.quit()
 
 def	main():
 	l_stdin = read_stdin()
 	room = parse_stdin(l_stdin)
 	if (room):
-		room = gen_coord(room)
 		print_map(room)
-	a = ft_math.Point(-1, 3.0)
-	b = ft_math.Point(5, 1)
-	c = ft_math.Point(1, 5)
-	d1 = ft_math.Droite(c, a)
-	d2 = ft_math.Droite(c, b)
-	print(d1.reduite(1))
 	sys.exit()
 main()
