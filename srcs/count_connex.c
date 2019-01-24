@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 01:37:31 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/23 10:59:14 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/24 14:16:34 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 void	count_connex(t_map *tmp, t_map *prev)
 {
-	size_t  i;
+	size_t	i;
+
 	i = 0;
 	while (tmp->pipe[i] && (tmp->connex == 0 || tmp->connex == -2))
 	{
-		if (tmp->pipe[i]->connex == 0  && tmp->pipe[i] != prev)
+		if (tmp->pipe[i]->connex == 0 && tmp->pipe[i] != prev)
 		{
 			tmp->connex = -2;
 			count_connex(tmp->pipe[i], tmp);
@@ -45,7 +46,11 @@ void	check_ifend(t_map *tmp)
 		if (tmp->state == 1)
 			start++;
 		else if (tmp->state == 2)
+		{
+			if (tmp->connex <= 0)
+				error(-3);
 			end++;
+		}
 		tmp = tmp->next;
 	}
 	if (!start || !end)
@@ -77,11 +82,11 @@ int		check_dead_end(t_map *map, t_map *prev)
 
 	i = 0;
 	tmp = map->pipe;
-	while (tmp[i]) 
+	while (tmp[i])
 	{
 		if ((tmp[i]->connex > 0 || tmp[i]->connex == -2) && tmp[i] != prev)
 			return (0);
 		i++;
 	}
-	return(1);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/24 13:31:15 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/24 15:17:05 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ typedef struct		s_data
 */
 void				map_pushback(t_map **begin_list, char **tab, int state);
 void				pipe_pushback(t_pipe **begin_list, char **tab);
-void				printf_review(t_data *data); //remove when not needed
 void				path_pushback(t_path **begin_list, t_map *room, size_t size);
 t_map				*map_create_elem(char **tab, int state);
 t_path				*path_create_elem(t_map *room, size_t size);
@@ -106,12 +105,12 @@ int					path_verif(t_data *data, int n1, int n2);
 int					check_weight(t_map *tmp);
 int					check_weight(t_map *tmp);
 int					explore(t_map *tmp, t_data *data, t_map *prev);
-int					explore_safe_mode(t_map *tmp, t_data *data);
 int					priority(t_map *tmp, t_map *prev);
-int					priority_safe_mode(t_map *tmp);
+int					give_priority(t_map *tmp, t_map *prev,t_map *min);
 int					count_real_pipe(t_map *map, t_map *prev);
 int					check_dead_end(t_map *map, t_map *prev);
 void				pathlist_totab(t_data *data);
+void				assign_path(t_path *s,t_path *t,t_path *p);
 void				sort_path_tab(t_path **path_tab, size_t len);
 void				count_connex(t_map *tmp, t_map *prev);
 size_t				npath(t_data *data);
@@ -121,8 +120,8 @@ int					go_explore(t_map *tmp);
 /*
 ** ANT MOVE
 */
-int					ant_move_nostart(t_path *path, t_path *prev, t_data *data, int n);
 int					ant_move(t_path *path, t_path *prev, t_data *data, int n);
+int					ant_push(t_path *path, t_path *prev, t_data *data, int n);
 int					check_ant(t_data *data, int n);
 int					ant_path(t_data *data);
 int					dispatch_ant(t_data *data, size_t *n);
@@ -132,7 +131,7 @@ size_t				pathcalculator(t_data *data, size_t i);
 /*
 **	PARSER
 */
-int					read_stdin(t_data *data);
+int					read_stdin(t_data *data, int trig, char *line);
 void				link_pipe(t_data *data);
 void				assign_pipe(t_map *map, t_data *data, size_t n);
 t_map				*search_map_address(char *str, t_data *data);

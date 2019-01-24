@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 18:35:33 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/24 13:35:38 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/24 14:51:37 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,17 @@ void	check_overlap_path(t_data *data)
 	while (tmp[i])
 	{
 		j = i + 1;
-		if (tmp2[j])
 		tmp2 = data->path_tab;
-		while(tmp2[j])
+		while (tmp2[j])
 		{
 			if (path_verif(data, i, j))
-					{
-						delete_path(data, j);
-						return (check_overlap_path(data);
-					}
-						j++;
+			{
+				delete_path(data, j);
+				return (check_overlap_path(data));
+			}
+			j++;
 		}
-	i++;
+		i++;
 	}
 }
 
@@ -120,13 +119,13 @@ int		path_verif(t_data *data, int n1, int n2)
 	t_path	*tmp2;
 
 	tmp1 = data->path_tab[n1];
-	while(tmp1)
+	while (tmp1)
 	{
 		tmp2 = data->path_tab[n2];
-		while(tmp2)
+		while (tmp2)
 		{
-			if(ft_strequ(tmp1->room->name, tmp2->room->name) == 1
-					&& tmp->room->state == 0 && tmp2->room->state == 0)
+			if (ft_strequ(tmp1->room->name, tmp2->room->name) == 1
+					&& tmp1->room->state == 0 && tmp2->room->state == 0)
 				return (n2);
 			tmp2 = tmp2->next;
 		}

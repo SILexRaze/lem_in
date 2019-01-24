@@ -6,19 +6,14 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/06 13:03:58 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/17 13:57:30 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/24 14:23:20 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int		read_stdin(t_data *data)
+int		read_stdin(t_data *data, int trig, char *line)
 {
-	char	*line;
-	int		trig;
-
-	trig = 0;
-	line = NULL;
 	if (!isant(line, data))
 		return (-1);
 	while (get_next_line(0, &line) > 0)

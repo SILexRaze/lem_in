@@ -6,7 +6,7 @@
 #    By: vifonne <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/05 18:03:13 by vifonne           #+#    #+#              #
-#    Updated: 2019/01/24 10:05:55 by rvalenti         ###   ########.fr        #
+#    Updated: 2019/01/24 15:15:52 by rvalenti         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ SRCS		=		main.c				\
 					map_pipe_list.c		\
 					tools.c				\
 					link_pipe.c			\
-					printf_review.c		\
 					check_stdin.c		\
 					ft_error.c			\
 					explore.c			\

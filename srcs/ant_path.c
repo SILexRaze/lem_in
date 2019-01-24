@@ -6,13 +6,13 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 15:44:01 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/21 16:25:27 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/24 14:25:27 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int		ant_move_nostart(t_path *path, t_path *prev, t_data *data, int n)
+int		ant_move(t_path *path, t_path *prev, t_data *data, int n)
 {
 	if (path->next && path->room->state != 1 && path->room->nbant == 1
 			&& (path->next->room->nbant == 0 || path->next->room->state == 2))
@@ -23,14 +23,14 @@ int		ant_move_nostart(t_path *path, t_path *prev, t_data *data, int n)
 		path->room->nbant--;
 		print_ant(path);
 		if (prev->room->nbant && prev->room->state != 1)
-			return (ant_move_nostart(data->path_tab[n], data->path_tab[n], data, n));
+			return (ant_move(data->path_tab[n], data->path_tab[n], data, n));
 	}
 	else if (path->next)
-		return (ant_move_nostart(path->next, path, data, n));
+		return (ant_move(path->next, path, data, n));
 	return (0);
 }
 
-int		ant_move(t_path *path, t_path *prev, t_data *data, int n)
+int		ant_push(t_path *path, t_path *prev, t_data *data, int n)
 {
 	if (path->room->state == 1 && path->room->nbant
 			&& (path->next->room->nbant == 0 || path->next->room->state == 2))
@@ -50,10 +50,10 @@ int		ant_move(t_path *path, t_path *prev, t_data *data, int n)
 		path->room->nbant--;
 		print_ant(path);
 		if (prev->room->nbant)
-			return (ant_move(data->path_tab[n], data->path_tab[n], data, n));
+			return (ant_push(data->path_tab[n], data->path_tab[n], data, n));
 	}
 	else if (path->next)
-		return (ant_move(path->next, path, data, n));
+		return (ant_push(path->next, path, data, n));
 	return (0);
 }
 
@@ -96,24 +96,21 @@ int		ant_path(t_data *data)
 	n = pipesize(data->start->pipe);
 	if (n > count)
 		n = count;
-	count = 0;
 	while (!check_ant(data, n))
 	{
 		i = 0;
 		while (i < n)
 		{
 			if (data->path_tab[i]->ant == 0)
-				ant_move_nostart(data->path_tab[i], data->path_tab[i], data, i);
+				ant_move(data->path_tab[i], data->path_tab[i], data, i);
 			else
 			{
-				ant_move(data->path_tab[i], data->path_tab[i], data, i);
+				ant_push(data->path_tab[i], data->path_tab[i], data, i);
 				data->path_tab[i]->ant--;
 			}
 			i++;
 		}
-		count++;
 		write(1, "\n", 1);
 	}
-//	printf("\nl=%zu\n", count);
 	return (0);
 }
