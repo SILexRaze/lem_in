@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/24 15:39:17 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/24 17:00:01 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int					count_state(t_data *data);
 /*
 **	CHECKER STDIN
 */
-int					isant(char *str, t_data *data);
+int					isant(char **str, t_data *data);
 int					isroom(char *str, t_data *data);
 int					ispipe(char *str, t_data *data);
 int					isinst(char *str);
@@ -109,7 +109,9 @@ int					priority(t_map *tmp, t_map *prev);
 int					give_priority(t_map *tmp, t_map *prev, t_map *min);
 int					count_real_pipe(t_map *map, t_map *prev);
 int					check_dead_end(t_map *map, t_map *prev);
-void				pathlist_totab(t_data *data);
+void				pathlist_totab(t_data *data, size_t i,
+					size_t len, t_path *tmp);
+void				swap_totab(t_path **start, t_path **prev, t_path **tmp);
 void				assign_path(t_path *s, t_path *t, t_path *p);
 void				sort_path_tab(t_path **path_tab, size_t len);
 void				count_connex(t_map *tmp, t_map *prev);
@@ -131,7 +133,7 @@ size_t				pathcalculator(t_data *data, size_t i);
 /*
 **	PARSER
 */
-int					read_stdin(t_data *data, int trig, char *line);
+int					read_stdin(t_data *data, int trig, char **line);
 void				link_pipe(t_data *data);
 void				assign_pipe(t_map *map, t_data *data, size_t n);
 t_map				*search_map_address(char *str, t_data *data);

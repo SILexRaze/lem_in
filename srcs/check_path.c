@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 18:35:33 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/24 14:51:37 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/24 16:49:21 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	delete_path(t_data *data, int index)
 		}
 		j++;
 	}
+	free(data->path_tab);
 	data->path_tab = tab;
 }
 

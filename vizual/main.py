@@ -4,6 +4,7 @@ import	pygame as pg
 from	random import *
 from	math import *
 import	time
+from	array import *
 import	d_v_p as ft_math
 red = (255,0,0)
 green = (0,255,0)
@@ -20,12 +21,9 @@ room_w = 90
 room_h = 70
 ant_size = 95
 speed = 30
-ant_m = []
-x_m = []
-y_m = []
 ant_num = 0
-room_m = [x_m, y_m]
-move = [ant_m, room_m]
+step = 0
+move = []
 start_img = pg.transform.scale(pg.image.load("start.png"), (room_w, room_h))
 end_img = pg.transform.scale(pg.image.load("end.png"), (room_w, room_h))
 ant_p1 = pg.transform.scale(pg.image.load("pos1_ant_bl.png"), (ant_size, ant_size))
@@ -56,14 +54,27 @@ def	parse_stdin(l_stdin):
 			pipe_r.append(name.index(ret[1].rstrip()))
 		elif line.split("-")[0][0] == 'L':
 			ret = line.split()
+			ant_m = []
+			x_m = []
+			y_m = []
+			room_m = [x_m, y_m]
+			move.append([ant_m, room_m])
 			for tmp in ret:
 				tmp = tmp.split("-")
-				move[0].append(tmp[0].rstrip())
-				move[1][0].append(x[name.index(tmp[1].rstrip())]+room_w/2)
-				move[1][1].append(y[name.index(tmp[1].rstrip())]+room_h/2)
-			print(move)
-	print("\n", x,"\n",move[1][0],"\n", y,"\n",move[1][1])
+				index = int(tmp[0].split('L')[1].rstrip())
+				ant_m = []
+				x_m = []
+				y_m = []
+				room_m = [x_m, y_m]
+				if index >= len(move):
+					move.append([ant_m, room_m])
+				move[index][0].append(index)
+				# tmp[0].rstrip()
+				move[index][1][0].append(x[name.index(tmp[1].rstrip())]+room_w/2)	
+				move[index][1][1].append(y[name.index(tmp[1].rstrip())]+room_h/2)
+	move.pop(0)
 	return room;
+
 def gen_coord(room):
 	i = 0
 	while i < len(room[1]):
@@ -73,29 +84,76 @@ def gen_coord(room):
 		# int((room[2][i]*(win_h-room_h))/max(room[2]))
 		i += 1
 	return room;
-def	print_map(room):
-	done = False
+
+def put_start(room):
 	i = 0
+	while i < len(room[0][i]):
+		if room[0][i] == "start":
+			ant_p = [room[1][i], room[2][i]]
+		i += 1
+	return (ant_p)
+
+def	count_ant(j):
+	my_str = ""
+	while j > 0:
+		my_str += "|"
+		j -= 1
+	return my_str
+
+def	print_map(room, ant_start):
+	done = False
+	flag = True
+	ant_stat_str = "No. of ant(s) on "
+	j = 0
+	ant_p = put_start(room)
+	tmp = win_gen(done, room, ant_p)
+	ant_end = 0
+	screen = tmp[0]
+	solid_bg = tmp[1]
+	# screen.blit(txtfmt.render(ant_stat_str + "[START]" + count_ant(j), False, white), (10, 10))
+	pg.display.flip()
+	while not done:
+		while j < (len(move) - 3) and not done:
+			i = 0
+			anim = True
+			a = ft_math.Point(ant_p[0]+room_w/2, ant_p[1]+room_h/2)
+			b = ft_math.Point(move[j][1][0][0], move[j][1][1][0])
+			ant_start -= 1;
+			while i < (len(move[j][1][0])) and anim and not done:
+				d1 = ft_math.Droite(a, b)
+				done = print_ant(flag, ant_p, move[j], [screen, solid_bg], d1, i, done, [ant_start, ant_end])
+				if i+1 == len(move[j][1][0]):
+					anim=False
+					ant_end += 1
+					break
+				a = ft_math.Point(move[j][1][0][i], move[j][1][1][i])
+				b = ft_math.Point(move[j][1][0][i+1], move[j][1][1][i+1])
+				i += 1
+				for event in pg.event.get():
+					if event.type == pg.QUIT:
+						done = True
+				pg.display.flip()
+			ant_p = put_start(room)
+			j += 1
+	pg.quit()
+
+def win_gen(done, room, ant_p):
 	pg.init()
 	pg.font.init()
-	dst_x = []
-	dst_y = []
-	dst = [dst_x, dst_y]
-	src_x = []
-	src_y = []
-	src = [src_x, src_y]
 	screen = pg.display.set_mode([win_w, win_h])
 	bg = pg.image.load("dirt800x535.jpg")
-	
 	bg = pg.transform.scale(bg, (win_w, win_h))
 	room_name = pg.font.SysFont('Arial', 25)
 	screen.blit(bg, [0, 0])
+	i = 0
 	while i < len(room[3]):
-		src[0].append(room[1][room[3][i]]+room_w/2)
-		src[1].append(room[2][room[3][i]]+room_h/2)
-		dst[0].append(room[1][room[4][i]]+room_w/2)
-		dst[1].append(room[2][room[4][i]]+room_h/2)
-		pg.draw.line(screen, white, (dst[0][i], dst[1][i]), (src[0][i], src[1][i]), 2)
+		pg.draw.line(
+			screen,
+			white,
+			(room[1][room[4][i]]+room_w/2, room[2][room[4][i]]+room_h/2),
+			(room[1][room[3][i]]+room_w/2, room[2][room[3][i]]+room_h/2),
+			2
+		)
 		i += 1
 	i = 0
 	while (i < len(room[1])):
@@ -110,70 +168,64 @@ def	print_map(room):
 			2)
 		if room[0][i] == "start":
 			screen.blit(start_img, (room[1][i], room[2][i]))
-			ant_p = [room[1][i], room[2][i]]
 		elif room[0][i] == "end":
 			screen.blit(end_img, (room[1][i], room[2][i]))
-		s_room_name = room_name.render(room[0][i], False, (255, 255, 255))
+		s_room_name = room_name.render(room[0][i], False, white)
 		screen.blit(s_room_name, (room[1][i], room[2][i]- 20))
 		i += 1
 	solid_bg = pg.Surface.copy(screen)
-	flag = True
-	anim = True
-	i = 0
-	while not done:
-		a = ft_math.Point(ant_p[0]+room_w/2, ant_p[1]+room_h/2)
-		b = ft_math.Point(move[1][0][0], move[1][1][0])
-		for event in pg.event.get():
-			if event.type == pg.QUIT:
-				done = True
-		while i < (len(move[1][0])) and anim and not done:
-			d1 = ft_math.Droite(a, b)
-			if (ant_p[0] > move[1][0][i]):
-				while ant_p[0] > move[1][0][i] and ant_p[1] != move[1][1][i] and not done:	
-					flag = not flag
-					for event in pg.event.get():
-						if event.type == pg.QUIT:
-							done = True
-					screen.blit(solid_bg, [0, 0])
-					if flag:
-						rot_p1 = pg.transform.rotate(ant_p1, 90)
-						screen.blit(rot_p1, [ant_p[0]-ant_size/2, ant_p[1]-ant_size/2])
-					else:
-						rot_p2 = pg.transform.rotate(ant_p2, 90)
-						screen.blit(rot_p2, [ant_p[0]-ant_size/2, ant_p[1]-ant_size/2])
-					ant_p[0] -= speed
-					ant_p[1] = d1.reduite(ant_p[0])
-					time.sleep(0.10)
-					pg.display.flip()
-			elif move[0][i]:
-				while ant_p[0] < move[1][0][i] and ant_p[1] != move[1][1][i] and not done:
-					flag = not flag
-					for event in pg.event.get():
-						if event.type == pg.QUIT:
-							done = True
-					screen.blit(solid_bg, [0, 0])
-					if flag:
-						rot_p1 = pg.transform.rotate(ant_p1, 90)
-						screen.blit(rot_p1, [ant_p[0]-ant_size/2, ant_p[1]-ant_size/2])
-					else:
-						rot_p2 = pg.transform.rotate(ant_p2, 90)
-						screen.blit(rot_p2, [ant_p[0]-ant_size/2, ant_p[1]-ant_size/2])
-					ant_p[0] += speed
-					ant_p[1] = d1.reduite(ant_p[0])
-					time.sleep(0.10)
-					pg.display.flip()
-			if i+1 == len(move[1][0]):
-				anim=False
-				break
-			a = ft_math.Point(move[1][0][i], move[1][1][i])
-			b = ft_math.Point(move[1][0][i+1], move[1][1][i+1])
-			i += 1
-	pg.quit()
+	surface = [screen, solid_bg]
+	return surface;
+
+def	print_txt(screen, solid_bg, ant):
+	txtfmt = pg.font.SysFont('Arial', 45)
+	screen.blit(solid_bg, [0, 0])
+	screen.blit(txtfmt.render("OK", False, white), (10, 10))
+	screen.blit(txtfmt.render("Number of ant(s) on [START]" + str(ant[0]), False, white), (10, 60))
+	screen.blit(txtfmt.render("Number of ant(s) on [END]" + str(ant[1]), False, white), (10, 110))
+
+def print_ant(flag, ant_p, move, screen, d1, i, done, ant):
+	if ant_p[0] > move[1][0][i]:
+		while ant_p[0] > move[1][0][i] and ant_p[1] != move[1][1][i] and not done:	
+			flag = not flag
+			for event in pg.event.get():
+				if event.type == pg.QUIT:
+					done = True
+			print_txt(screen[0], screen[1], ant)
+			if flag:
+				rot_p1 = pg.transform.rotate(ant_p1, 90)
+				screen[0].blit(rot_p1, [ant_p[0]-ant_size/2, ant_p[1]-ant_size/2])
+			else:
+				rot_p2 = pg.transform.rotate(ant_p2, 90)
+				screen[0].blit(rot_p2, [ant_p[0]-ant_size/2, ant_p[1]-ant_size/2])
+			ant_p[0] -= speed
+			ant_p[1] = d1.reduite(ant_p[0])
+			time.sleep(0.10)
+			pg.display.flip()
+	elif move[0][i]:
+		while ant_p[0] < move[1][0][i] and ant_p[1] != move[1][1][i] and not done:
+			flag = not flag
+			for event in pg.event.get():
+				if event.type == pg.QUIT:
+					done = True
+			print_txt(screen[0], screen[1], ant)
+			if flag:
+				rot_p1 = pg.transform.rotate(ant_p1, 90)
+				screen[0].blit(rot_p1, [ant_p[0]-ant_size/2, ant_p[1]-ant_size/2])
+			else:
+				rot_p2 = pg.transform.rotate(ant_p2, 90)
+				screen[0].blit(rot_p2, [ant_p[0]-ant_size/2, ant_p[1]-ant_size/2])
+			ant_p[0] += speed
+			ant_p[1] = d1.reduite(ant_p[0])
+			time.sleep(0.10)
+			pg.display.flip()	
+	return done;
 
 def	main():
 	l_stdin = read_stdin()
 	room = parse_stdin(l_stdin)
+	ant_start = len(move) - 3
 	if (room):
-		print_map(room)
+		print_map(room, ant_start)
 	sys.exit()
 main()
