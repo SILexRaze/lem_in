@@ -6,38 +6,36 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/15 18:35:33 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/23 10:34:59 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/24 13:35:38 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	check_overlap_path(t_data *data, int n)
+void	check_overlap_path(t_data *data)
 {
 	int		i;
-	t_path	*tmp;
-	t_path	*tmp2;
+	int		j;
+	t_path	**tmp;
+	t_path	**tmp2;
 
-	i = -1;
-	while (++i < n - 1)
+	i = 0;
+	tmp = data->path_tab;
+	while (tmp[i])
 	{
-		tmp = data->path_tab[i]->next;
-		while (tmp && i < n - 1)
+		j = i + 1;
+		if (tmp2[j])
+		tmp2 = data->path_tab;
+		while(tmp2[j])
 		{
-			tmp2 = data->path_tab[i + 1]->next;
-			while (tmp2 && i < n - 1)
-			{
-				if (ft_strequ(tmp->room->name, tmp2->room->name) == 1
-						&& tmp->room->state == 0 && tmp2->room->state == 0)
-				{
-					delete_path(data, i + 1);
-					n = tab_struc_len(data->path_tab);
-					break ;
-				}
-				tmp2 = tmp2->next;
-			}
-			tmp = tmp->next;
+			if (path_verif(data, i, j))
+					{
+						delete_path(data, j);
+						return (check_overlap_path(data);
+					}
+						j++;
 		}
+	i++;
 	}
 }
 
@@ -114,4 +112,25 @@ int		check_ifpath(t_data *data)
 	if (start == 0 || end == 0)
 		return (0);
 	return (1);
+}
+
+int		path_verif(t_data *data, int n1, int n2)
+{
+	t_path	*tmp1;
+	t_path	*tmp2;
+
+	tmp1 = data->path_tab[n1];
+	while(tmp1)
+	{
+		tmp2 = data->path_tab[n2];
+		while(tmp2)
+		{
+			if(ft_strequ(tmp1->room->name, tmp2->room->name) == 1
+					&& tmp->room->state == 0 && tmp2->room->state == 0)
+				return (n2);
+			tmp2 = tmp2->next;
+		}
+		tmp1 = tmp1->next;
+	}
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 12:11:19 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/21 16:43:32 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/24 12:33:47 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int		dispatch_ant(t_data *data, size_t *n)
 			data->path_tab[i]->ant += 1;
 			(*n)--;
 		}
+		else
+			break ;
 		i++;
 	}
 	return (0);
