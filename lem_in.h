@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/24 15:17:05 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/24 15:39:17 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ typedef struct		s_data
 */
 void				map_pushback(t_map **begin_list, char **tab, int state);
 void				pipe_pushback(t_pipe **begin_list, char **tab);
-void				path_pushback(t_path **begin_list, t_map *room, size_t size);
+void				path_pushback(t_path **begin, t_map *room, size_t size);
 t_map				*map_create_elem(char **tab, int state);
 t_path				*path_create_elem(t_map *room, size_t size);
 t_pipe				*pipe_create_elem(char **tab);
@@ -106,11 +106,11 @@ int					check_weight(t_map *tmp);
 int					check_weight(t_map *tmp);
 int					explore(t_map *tmp, t_data *data, t_map *prev);
 int					priority(t_map *tmp, t_map *prev);
-int					give_priority(t_map *tmp, t_map *prev,t_map *min);
+int					give_priority(t_map *tmp, t_map *prev, t_map *min);
 int					count_real_pipe(t_map *map, t_map *prev);
 int					check_dead_end(t_map *map, t_map *prev);
 void				pathlist_totab(t_data *data);
-void				assign_path(t_path *s,t_path *t,t_path *p);
+void				assign_path(t_path *s, t_path *t, t_path *p);
 void				sort_path_tab(t_path **path_tab, size_t len);
 void				count_connex(t_map *tmp, t_map *prev);
 size_t				npath(t_data *data);

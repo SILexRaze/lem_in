@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 14:45:30 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/24 13:30:26 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/24 15:39:40 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,20 @@ t_path	*path_create_elem(t_map *room, size_t size)
 	return (new);
 }
 
-void	path_pushback(t_path **begin_list, t_map *room, size_t size)
+void	path_pushback(t_path **begin, t_map *room, size_t size)
 {
 	t_path	*tmp;
 
-	if (*begin_list)
+	if (*begin)
 	{
-		tmp = *begin_list;
+		tmp = *begin;
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = path_create_elem(room, size);
 		tmp->freenext = tmp->next;
 	}
 	else
-		*begin_list = path_create_elem(room, size);
+		*begin = path_create_elem(room, size);
 }
 
 size_t	path_len(t_path **begin_list)
