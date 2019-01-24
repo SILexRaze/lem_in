@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/10 13:53:46 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/24 14:37:15 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/24 17:35:21 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ int		check_start(t_map *tmp)
 	i = 0;
 	while (tmp->pipe[i])
 	{
+		if(tmp->pipe[i]->state == 2 && tmp->pipe[i]->weight > 0)
+			return (1);
 		i++;
 	}
 	i = 0;
