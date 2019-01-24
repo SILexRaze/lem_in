@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:08 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/24 15:16:56 by rvalenti         ###   ########.fr       */
+/*   Updated: 2019/01/24 16:01:43 by rvalenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int		main(void)
 	read_stdin(data, 0, line);
 	if (!isvalid_room(data))
 		error(-1);
-	link_pipe(data);
 	isvalid_map(data);
+	link_pipe(data);
 	set_dimension(data->start, data->start, 0);
 	explore(data->start, data, NULL);
 	pathlist_totab(data);
