@@ -21,9 +21,11 @@ room_w = 90
 room_h = 70
 ant_size = 95
 speed = 30
-ant_num = 0
+ant_num = []
 step = 0
 move = []
+ant = []
+raw_inst = []
 start_img = pg.transform.scale(pg.image.load("start.png"), (room_w, room_h))
 end_img = pg.transform.scale(pg.image.load("end.png"), (room_w, room_h))
 ant_p1 = pg.transform.scale(pg.image.load("pos1_ant_bl.png"), (ant_size, ant_size))
@@ -33,20 +35,22 @@ def	read_stdin():
 	for line in sys.stdin:
 		l_stdin.append(line)
 	return l_stdin;
-
 def	parse_stdin(l_stdin):
 	x = []
 	y = []
 	name = []
+	len_stdin = []
 	pipe_l = []
 	pipe_r = []
 	room = [name, x, y, pipe_l, pipe_r]
-	ant = int(l_stdin[0])
+	ant.append(int(l_stdin[0]))
 	l_stdin.pop(0)
+	for tmp in l_stdin:
+		len_stdin.append(len(tmp))
 	for line in l_stdin:
 		if len(line.split()) == 3:
 			name.append(line.split()[0])
-			x.append(randint(room_w, win_w - room_w))
+			x.append(randint(room_w + (max(len_stdin)*12), win_w - room_w))
 			y.append(randint(room_h, win_h - room_h))
 		elif len(line.split("-")) == 2 and line.split("-")[0][0] != 'L':
 			ret = line.split("-")
@@ -59,6 +63,7 @@ def	parse_stdin(l_stdin):
 			y_m = []
 			room_m = [x_m, y_m]
 			move.append([ant_m, room_m])
+			raw_inst.append(line.rstrip())
 			for tmp in ret:
 				tmp = tmp.split("-")
 				index = int(tmp[0].split('L')[1].rstrip())
@@ -75,15 +80,15 @@ def	parse_stdin(l_stdin):
 	move.pop(0)
 	return room;
 
-def gen_coord(room):
-	i = 0
-	while i < len(room[1]):
-		room[1][i] = randint(0, win_w - room_w)
-		# int((room[1][i]*(win_w-room_w))/max(room[1]))
-		room[2][i] = randint(0, win_h - room_h)
-		# int((room[2][i]*(win_h-room_h))/max(room[2]))
-		i += 1
-	return room;
+# def gen_coord(room):
+# 	i = 0
+# 	while i < len(room[1]):
+# 		room[1][i] = randint(0, win_w - room_w)
+# 		# int((room[1][i]*(win_w-room_w))/max(room[1]))
+# 		room[2][i] = randint(0, win_h - room_h)
+# 		# int((room[2][i]*(win_h-room_h))/max(room[2]))
+# 		i += 1
+# 	return room;
 
 def put_start(room):
 	i = 0
@@ -110,10 +115,14 @@ def	print_map(room, ant_start):
 	ant_end = 0
 	screen = tmp[0]
 	solid_bg = tmp[1]
+	launch = True
 	# screen.blit(txtfmt.render(ant_stat_str + "[START]" + count_ant(j), False, white), (10, 10))
 	pg.display.flip()
 	while not done:
-		while j < (len(move) - 3) and not done:
+		if launch == True:
+			launch_screen(screen)
+			launch = False
+		while j < ant[0] and not done:
 			i = 0
 			anim = True
 			a = ft_math.Point(ant_p[0]+room_w/2, ant_p[1]+room_h/2)
@@ -130,11 +139,15 @@ def	print_map(room, ant_start):
 				b = ft_math.Point(move[j][1][0][i+1], move[j][1][1][i+1])
 				i += 1
 				for event in pg.event.get():
-					if event.type == pg.QUIT:
+					if event.type == pg.QUIT or (event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE):
 						done = True
 				pg.display.flip()
 			ant_p = put_start(room)
 			j += 1
+			ant_num[0] += 1
+		for event in pg.event.get():
+			if event.type == pg.QUIT or (event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE):
+				done = True
 	pg.quit()
 
 def win_gen(done, room, ant_p):
@@ -177,19 +190,23 @@ def win_gen(done, room, ant_p):
 	surface = [screen, solid_bg]
 	return surface;
 
-def	print_txt(screen, solid_bg, ant):
+def	print_txt(screen, solid_bg, ant_cpt):
+	y = 110 + 50
 	txtfmt = pg.font.SysFont('Arial', 45)
 	screen.blit(solid_bg, [0, 0])
-	screen.blit(txtfmt.render("OK", False, white), (10, 10))
-	screen.blit(txtfmt.render("Number of ant(s) on [START]" + str(ant[0]), False, white), (10, 60))
-	screen.blit(txtfmt.render("Number of ant(s) on [END]" + str(ant[1]), False, white), (10, 110))
-
+	screen.blit(txtfmt.render("Lem-in | By rvalenti & vifonne @ 42", False, white), (10, 10))
+	screen.blit(txtfmt.render("Number of ant(s) on [START] : " + str(ant_cpt[0]), False, white), (10, 60))
+	screen.blit(txtfmt.render("Number of ant(s) on [END] : " + str(ant_cpt[1]), False, white), (10, 110))
+	for line in raw_inst:
+		screen.blit(txtfmt.render(line, False, white), (10, y))
+		y += 50
+	screen.blit(txtfmt.render("Ant No : " + str(ant_num[0]), False, white), (10, y))
 def print_ant(flag, ant_p, move, screen, d1, i, done, ant):
 	if ant_p[0] > move[1][0][i]:
 		while ant_p[0] > move[1][0][i] and ant_p[1] != move[1][1][i] and not done:	
 			flag = not flag
 			for event in pg.event.get():
-				if event.type == pg.QUIT:
+				if event.type == pg.QUIT or (event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE):
 					done = True
 			print_txt(screen[0], screen[1], ant)
 			if flag:
@@ -206,7 +223,7 @@ def print_ant(flag, ant_p, move, screen, d1, i, done, ant):
 		while ant_p[0] < move[1][0][i] and ant_p[1] != move[1][1][i] and not done:
 			flag = not flag
 			for event in pg.event.get():
-				if event.type == pg.QUIT:
+				if event.type == pg.QUIT or (event.type == pg.KEYDOWN and event.key == pg.K_ESCAPE):
 					done = True
 			print_txt(screen[0], screen[1], ant)
 			if flag:
@@ -218,13 +235,25 @@ def print_ant(flag, ant_p, move, screen, d1, i, done, ant):
 			ant_p[0] += speed
 			ant_p[1] = d1.reduite(ant_p[0])
 			time.sleep(0.10)
-			pg.display.flip()	
+			pg.display.flip()
 	return done;
 
+def launch_screen(screen):
+	pressed = False
+	lnchr = pg.transform.scale(pg.image.load("launch-screen.png"), (win_w, win_h))
+	screen.blit(lnchr, (0, 0))
+	pg.display.flip()
+	while pressed == False:
+		for event in pg.event.get():
+			if event.type == pg.QUIT or (event.type == pg.KEYDOWN and event.key == pg.K_SPACE):
+				pressed = True
+
+
 def	main():
+	ant_num.append(1)
 	l_stdin = read_stdin()
 	room = parse_stdin(l_stdin)
-	ant_start = len(move) - 3
+	ant_start = ant[0]
 	if (room):
 		print_map(room, ant_start)
 	sys.exit()
