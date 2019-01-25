@@ -26,6 +26,12 @@ step = 0
 move = []
 ant = []
 raw_inst = []
+name = []
+x = []
+y = []
+pipe_l = []
+pipe_r = []
+room = [name, x, y, pipe_l, pipe_r]
 start_img = pg.transform.scale(pg.image.load("start.png"), (room_w, room_h))
 end_img = pg.transform.scale(pg.image.load("end.png"), (room_w, room_h))
 ant_p1 = pg.transform.scale(pg.image.load("pos1_ant_bl.png"), (ant_size, ant_size))
@@ -36,21 +42,17 @@ def	read_stdin():
 		l_stdin.append(line)
 	return l_stdin;
 def	parse_stdin(l_stdin):
-	x = []
-	y = []
-	name = []
 	len_stdin = []
-	pipe_l = []
-	pipe_r = []
-	room = [name, x, y, pipe_l, pipe_r]
 	ant.append(int(l_stdin[0]))
 	l_stdin.pop(0)
 	for tmp in l_stdin:
 		len_stdin.append(len(tmp))
 	for line in l_stdin:
+		if line[0] == '#' and line[1] != '#':
+			continue
 		if len(line.split()) == 3:
 			name.append(line.split()[0])
-			x.append(randint(room_w + (max(len_stdin)*12), win_w - room_w))
+			x.append(randint(room_w + (max(len_stdin)*12.5), win_w - room_w))
 			y.append(randint(room_h, win_h - room_h))
 		elif len(line.split("-")) == 2 and line.split("-")[0][0] != 'L':
 			ret = line.split("-")
@@ -191,12 +193,14 @@ def win_gen(done, room, ant_p):
 	return surface;
 
 def	print_txt(screen, solid_bg, ant_cpt):
-	y = 110 + 50
+	y = 160 + 50
 	txtfmt = pg.font.SysFont('Arial', 45)
 	screen.blit(solid_bg, [0, 0])
 	screen.blit(txtfmt.render("Lem-in | By rvalenti & vifonne @ 42", False, white), (10, 10))
 	screen.blit(txtfmt.render("Number of ant(s) on [START] : " + str(ant_cpt[0]), False, white), (10, 60))
 	screen.blit(txtfmt.render("Number of ant(s) on [END] : " + str(ant_cpt[1]), False, white), (10, 110))
+	screen.blit(txtfmt.render("Number of rooms: : " + str(len(room[0])), False, white), (10, 160))
+
 	for line in raw_inst:
 		screen.blit(txtfmt.render(line, False, white), (10, y))
 		y += 50
