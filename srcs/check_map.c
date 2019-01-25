@@ -6,7 +6,7 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/09 12:12:12 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/24 19:38:02 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/25 11:04:26 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int		isvalid_map(t_data *data)
 
 	tmp = data->map;
 	if (!isvalid_pipe(data))
-		error(-2, data);
+		error(-2);
 	if (!count_state(data))
-		error(-1, data);
+		error(-1);
 	while (tmp)
 	{
 		if (tmp->state == 1)
@@ -33,7 +33,7 @@ int		isvalid_map(t_data *data)
 	}
 	data->start = tmp;
 	if (data->pipe == NULL)
-		error(-2, data);
+		error(-2);
 	return (1);
 }
 

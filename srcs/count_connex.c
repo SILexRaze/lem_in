@@ -6,7 +6,7 @@
 /*   By: rvalenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/20 01:37:31 by rvalenti          #+#    #+#             */
-/*   Updated: 2019/01/24 19:38:53 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/25 11:05:40 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	count_connex(t_map *tmp, t_map *prev)
 		tmp->connex = count_real_pipe(tmp, prev);
 }
 
-void	check_ifend(t_map *tmp, t_data *data)
+void	check_ifend(t_map *tmp)
 {
 	int	start;
 	int	end;
@@ -48,13 +48,13 @@ void	check_ifend(t_map *tmp, t_data *data)
 		else if (tmp->state == 2)
 		{
 			if (tmp->connex <= 0)
-				error(-3, data);
+				error(-3);
 			end++;
 		}
 		tmp = tmp->next;
 	}
 	if (!start || !end)
-		error(-3, data);
+		error(-3);
 }
 
 int		count_real_pipe(t_map *map, t_map *prev)

@@ -6,14 +6,13 @@
 /*   By: vifonne <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/05 18:14:56 by vifonne           #+#    #+#             */
-/*   Updated: 2019/01/24 19:40:14 by vifonne          ###   ########.fr       */
+/*   Updated: 2019/01/25 11:28:51 by vifonne          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
 # include "libft/libft.h"
-# include <stdio.h>
 # include <string.h>
 # include <stdlib.h>
 
@@ -94,7 +93,7 @@ int					isstate(t_data *data);
 **	CHECKER PATH
 */
 int					check_ifpath(t_data *data);
-void				check_ifend(t_map *tmp, t_data *data);
+void				check_ifend(t_map *tmp);
 void				check_overlap_path(t_data *data);
 void				merge_ifeq_path(t_data *data, int n);
 void				delete_path(t_data *data, int index);
@@ -146,7 +145,7 @@ void				free_map(t_data *data);
 void				free_path(t_data *data);
 void				free_pipe(t_data *data);
 void				free_struct(t_data *data);
-void				error(int n, t_data *data);
+void				error(int n);
 size_t				sizetoi(char *str);
 size_t				pipe_nbr(t_map *map, t_pipe *pipe);
 size_t				tab_struc_len(t_path **pipe);
